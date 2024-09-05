@@ -1,0 +1,1128 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tugas1_crowling';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
+    <link rel="prev" title="Content with notebooks" href="notebooks.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftugas1_crowling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/tugas1_crowling.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>beautifulsoup4<span class="w"> </span>requests
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.10/dist-packages (4.12.3)
+Requirement already satisfied: requests in /usr/local/lib/python3.10/dist-packages (2.32.3)
+Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dist-packages (from beautifulsoup4) (2.6)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests) (3.8)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests) (2.0.7)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests) (2024.8.30)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span><span class="s1">&#39;https://www.liputan6.com/news&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Temukan elemen &lt;div&gt; dengan kelas &#39;overflow margin-bottom-xs&#39;</span>
+<span class="n">judul</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;articles&#39;</span><span class="p">)</span>
+
+<span class="c1"># Jika elemen ditemukan, cari semua elemen &lt;span&gt; di dalamnya dan tampilkan teksnya</span>
+<span class="k">if</span> <span class="n">judul</span><span class="p">:</span>
+    <span class="c1"># Inisialisasi counter</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">for</span> <span class="n">span</span> <span class="ow">in</span> <span class="n">judul</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span> <span class="s2">&quot;articles--iridescent-list--text-item__title-link-text&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">counter</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">span</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Elemen dengan kelas &#39;overflow margin-bottom-xs&#39; tidak ditemukan.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. Hakim Agung Nonaktif Gazalba Saleh Dituntut 15 Tahun Penjara Kasus TPPU
+2. Polri Imbau Masyarakat Tertib Jelang Misa Akbar Paus Fransiskus di GBK
+3. Banyuwangi Punya Kantor BPN Ramah Lansia dan Disabilitas, Dilengkapi Loket Khusus
+4. Bahlil: Faisal Basri Tokoh yang Mampu Mengerem Para Pejabat seperti Saya
+5. Disinggung soal Persija, Ridwan Kamil: Saya Tak Mau Politisasi Sepak Bola
+6. PKS Jakarta Akui Kader Masih Pertanyakan Alasan Tak Dukung Anies Baswedan
+7. 62 Polisi Kawal Jemaah ke GBK Senayan Jakarta untuk Ikut Misa Paus Fransiskus dari Kabupat...
+8. Ada Rekayasa Lalu Lintas di Sekitar GBK Senayan Jakarta saat Misa Paus Fransiskus, Ingat!
+9. Upacara Adat Ngeruwak Digelar, Penanda Awal Pembangunan Bali Urban Subway
+10. Kerangka Manusia Ditemukan di Lahan Kosong Tambun Bekasi
+11. Respons Azan Maghrib Diganti Running Teks, YMKI: Toleransi Bukan Berarti Saling Menghilang...
+12. Jokowi: Masalah Perubahan Iklim Tak Bisa Diselesaikan Jika Dunia Pentingkan Egosentris
+13. Saksikan Paus Fransiskus Kunjungi KWI, Banyak Warga Bawa Anak-Anak
+14. 5 Pernyataan Kapolri dan Panglima TNI Jelang Misa Paus Fransiskus di GBK, Pastikan Semua A...
+15. Paus Fransiskus: Saya Bahagia Bisa Bersama di Masjid Istiqlal, Rumah Ibadah dan Kemanusiaa...
+16. Tertipu Investasi Saham Lewat Aplikasi, Warga Depok Rugi hingga Setengah Miliar Lebih
+17. DPR Minta Imbauan soal Azan Magrib saat Misa Kudus Paus Fransiskus Tak Perlu Diperdebatkan
+18. Terkesan dengan Keberagaman Indonesia, Paus Fransiskus: Maju Terus Bhineka Tunggal Ika
+19. Hakim Agung Nonaktif Gazalba Saleh Jalani Sidang Tuntutan Kamis Hari Ini
+20. Keluarga Ungkap Kondisi Faisal Basri Sebelum Meninggal Dunia, Sempat Tempuh Perjalanan Jau...
+21. Faisal Basri Meninggal, Mahfud Md: Sejarah Hidupmu Jadi Vitamin Berharga bagi Gen Y dan Z
+22. 7 Respons Mulai PP Muhammadiyah hingga JK soal Azan Magrib Diganti Running Text saat Misa ...
+23. Kunjungi Masjid Istiqlal, Paus Fransiskus Berkati Terowongan Silaturahmi
+24. Ekonom Faisal Basri Meninggal, Sempat Terkena Serangan Jantung
+25. Dihadapan Paus Fransiskus, Imam Besar Nasaruddin Sebut Masjid Istiqlal Adalah Rumah Untuk ...
+26. Warga Padati Masjid Istiqlal Sambut Kedatangan Paus Fransiskus
+27. Paus Fransiskus Tiba di Masjid Istiqlal, Disambut Lantunan Marawis
+28. Pansus Angket Haji DPR RI Temukan Indikasi Input Data Diintervensi Pihak Tertentu
+29. Infografis Calon Tunggal di 43 Daerah dan Skenario Kotak Kosong Menang di Pilkada 2024
+30. Jokowi Pakai Innova Zenix, Danpaspampres: Pengamanan Sudah Diperketat
+31. Wapres Sebut Prevalansi Stunting Menurun Selama 5 Tahun, Akui Masih Ada PR
+32. Top 3 News: JK Minta Televisi Tetap Tayangkan Azan Magrib Bersamaan dengan Perayaan Misa P...
+33. Anies Berencana Bentuk Partai Baru, Pengamat Ingatkan soal Tantangan Berat
+34. Melihat Pendidikan Skadik 404 dan 401 Lanud Adi Soemarmo
+35. Misa Akbar Paus Fransiskus, Disdik Imbau 208 Sekolah di Jakarta Belajar Jarak Jauh
+36. Faisal Basri Meninggal Dunia, Eks Menkeu: Kehilangan Besar Buat Negeri Ini
+37. Pemberlakuan Sistem Ganjil Genap di Jakarta pada Kamis, 5 September 2024
+38. Sadis, Suami Bunuh Istri di Kebagusan Jakarta Selatan
+39. Polri Sebut Penangkapan Teroris di Bekasi Bagian dari Pengamanan Paus Fransiskus
+40. Alasan KPK Batal Tunjuk Direktorat Gratifikasi Usut Polemik Jet Pribadi Kaesang, Kini Dita...
+41. Persaingan Kerja Ketat, BNSP Pertegas Pentingnya Sertifikasi Kompetensi
+42. Polisi Tangkap 10 Anggota Ormas yang Keroyok Pedagang Buah di Jakbar
+43. Momen Kaesang Pangarep Muncul di DPP PSI, Hanya Sempat Sapa Wartawan
+44. Pamer Alat Kelamin ke Teman Kerja Lewat Medsos, Pemuda Ini Diringkus Polisi
+45. Kapolri: Pidato Paus Fransiskus Jadi Semangat untuk Kita Jaga Persatuan
+46. Akhirnya Muncul ke Publik, Kaesang Bungkam Saat Ditanya soal Jet Pribadi
+47. Dinilai Sukses Turunkan Stunting, Pemprov Jateng Kantongi Insentif Fiskal Rp6,45 Miliar da...
+48. Usai Bertemu Paus Fransiskus, Jokowi Pakai Innova Zenix Saat Pulang ke Bogor
+49. Korban Kecelakaan Maut di Jakut Bertambah, 5 Orang Tewas dan 7 Luka
+50. KPAI Sebut TPPO Jual Beli Bayi Libatkan Antar Wilayah
+51. Kaesang Batal Dipanggil Terkait Jet Pribadi ke AS, KPK Bantah Ada Tekanan
+52. Misa Akbar, Area di Stadion GBK dan Madya Disterilkan
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">link_counter</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Daftar Link:&quot;</span><span class="p">)</span>
+<span class="n">seen_links</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>  <span class="c1"># Set untuk melacak link yang sudah dicetak</span>
+<span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">judul</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="n">class_</span><span class="o">=</span><span class="s2">&quot;ui--a articles--iridescent-list--text-item__title-link&quot;</span><span class="p">):</span>
+  <span class="n">href</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">href</span> <span class="ow">and</span> <span class="n">href</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen_links</span><span class="p">:</span>  <span class="c1"># Periksa apakah href ada dan belum dicetak</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">link_counter</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">href</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">seen_links</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">href</span><span class="p">)</span>  <span class="c1"># Tambahkan href ke set</span>
+    <span class="n">link_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Daftar Link:
+1. https://www.liputan6.com/news/read/5694084/hakim-agung-nonaktif-gazalba-saleh-dituntut-15-tahun-penjara-kasus-tppu
+2. https://www.liputan6.com/news/read/5694083/polri-imbau-masyarakat-tertib-jelang-misa-akbar-paus-fransiskus-di-gbk
+3. https://www.liputan6.com/news/read/5694056/banyuwangi-punya-kantor-bpn-ramah-lansia-dan-disabilitas-dilengkapi-loket-khusus
+4. https://www.liputan6.com/news/read/5694044/bahlil-faisal-basri-tokoh-yang-mampu-mengerem-para-pejabat-seperti-saya
+5. https://www.liputan6.com/news/read/5694078/disinggung-soal-persija-ridwan-kamil-saya-tak-mau-politisasi-sepak-bola
+6. https://www.liputan6.com/news/read/5693963/pks-jakarta-akui-kader-masih-pertanyakan-alasan-tak-dukung-anies-baswedan
+7. https://www.liputan6.com/news/read/5693948/62-polisi-kawal-jemaah-ke-gbk-senayan-jakarta-untuk-ikut-misa-paus-fransiskus-dari-kabupaten-tangerang
+8. https://www.liputan6.com/news/read/5693924/ada-rekayasa-lalu-lintas-di-sekitar-gbk-senayan-jakarta-saat-misa-paus-fransiskus-ingat
+9. https://www.liputan6.com/news/read/5693938/upacara-adat-ngeruwak-digelar-penanda-awal-pembangunan-bali-urban-subway
+10. https://www.liputan6.com/news/read/5693910/kerangka-manusia-ditemukan-di-lahan-kosong-tambun-bekasi
+11. https://www.liputan6.com/news/read/5694082/respons-azan-maghrib-diganti-running-teks-ymki-toleransi-bukan-berarti-saling-menghilangkan
+12. https://www.liputan6.com/news/read/5693893/jokowi-masalah-perubahan-iklim-tak-bisa-diselesaikan-jika-dunia-pentingkan-egosentris
+13. https://www.liputan6.com/news/read/5693895/saksikan-paus-fransiskus-kunjungi-kwi-banyak-warga-bawa-anak-anak
+14. https://www.liputan6.com/news/read/5693898/5-pernyataan-kapolri-dan-panglima-tni-jelang-misa-paus-fransiskus-di-gbk-pastikan-semua-aman
+15. https://www.liputan6.com/news/read/5693884/paus-fransiskus-saya-bahagia-bisa-bersama-di-masjid-istiqlal-rumah-ibadah-dan-kemanusiaan
+16. https://www.liputan6.com/news/read/5693866/tertipu-investasi-saham-lewat-aplikasi-warga-depok-rugi-hingga-setengah-miliar-lebih
+17. https://www.liputan6.com/news/read/5693869/dpr-minta-imbauan-soal-azan-magrib-saat-misa-kudus-paus-fransiskus-tak-perlu-diperdebatkan
+18. https://www.liputan6.com/news/read/5693863/terkesan-dengan-keberagaman-indonesia-paus-fransiskus-maju-terus-bhineka-tunggal-ika
+19. https://www.liputan6.com/news/read/5693862/hakim-agung-nonaktif-gazalba-saleh-jalani-sidang-tuntutan-kamis-hari-ini
+20. https://www.liputan6.com/news/read/5693847/keluarga-ungkap-kondisi-faisal-basri-sebelum-meninggal-dunia-sempat-tempuh-perjalanan-jauh
+21. https://www.liputan6.com/news/read/5693840/faisal-basri-meninggal-mahfud-md-sejarah-hidupmu-jadi-vitamin-berharga-bagi-gen-y-dan-z
+22. https://www.liputan6.com/news/read/5693828/7-respons-mulai-pp-muhammadiyah-hingga-jk-soal-azan-magrib-diganti-running-text-saat-misa-paus-fransiskus
+23. https://www.liputan6.com/news/read/5693823/kunjungi-masjid-istiqlal-paus-fransiskus-berkati-terowongan-silaturahmi
+24. https://www.liputan6.com/news/read/5693821/ekonom-faisal-basri-meninggal-sempat-terkena-serangan-jantung
+25. https://www.liputan6.com/news/read/5693809/dihadapan-paus-fransiskus-imam-besar-nasaruddin-sebut-masjid-istiqlal-adalah-rumah-untuk-kemanusiaan
+26. https://www.liputan6.com/news/read/5693788/warga-padati-masjid-istiqlal-sambut-kedatangan-paus-fransiskus
+27. https://www.liputan6.com/news/read/5693775/paus-fransiskus-tiba-di-masjid-istiqlal-disambut-lantunan-marawis
+28. https://www.liputan6.com/news/read/5693780/pansus-angket-haji-dpr-ri-temukan-indikasi-input-data-diintervensi-pihak-tertentu
+29. https://www.liputan6.com/news/read/5693752/infografis-calon-tunggal-di-43-daerah-dan-skenario-kotak-kosong-menang-di-pilkada-2024
+30. https://www.liputan6.com/news/read/5693729/jokowi-pakai-innova-zenix-danpaspampres-pengamanan-sudah-diperketat
+31. https://www.liputan6.com/news/read/5693733/wapres-sebut-prevalansi-stunting-menurun-selama-5-tahun-akui-masih-ada-pr
+32. https://www.liputan6.com/news/read/5693429/top-3-news-jk-minta-televisi-tetap-tayangkan-azan-magrib-bersamaan-dengan-perayaan-misa-paus-fransiskus
+33. https://www.liputan6.com/news/read/5693728/anies-berencana-bentuk-partai-baru-pengamat-ingatkan-soal-tantangan-berat
+34. https://www.liputan6.com/news/read/5693716/melihat-pendidikan-skadik-404-dan-401-lanud-adi-soemarmo
+35. https://www.liputan6.com/news/read/5693712/misa-akbar-paus-fransiskus-disdik-imbau-208-sekolah-di-jakarta-belajar-jarak-jauh
+36. https://www.liputan6.com/news/read/5693702/faisal-basri-meninggal-dunia-eks-menkeu-kehilangan-besar-buat-negeri-ini
+37. https://www.liputan6.com/news/read/5693323/pemberlakuan-sistem-ganjil-genap-di-jakarta-pada-kamis-5-september-2024
+38. https://www.liputan6.com/news/read/5693685/sadis-suami-bunuh-istri-di-kebagusan-jakarta-selatan
+39. https://www.liputan6.com/news/read/5693460/polri-sebut-penangkapan-teroris-di-bekasi-bagian-dari-pengamanan-paus-fransiskus
+40. https://www.liputan6.com/news/read/5693454/alasan-kpk-batal-tunjuk-direktorat-gratifikasi-usut-polemik-jet-pribadi-kaesang-kini-ditangani-plpm
+41. https://www.liputan6.com/news/read/5693771/persaingan-kerja-ketat-bnsp-pertegas-pentingnya-sertifikasi-kompetensi
+42. https://www.liputan6.com/news/read/5693450/polisi-tangkap-10-anggota-ormas-yang-keroyok-pedagang-buah-di-jakbar
+43. https://www.liputan6.com/news/read/5693679/momen-kaesang-pangarep-muncul-di-dpp-psi-hanya-sempat-sapa-wartawan
+44. https://www.liputan6.com/news/read/5693401/pamer-alat-kelamin-ke-teman-kerja-lewat-medsos-pemuda-ini-diringkus-polisi
+45. https://www.liputan6.com/news/read/5693438/kapolri-pidato-paus-fransiskus-jadi-semangat-untuk-kita-jaga-persatuan
+46. https://www.liputan6.com/news/read/5693417/akhirnya-muncul-ke-publik-kaesang-bungkam-saat-ditanya-soal-jet-pribadi
+47. https://www.liputan6.com/news/read/5693423/dinilai-sukses-turunkan-stunting-pemprov-jateng-kantongi-insentif-fiskal-rp645-miliar-dari-pemerintah-pusat
+48. https://www.liputan6.com/news/read/5693392/usai-bertemu-paus-fransiskus-jokowi-pakai-innova-zenix-saat-pulang-ke-bogor
+49. https://www.liputan6.com/news/read/5693387/korban-kecelakaan-maut-di-jakut-bertambah-5-orang-tewas-dan-7-luka
+50. https://www.liputan6.com/news/read/5693294/kpai-sebut-tppo-jual-beli-bayi-libatkan-antar-wilayah
+51. https://www.liputan6.com/news/read/5693371/kaesang-batal-dipanggil-terkait-jet-pribadi-ke-as-kpk-bantah-ada-tekanan
+52. https://www.liputan6.com/news/read/5693363/misa-akbar-area-di-stadion-gbk-dan-madya-disterilkan
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengambil semua artikel dari halaman</span>
+<span class="n">articles</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;article&#39;</span><span class="p">)</span>  <span class="c1"># Ubah selector menjadi &#39;article&#39; jika setiap artikel dibungkus dalam elemen &lt;article&gt;</span>
+
+<span class="c1"># Set untuk menyimpan href yang sudah dilihat agar tidak terjadi duplikasi</span>
+<span class="n">seen_links</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="c1"># Counter untuk artikel yang diproses</span>
+<span class="n">link_counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Iterasi melalui setiap artikel</span>
+<span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">:</span>
+    <span class="c1"># Ambil link artikel</span>
+    <span class="n">link</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;ui--a articles--iridescent-list--text-item__title-link&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">link</span><span class="p">:</span>
+        <span class="n">href</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">href</span> <span class="ow">and</span> <span class="n">href</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen_links</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Artikel </span><span class="si">{</span><span class="n">link_counter</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Judul: </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Link: </span><span class="si">{</span><span class="n">href</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Ambil tanggal publikasi</span>
+            <span class="n">date</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;articles--iridescent-list--text-item__time&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">date</span><span class="p">:</span>
+                <span class="n">date_text</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Tanggal: </span><span class="si">{</span><span class="n">date_text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Ambil kategori artikel</span>
+            <span class="n">category</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;articles--iridescent-list--text-item__category&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">category</span><span class="p">:</span>
+                <span class="n">category_text</span> <span class="o">=</span> <span class="n">category</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Kategori: </span><span class="si">{</span><span class="n">category_text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Mencari dan mencetak ringkasan artikel yang sesuai</span>
+            <span class="n">summary_div</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;articles--iridescent-list--text-item__summary articles--iridescent-list--text-item__summary-seo&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">summary_div</span><span class="p">:</span>
+                <span class="n">summary_text</span> <span class="o">=</span> <span class="n">summary_div</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Ringkasan: </span><span class="si">{</span><span class="n">summary_text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Tambahkan href ke set untuk menghindari duplikasi</span>
+            <span class="n">seen_links</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">href</span><span class="p">)</span>
+            <span class="n">link_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="nb">print</span><span class="p">()</span>  <span class="c1"># Spasi untuk memisahkan artikel</span>
+
+<span class="c1"># Menampilkan total artikel yang ditemukan</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total artikel yang ditampilkan: </span><span class="si">{</span><span class="n">link_counter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Artikel 1:
+   Judul: Hakim Agung Nonaktif Gazalba Saleh Dituntut 15 Tahun Penjara Kasus TPPU
+   Link: https://www.liputan6.com/news/read/5694084/hakim-agung-nonaktif-gazalba-saleh-dituntut-15-tahun-penjara-kasus-tppu
+   Tanggal: 05 Sep 2024 14:18
+   Kategori: Peristiwa
+   Ringkasan: Jaksa menjerat Gazalba dengan pasal berlapis ihwal upaya tindak pidana Gratifikasi dan TPPU dari pengkondisian sejumlah perkara yang ada di Mahkamah Agung (MA).
+
+Artikel 2:
+   Judul: Polri Imbau Masyarakat Tertib Jelang Misa Akbar Paus Fransiskus di GBK
+   Link: https://www.liputan6.com/news/read/5694083/polri-imbau-masyarakat-tertib-jelang-misa-akbar-paus-fransiskus-di-gbk
+   Tanggal: 05 Sep 2024 14:14
+   Kategori: Peristiwa
+   Ringkasan: Polri mengimbau kepada para jemaat Misa Akbar yang sudah mendapatkan tanda peserta, agar mematuhi aturan yang diberlakukan panitia.
+
+Artikel 3:
+   Judul: Banyuwangi Punya Kantor BPN Ramah Lansia dan Disabilitas, Dilengkapi Loket Khusus
+   Link: https://www.liputan6.com/news/read/5694056/banyuwangi-punya-kantor-bpn-ramah-lansia-dan-disabilitas-dilengkapi-loket-khusus
+   Tanggal: 05 Sep 2024 13:53
+   Kategori: News
+   Ringkasan: Kantor Badan Pertanahan Nasional (BPN) Banyuwangi kini dilengkapi dengan fasilitas-fasilitas yang ramah bagi lansia dan disabilitas.
+
+Artikel 4:
+   Judul: Bahlil: Faisal Basri Tokoh yang Mampu Mengerem Para Pejabat seperti Saya
+   Link: https://www.liputan6.com/news/read/5694044/bahlil-faisal-basri-tokoh-yang-mampu-mengerem-para-pejabat-seperti-saya
+   Tanggal: 05 Sep 2024 13:46
+   Kategori: Peristiwa
+   Ringkasan: Bahlil pun merasa kehilangan dengan meninggalnya Faisal Basri, karena pemikiran kritisnya sampai saat ini masih sangat dibutuhkan pemerintah untuk memperbaiki pembangunan Indonesia.
+
+Artikel 5:
+   Judul: Disinggung soal Persija, Ridwan Kamil: Saya Tak Mau Politisasi Sepak Bola
+   Link: https://www.liputan6.com/news/read/5694078/disinggung-soal-persija-ridwan-kamil-saya-tak-mau-politisasi-sepak-bola
+   Tanggal: 05 Sep 2024 13:44
+   Kategori: Politik
+   Ringkasan: Bakal calon Gubernur Jakarta Ridwan Kamil sudah tak mau ditanyakan mengenai Persija Jakarta. Menurut dia, jika terpilih, maka sudah wajib untuk mencintainya.
+
+Artikel 6:
+   Judul: PKS Jakarta Akui Kader Masih Pertanyakan Alasan Tak Dukung Anies Baswedan
+   Link: https://www.liputan6.com/news/read/5693963/pks-jakarta-akui-kader-masih-pertanyakan-alasan-tak-dukung-anies-baswedan
+   Tanggal: 05 Sep 2024 12:19
+   Kategori: Politik
+   Ringkasan: Khoirudin menyebut para kader bisa diberi pemahaman sehingga tak ada penolakan apapun terhadap keputusan mendukung RK.
+
+Artikel 7:
+   Judul: 62 Polisi Kawal Jemaah ke GBK Senayan Jakarta untuk Ikut Misa Paus Fransiskus dari Kabupaten Tangerang
+   Link: https://www.liputan6.com/news/read/5693948/62-polisi-kawal-jemaah-ke-gbk-senayan-jakarta-untuk-ikut-misa-paus-fransiskus-dari-kabupaten-tangerang
+   Tanggal: 05 Sep 2024 12:05
+   Kategori: Peristiwa
+   Ringkasan: Sebanyak 62 anggota Polres Kota Tangerang, Banten melakukan pengawalan melekat pada keberangkatan ratusan jemaah gereja menuju Gelora Bung Karno (GBK) Senayan Jakarta untuk mengikuti Misa Paus Fransiskus, Kamis (5/9/2024).
+
+Artikel 8:
+   Judul: Ada Rekayasa Lalu Lintas di Sekitar GBK Senayan Jakarta saat Misa Paus Fransiskus, Ingat!
+   Link: https://www.liputan6.com/news/read/5693924/ada-rekayasa-lalu-lintas-di-sekitar-gbk-senayan-jakarta-saat-misa-paus-fransiskus-ingat
+   Tanggal: 05 Sep 2024 11:50
+   Kategori: Peristiwa
+   Ringkasan: Direktorat Lalu Lintas atau Dirlantas Polda Metro Jaya menyiapkan skenario rekayasa lalu lintas di sekitar kawasan Gelora Bung Karno (GBK) Senayan, Jakarta saat Misa Paus Fransiskus berlangsung pada Kamis sore (5/9/2024).
+
+Artikel 9:
+   Judul: Upacara Adat Ngeruwak Digelar, Penanda Awal Pembangunan Bali Urban Subway
+   Link: https://www.liputan6.com/news/read/5693938/upacara-adat-ngeruwak-digelar-penanda-awal-pembangunan-bali-urban-subway
+   Tanggal: 05 Sep 2024 11:37
+   Kategori: Peristiwa
+   Ringkasan: Upacara itu sebagai penanda bahwa pembangunan proyek Light Rail Transit (LRT) bawah tanah di Bali akan dimulai.
+
+Artikel 10:
+   Judul: Kerangka Manusia Ditemukan di Lahan Kosong Tambun Bekasi
+   Link: https://www.liputan6.com/news/read/5693910/kerangka-manusia-ditemukan-di-lahan-kosong-tambun-bekasi
+   Tanggal: 05 Sep 2024 11:35
+   Kategori: Megapolitan
+   Ringkasan: Kerangka manusia ditemukan di lahan Kosong Grand Wisata, Kampung Bulak Jambu, Tambun Selatan, Kabupaten Bekasi pada pukul 17.00 WIB pada Rabu, 4 September 2024.
+
+Artikel 11:
+   Judul: Respons Azan Maghrib Diganti Running Teks, YMKI: Toleransi Bukan Berarti Saling Menghilangkan
+   Link: https://www.liputan6.com/news/read/5694082/respons-azan-maghrib-diganti-running-teks-ymki-toleransi-bukan-berarti-saling-menghilangkan
+   Tanggal: 05 Sep 2024 11:16
+   Kategori: Peristiwa
+   Ringkasan: YKMI menegaskan bahwa toleransi tidak berarti menghilangkan seruan panggilan azan umat Islam atau urgensi siaran perayaan misa umat Katolik.
+
+Artikel 12:
+   Judul: Jokowi: Masalah Perubahan Iklim Tak Bisa Diselesaikan Jika Dunia Pentingkan Egosentris
+   Link: https://www.liputan6.com/news/read/5693893/jokowi-masalah-perubahan-iklim-tak-bisa-diselesaikan-jika-dunia-pentingkan-egosentris
+   Tanggal: 05 Sep 2024 11:16
+   Kategori: Peristiwa
+   Ringkasan: Menurut Jokowi, masalah perubahan iklim dapat diselesaikan dengan pendekatan kolaboratif antara negara maju dan berkembang. Selain itu, kata dia, negara-negara tak boleh mengorbankan rakyat kecil demi mengatasi dampak perubahan iklim.
+
+Artikel 13:
+   Judul: Saksikan Paus Fransiskus Kunjungi KWI, Banyak Warga Bawa Anak-Anak
+   Link: https://www.liputan6.com/news/read/5693895/saksikan-paus-fransiskus-kunjungi-kwi-banyak-warga-bawa-anak-anak
+   Tanggal: 05 Sep 2024 11:15
+   Kategori: Peristiwa
+   Ringkasan: Banyak orangtua yang membawa anak-anak mereka untuk menyaksikan kedatangan Pemimpin Umat Katolik Sedunia Paus Fransiskus berkunjung ke KWI.
+
+Artikel 14:
+   Judul: 5 Pernyataan Kapolri dan Panglima TNI Jelang Misa Paus Fransiskus di GBK, Pastikan Semua Aman
+   Link: https://www.liputan6.com/news/read/5693898/5-pernyataan-kapolri-dan-panglima-tni-jelang-misa-paus-fransiskus-di-gbk-pastikan-semua-aman
+   Tanggal: 05 Sep 2024 11:15
+   Kategori: Peristiwa
+   Ringkasan: Kapolri Jenderal Listyo Sigit Prabowo bersama Panglima TNI Jenderal Agus Subiyanto meninjau Posko Operasi Tribrata Jaya 2024 pada Rabu 4 September 2024. Bagaimana hasilnya?
+
+Artikel 15:
+   Judul: Paus Fransiskus: Saya Bahagia Bisa Bersama di Masjid Istiqlal, Rumah Ibadah dan Kemanusiaan
+   Link: https://www.liputan6.com/news/read/5693884/paus-fransiskus-saya-bahagia-bisa-bersama-di-masjid-istiqlal-rumah-ibadah-dan-kemanusiaan
+   Tanggal: 05 Sep 2024 11:05
+   Kategori: Peristiwa
+   Ringkasan: Paus Fransiskus mengulas,umat manusia yang memasuki Masjid Istiqlal tentu turut mengejar dan mencari spirit perjumpaan dengan Tuhan, dan mengalami suka cita persahabatan dengan sesama.
+
+Artikel 16:
+   Judul: Tertipu Investasi Saham Lewat Aplikasi, Warga Depok Rugi hingga Setengah Miliar Lebih
+   Link: https://www.liputan6.com/news/read/5693866/tertipu-investasi-saham-lewat-aplikasi-warga-depok-rugi-hingga-setengah-miliar-lebih
+   Tanggal: 05 Sep 2024 10:54
+   Kategori: Peristiwa
+   Ringkasan: Seorang warga melapor ke Polres Metro Depok atas kasus dugaan penipuan dengan modus investasi saham lewat aplikasi. Tak tanggungg-tanggung, korban kehilangan uang hingga mencapai Rp691 juta.
+
+Artikel 17:
+   Judul: DPR Minta Imbauan soal Azan Magrib saat Misa Kudus Paus Fransiskus Tak Perlu Diperdebatkan
+   Link: https://www.liputan6.com/news/read/5693869/dpr-minta-imbauan-soal-azan-magrib-saat-misa-kudus-paus-fransiskus-tak-perlu-diperdebatkan
+   Tanggal: 05 Sep 2024 10:47
+   Kategori: Peristiwa
+   Ringkasan: Menurut Ace, adanya imbauan tersebut bisa dipahami sebagai bentuk toleransi agama.
+
+Artikel 18:
+   Judul: Terkesan dengan Keberagaman Indonesia, Paus Fransiskus: Maju Terus Bhineka Tunggal Ika
+   Link: https://www.liputan6.com/news/read/5693863/terkesan-dengan-keberagaman-indonesia-paus-fransiskus-maju-terus-bhineka-tunggal-ika
+   Tanggal: 05 Sep 2024 10:40
+   Kategori: Peristiwa
+   Ringkasan: Paus Fransiskus kemudian berpesan agar keberagaman di Indonesia ini jangan menjadi alasan untuk bertikai, tetapi diselaraskan dalam kerukunan dan rasa saling menghormati.
+
+Artikel 19:
+   Judul: Hakim Agung Nonaktif Gazalba Saleh Jalani Sidang Tuntutan Kamis Hari Ini
+   Link: https://www.liputan6.com/news/read/5693862/hakim-agung-nonaktif-gazalba-saleh-jalani-sidang-tuntutan-kamis-hari-ini
+   Tanggal: 05 Sep 2024 10:39
+   Kategori: Peristiwa
+   Ringkasan: Hakim Agung nonaktif Gazalba Saleh akan menjalani sidang pembacaan tuntutan oleh Jaksa Penuntut Umum (JPU).
+
+Artikel 20:
+   Judul: Keluarga Ungkap Kondisi Faisal Basri Sebelum Meninggal Dunia, Sempat Tempuh Perjalanan Jauh
+   Link: https://www.liputan6.com/news/read/5693847/keluarga-ungkap-kondisi-faisal-basri-sebelum-meninggal-dunia-sempat-tempuh-perjalanan-jauh
+   Tanggal: 05 Sep 2024 10:30
+   Kategori: Peristiwa
+   Ringkasan: Ramdan Malik, adik dari Ekonom Senior Faisal Basri mengungkap kondisi almarhum sebelum meninggal dunia pada Kamis (5/9/2024). Bagaimana kondisinya?
+
+Artikel 21:
+   Judul: Faisal Basri Meninggal, Mahfud Md: Sejarah Hidupmu Jadi Vitamin Berharga bagi Gen Y dan Z
+   Link: https://www.liputan6.com/news/read/5693840/faisal-basri-meninggal-mahfud-md-sejarah-hidupmu-jadi-vitamin-berharga-bagi-gen-y-dan-z
+   Tanggal: 05 Sep 2024 10:23
+   Kategori: Peristiwa
+   Ringkasan: Ekonom Faisal Basri meninggal dunia pada Kamis (5/9/2024) pukul 03.50 WIB tadi di RS Mayapada, Kuningan, Jakarta. Mahfud Md mengenang perjumpaan terakhirnya saat sama-sama terlibat dalam Satgas Anti Pencucian Uang yang dibentuk Kemenko Polhukam.
+
+Artikel 22:
+   Judul: 7 Respons Mulai PP Muhammadiyah hingga JK soal Azan Magrib Diganti Running Text saat Misa Paus Fransiskus
+   Link: https://www.liputan6.com/news/read/5693828/7-respons-mulai-pp-muhammadiyah-hingga-jk-soal-azan-magrib-diganti-running-text-saat-misa-paus-fransiskus
+   Tanggal: 05 Sep 2024 10:15
+   Kategori: Peristiwa
+   Ringkasan: Belum lama ini, beredar surat permohonan dari Kementerian Komunikasi dan Informasi (Kominfo) perihal penayangan azan Magrib di televisi (TV), untuk sementara diberlakukan secara running text saat Misa Paus Fransiskus.
+
+Artikel 23:
+   Judul: Kunjungi Masjid Istiqlal, Paus Fransiskus Berkati Terowongan Silaturahmi
+   Link: https://www.liputan6.com/news/read/5693823/kunjungi-masjid-istiqlal-paus-fransiskus-berkati-terowongan-silaturahmi
+   Tanggal: 05 Sep 2024 10:07
+   Kategori: Peristiwa
+   Ringkasan: Paus Fransiskus berharap, semua pihak dapat semakin terbuka untuk berdialog, khususnya antarumat agama.
+
+Artikel 24:
+   Judul: Ekonom Faisal Basri Meninggal, Sempat Terkena Serangan Jantung
+   Link: https://www.liputan6.com/news/read/5693821/ekonom-faisal-basri-meninggal-sempat-terkena-serangan-jantung
+   Tanggal: 05 Sep 2024 10:07
+   Kategori: Peristiwa
+   Ringkasan: Berita duka pagi ini datang dari kalangan ekonom Indonesia. Sosok ekonom senior dan kritis Faisal Basri meninggal dunia.
+
+Artikel 25:
+   Judul: Dihadapan Paus Fransiskus, Imam Besar Nasaruddin Sebut Masjid Istiqlal Adalah Rumah Untuk Kemanusiaan
+   Link: https://www.liputan6.com/news/read/5693809/dihadapan-paus-fransiskus-imam-besar-nasaruddin-sebut-masjid-istiqlal-adalah-rumah-untuk-kemanusiaan
+   Tanggal: 05 Sep 2024 09:58
+   Kategori: Peristiwa
+   Ringkasan: Dalam pidatonya, Nasaruddin Umar memperkenalkan soal Masjid Istiqlal kepada Paus Fransiskus di mana masjid ini bukan hanya rumah ibadah untuk umat islam tapi juga rumah untuk kemanusiaan.
+
+Artikel 26:
+   Judul: Warga Padati Masjid Istiqlal Sambut Kedatangan Paus Fransiskus
+   Link: https://www.liputan6.com/news/read/5693788/warga-padati-masjid-istiqlal-sambut-kedatangan-paus-fransiskus
+   Tanggal: 05 Sep 2024 09:41
+   Kategori: Peristiwa
+   Ringkasan: Warga sudah mulai berdatangan ke area Masjid Istiqlal dengan pakaian yang rapi dan menggenggam telepon seluler untuk mengabadikan momen Paus Fransiskus sebelum masuk ke masjid.
+
+Artikel 27:
+   Judul: Paus Fransiskus Tiba di Masjid Istiqlal, Disambut Lantunan Marawis
+   Link: https://www.liputan6.com/news/read/5693775/paus-fransiskus-tiba-di-masjid-istiqlal-disambut-lantunan-marawis
+   Tanggal: 05 Sep 2024 09:30
+   Kategori: Peristiwa
+   Ringkasan: Imam Besar Masjid Istiqlal Nasaruddin Umar memimpin langsung penyambutan Paus Fransiskus dalam agenda kali ini.
+
+Artikel 28:
+   Judul: Pansus Angket Haji DPR RI Temukan Indikasi Input Data Diintervensi Pihak Tertentu
+   Link: https://www.liputan6.com/news/read/5693780/pansus-angket-haji-dpr-ri-temukan-indikasi-input-data-diintervensi-pihak-tertentu
+   Tanggal: 05 Sep 2024 09:25
+   Kategori: Peristiwa
+   Ringkasan: Wakil Ketua Pansus Angket Haji DPR RI Marwan Dasopang mengungkapkan adanya potensi intervensi dalam proses input data di Sistem Komputerisasi Haji Terpadu (Siskohat) Kementerian Agama (Kemenag).
+
+Artikel 29:
+   Judul: Infografis Calon Tunggal di 43 Daerah dan Skenario Kotak Kosong Menang di Pilkada 2024
+   Link: https://www.liputan6.com/news/read/5693752/infografis-calon-tunggal-di-43-daerah-dan-skenario-kotak-kosong-menang-di-pilkada-2024
+   Tanggal: 05 Sep 2024 09:01
+   Kategori: Infografis
+   Ringkasan: Hanya ada 1 bakal pasangan calon tunggal di 43 daerah yang mendaftar Pilkada 2024. KPU melayangkan surat kepada Komisi II DPR untuk konsultasi membahas kemungkinan kotak kosong menang di pilkada serentak.
+
+Artikel 30:
+   Judul: Jokowi Pakai Innova Zenix, Danpaspampres: Pengamanan Sudah Diperketat
+   Link: https://www.liputan6.com/news/read/5693729/jokowi-pakai-innova-zenix-danpaspampres-pengamanan-sudah-diperketat
+   Tanggal: 05 Sep 2024 08:45
+   Kategori: Peristiwa
+   Ringkasan: Komandan Pasukan Pengamanan Presiden (Danpaspampres) Mayjen TNI Achiruddin memastikan tidak ada masalah dari sisi keamanan apabila Presiden Joko Widodo (Jokowi) menggunakan mobil Toyota Innova Zenix. Dia menyatakan sudah memperketat pengamanan terhadap Presiden.
+
+Artikel 31:
+   Judul: Wapres Sebut Prevalansi Stunting Menurun Selama 5 Tahun, Akui Masih Ada PR
+   Link: https://www.liputan6.com/news/read/5693733/wapres-sebut-prevalansi-stunting-menurun-selama-5-tahun-akui-masih-ada-pr
+   Tanggal: 05 Sep 2024 08:30
+   Kategori: Peristiwa
+   Ringkasan: Ma&#39;ruf mengingatkan, keberlanjutan program yang telah disusun perlu diteruskan dalam upaya menurunkan angka stunting di Indonesia.
+
+Artikel 32:
+   Judul: Top 3 News: JK Minta Televisi Tetap Tayangkan Azan Magrib Bersamaan dengan Perayaan Misa Paus Fransiskus
+   Link: https://www.liputan6.com/news/read/5693429/top-3-news-jk-minta-televisi-tetap-tayangkan-azan-magrib-bersamaan-dengan-perayaan-misa-paus-fransiskus
+   Tanggal: 05 Sep 2024 08:30
+   Kategori: Peristiwa
+   Ringkasan: Ketua Umum Dewan Masjid Indonesia (DMI) Jusuf Kalla atau JK menyarankan stasiun televisi untuk tetap menyiarkan azan disaat laporan perayaan misa yang dipimpin Paus Fransiskus. Itulah top 3 news hari ini.
+
+Artikel 33:
+   Judul: Anies Berencana Bentuk Partai Baru, Pengamat Ingatkan soal Tantangan Berat
+   Link: https://www.liputan6.com/news/read/5693728/anies-berencana-bentuk-partai-baru-pengamat-ingatkan-soal-tantangan-berat
+   Tanggal: 05 Sep 2024 08:14
+   Kategori: Politik
+   Ringkasan: Anies Baswedan dikabarkan tengah mempertimbangkan untuk mendirikan partai politik. Pengamat politik Ujang Komarudin mengingatkan Anies akan menghadapi tantangan besar dalam membangun partai, mulai dari pendanaan hingga basis massa yang solid.
+
+Artikel 34:
+   Judul: Melihat Pendidikan Skadik 404 dan 401 Lanud Adi Soemarmo
+   Link: https://www.liputan6.com/news/read/5693716/melihat-pendidikan-skadik-404-dan-401-lanud-adi-soemarmo
+   Tanggal: 05 Sep 2024 08:05
+   Kategori: Peristiwa
+   Ringkasan: Skadron Pendidikan (Skadik) 404 dan 401 merupakan salah satu pendidikan pencetak bintara TNI AU di Pangkalan TNI Angkatan Udara (Lanud) Adi Soemarmo, Boyolali, Jawa Tengah. Dua Skadik tersebut dari empat skadik merupakan bagian dari Wingdik 400/Matukjur.
+
+Artikel 35:
+   Judul: Misa Akbar Paus Fransiskus, Disdik Imbau 208 Sekolah di Jakarta Belajar Jarak Jauh
+   Link: https://www.liputan6.com/news/read/5693712/misa-akbar-paus-fransiskus-disdik-imbau-208-sekolah-di-jakarta-belajar-jarak-jauh
+   Tanggal: 05 Sep 2024 07:50
+   Kategori: Peristiwa
+   Ringkasan: Budi menyampaikan, pembelajaran jarak jauh secara daring untuk peserta didik di satuan pendidikan yang berada di wilayah Jakarta Selatan dan Jakarta Pusat dimaksudkan agar Misa Akbar Paus Fransiskus di GBK berjalan lancar tanpa terkendala macet.
+
+Artikel 36:
+   Judul: Faisal Basri Meninggal Dunia, Eks Menkeu: Kehilangan Besar Buat Negeri Ini
+   Link: https://www.liputan6.com/news/read/5693702/faisal-basri-meninggal-dunia-eks-menkeu-kehilangan-besar-buat-negeri-ini
+   Tanggal: 05 Sep 2024 07:20
+   Kategori: Peristiwa
+   Ringkasan: Ekonom senior dari Universitas Indonesia (UI) Faisal Basri meninggal dunia pada pukul 03.50 WIB pagi ini di RS Mayapada, Kuningan, Jakarta Selatan, Kamis (5/9/2024).
+
+Artikel 37:
+   Judul: Pemberlakuan Sistem Ganjil Genap di Jakarta pada Kamis, 5 September 2024
+   Link: https://www.liputan6.com/news/read/5693323/pemberlakuan-sistem-ganjil-genap-di-jakarta-pada-kamis-5-september-2024
+   Tanggal: 05 Sep 2024 07:00
+   Kategori: Peristiwa
+   Ringkasan: Pada Kamis (5/9/2024) sistem ganjil genap akan kembali diberlakukan di Jakarta. Simak waktu, wilayah, dan aturan pemberlakuannya secara lengkap untuk membantu masyarakat Jakarta.
+
+Artikel 38:
+   Judul: Sadis, Suami Bunuh Istri di Kebagusan Jakarta Selatan
+   Link: https://www.liputan6.com/news/read/5693685/sadis-suami-bunuh-istri-di-kebagusan-jakarta-selatan
+   Tanggal: 05 Sep 2024 05:40
+   Kategori: Peristiwa
+   Ringkasan: Seorang suami berinisial AS (30) melakukan Kekerasan Dalam Rumah Tangga (KDRT) kepada istrinya yakni FF (26) yang berujung tewas. Peristiwa itu terjadi pada Selasa malam (3/9/2024), di kawasan Kebagusan, Jakarta Selatan.
+
+Artikel 39:
+   Judul: Polri Sebut Penangkapan Teroris di Bekasi Bagian dari Pengamanan Paus Fransiskus
+   Link: https://www.liputan6.com/news/read/5693460/polri-sebut-penangkapan-teroris-di-bekasi-bagian-dari-pengamanan-paus-fransiskus
+   Tanggal: 05 Sep 2024 05:15
+   Kategori: Peristiwa
+   Ringkasan: Densus 88 Antiteror Polri menangkap dua orang terduga teroris di Bekasi, Jawa Barat pada Selasa 3 September 2024. Polri menyebut, penangkapan ini merupakan bagian dari operasi pengamanan kunjungan Paus Fransiskus ke Indonesia.
+
+Artikel 40:
+   Judul: Alasan KPK Batal Tunjuk Direktorat Gratifikasi Usut Polemik Jet Pribadi Kaesang, Kini Ditangani PLPM
+   Link: https://www.liputan6.com/news/read/5693454/alasan-kpk-batal-tunjuk-direktorat-gratifikasi-usut-polemik-jet-pribadi-kaesang-kini-ditangani-plpm
+   Tanggal: 05 Sep 2024 04:10
+   Kategori: Peristiwa
+   Ringkasan: Penanganan laporan dugaan gratifikasi terhadap putra bungsu Presiden Jokowi sekaligus Ketum PSI Kaesang Pangarep kini diserahkan ke Direktorat PLPM KPK. Polemik penggunaan jet pribadi Kaesang ini tak lagi ditangani Direktorat Gratifikasi KPK.
+
+Artikel 41:
+   Judul: Persaingan Kerja Ketat, BNSP Pertegas Pentingnya Sertifikasi Kompetensi
+   Link: https://www.liputan6.com/news/read/5693771/persaingan-kerja-ketat-bnsp-pertegas-pentingnya-sertifikasi-kompetensi
+   Tanggal: 05 Sep 2024 03:19
+   Kategori: Peristiwa
+   Ringkasan: Tantangan persaingan kerja saat ini semakin ketat.
+
+Artikel 42:
+   Judul: Polisi Tangkap 10 Anggota Ormas yang Keroyok Pedagang Buah di Jakbar
+   Link: https://www.liputan6.com/news/read/5693450/polisi-tangkap-10-anggota-ormas-yang-keroyok-pedagang-buah-di-jakbar
+   Tanggal: 05 Sep 2024 02:13
+   Kategori: Peristiwa
+   Ringkasan: Aksi pengeroyokan sekelompok anggota ormas itu diduga bermula saat beberapa di antara mereka tidak terima diberi uang Rp10 ribu oleh pedagang buah saat meminta jatah keamanan.
+
+Artikel 43:
+   Judul: Momen Kaesang Pangarep Muncul di DPP PSI, Hanya Sempat Sapa Wartawan
+   Link: https://www.liputan6.com/news/read/5693679/momen-kaesang-pangarep-muncul-di-dpp-psi-hanya-sempat-sapa-wartawan
+   Tanggal: 05 Sep 2024 01:19
+   Kategori: Politik
+   Ringkasan: Ketua Umum Partai Solidaritas Indonesia (PSI) Kaesang Pangarep akhirnya terlihat muncul ke publik usai menemani istrinya, Erina Gudono ke Amerika Serikat. Di mana dalam perjalanan ini menuai polemik.
+
+Artikel 44:
+   Judul: Pamer Alat Kelamin ke Teman Kerja Lewat Medsos, Pemuda Ini Diringkus Polisi
+   Link: https://www.liputan6.com/news/read/5693401/pamer-alat-kelamin-ke-teman-kerja-lewat-medsos-pemuda-ini-diringkus-polisi
+   Tanggal: 05 Sep 2024 01:11
+   Kategori: Peristiwa
+   Ringkasan: Seorang pemuda ditangkap dan ditahan penyidik Polda Metro Jaya setelah terbukti mengirimkan konten pornografi atau memamerkan alat kelaminnya ke teman kerja melalui media sosial Instagram.
+
+Artikel 45:
+   Judul: Kapolri: Pidato Paus Fransiskus Jadi Semangat untuk Kita Jaga Persatuan
+   Link: https://www.liputan6.com/news/read/5693438/kapolri-pidato-paus-fransiskus-jadi-semangat-untuk-kita-jaga-persatuan
+   Tanggal: 04 Sep 2024 22:55
+   Kategori: Peristiwa
+   Ringkasan: Kapolri Jenderal Listyo Sigit Prabowo turut hadir dalam pertemuan Presiden Jokowi dengan Pemimpin Gereja Katolik Sedunia Paus Fransiskus di Istana Negara, Jakarta, Rabu (4/9/2024).
+
+Artikel 46:
+   Judul: Akhirnya Muncul ke Publik, Kaesang Bungkam Saat Ditanya soal Jet Pribadi
+   Link: https://www.liputan6.com/news/read/5693417/akhirnya-muncul-ke-publik-kaesang-bungkam-saat-ditanya-soal-jet-pribadi
+   Tanggal: 04 Sep 2024 22:25
+   Kategori: Peristiwa
+   Ringkasan: Ketum PSI Kaesang Pangarep akhirnya muncul ke publik. Namun saat ditemui usai memimpin rapat di Kantor DPP PSI, putra bungsu Jokowi itu bungkam ketika ditanya soal polemik penggunaan jet pribadi ke AS.
+
+Artikel 47:
+   Judul: Dinilai Sukses Turunkan Stunting, Pemprov Jateng Kantongi Insentif Fiskal Rp6,45 Miliar dari Pemerintah Pusat
+   Link: https://www.liputan6.com/news/read/5693423/dinilai-sukses-turunkan-stunting-pemprov-jateng-kantongi-insentif-fiskal-rp645-miliar-dari-pemerintah-pusat
+   Ringkasan: Penjabat Gubernur (Pj) Gubernur Jawa Tengah, Nana Sudjana mengungkapkan, insentif yang diperoleh akan digunakan untuk menuntaskan penanganan stunting yang masih tersisa di Provinsi Jateng.
+
+Artikel 48:
+   Judul: Usai Bertemu Paus Fransiskus, Jokowi Pakai Innova Zenix Saat Pulang ke Bogor
+   Link: https://www.liputan6.com/news/read/5693392/usai-bertemu-paus-fransiskus-jokowi-pakai-innova-zenix-saat-pulang-ke-bogor
+   Tanggal: 04 Sep 2024 21:46
+   Kategori: Peristiwa
+   Ringkasan: Menurut pihak Istana, Jokowi bukan kali ini saja menggunakan mobil Toyota Innova Zenix. Jokowi kerap menggunakan mobil tersebut terutama ketika melakukan kegiatan diam-diam atau incognito.
+
+Artikel 49:
+   Judul: Korban Kecelakaan Maut di Jakut Bertambah, 5 Orang Tewas dan 7 Luka
+   Link: https://www.liputan6.com/news/read/5693387/korban-kecelakaan-maut-di-jakut-bertambah-5-orang-tewas-dan-7-luka
+   Tanggal: 04 Sep 2024 21:20
+   Kategori: Peristiwa
+   Ringkasan: Kecelakaan maut di Jalan Plumpang Semper, Koja, Jakarta Utara (Jakut) pada Rabu sore tadi diduga akibat sopir truk tangki yang mengalami serangan jantung hingga menabrak kendaraan di depannya.
+
+Artikel 50:
+   Judul: KPAI Sebut TPPO Jual Beli Bayi Libatkan Antar Wilayah
+   Link: https://www.liputan6.com/news/read/5693294/kpai-sebut-tppo-jual-beli-bayi-libatkan-antar-wilayah
+   Tanggal: 04 Sep 2024 21:00
+   Kategori: Megapolitan
+   Ringkasan: Komisi Perlindungan Anak Indonesia (KPAI) kembali mendatangi Polres Metro Depok terkait Tindakan Pidana Perdagangan Orang (TPPO).
+
+Artikel 51:
+   Judul: Kaesang Batal Dipanggil Terkait Jet Pribadi ke AS, KPK Bantah Ada Tekanan
+   Link: https://www.liputan6.com/news/read/5693371/kaesang-batal-dipanggil-terkait-jet-pribadi-ke-as-kpk-bantah-ada-tekanan
+   Tanggal: 04 Sep 2024 20:54
+   Kategori: Politik
+   Ringkasan: Langkah proses klarifikasi yang diduga berkaitan dengan grarifkasi Kaesang diperlukan kerangka hukum. KPK juga tidak ingin disebut terburu-buru saat akan meminta keterangan Ketua Umum Partai PSI itu.
+
+Artikel 52:
+   Judul: Misa Akbar, Area di Stadion GBK dan Madya Disterilkan
+   Link: https://www.liputan6.com/news/read/5693363/misa-akbar-area-di-stadion-gbk-dan-madya-disterilkan
+   Tanggal: 04 Sep 2024 20:33
+   Kategori: Peristiwa
+   Ringkasan: Pengunjung yang memasuki kawasan GBK juga akan diseleksi. Dipastikan, mereka harus lebih dahulu melewati proses body checking.
+
+Total artikel yang ditampilkan: 52
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="notebooks.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Content with notebooks</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="markdown-notebooks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Notebooks with MyST Markdown</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

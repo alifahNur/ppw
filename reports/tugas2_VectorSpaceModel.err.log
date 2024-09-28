@@ -1,0 +1,53 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.10/dist-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from google.colab import files
+# Mengonversi hasil TF-IDF menjadi DataFrame (tanpa Styler terlebih dahulu)
+df_tfidf_clean = pd.concat([df_final.drop(columns='Kategori Berita'), tfidf_df, df_final['Kategori Berita']], axis=1)
+
+# Menampilkan DataFrame asli tanpa format Styler
+display(df_tfidf_clean)
+
+# Menyimpan DataFrame asli (bukan object Styler) ke dalam file CSV
+df_tfidf_clean.to_csv('output_cleaned.csv', index=False)
+
+# Menambahkan link download (untuk Jupyter Notebook atau Streamlit)
+import os
+from IPython.display import HTML
+
+def create_download_link(filename):
+    return HTML(f'<a href="{filename}" download>Download CSV File</a>')
+
+
+# Mengunduh file CSV
+files.download('output_cleaned.csv')
+
+
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-2-5a4caeaf43e0>[0m in [0;36m<cell line: 3>[0;34m()[0m
+[1;32m      1[0m [0;32mfrom[0m [0mgoogle[0m[0;34m.[0m[0mcolab[0m [0;32mimport[0m [0mfiles[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0;31m# Mengonversi hasil TF-IDF menjadi DataFrame (tanpa Styler terlebih dahulu)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 3[0;31m [0mdf_tfidf_clean[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mconcat[0m[0;34m([0m[0;34m[[0m[0mdf_final[0m[0;34m.[0m[0mdrop[0m[0;34m([0m[0mcolumns[0m[0;34m=[0m[0;34m'Kategori Berita'[0m[0;34m)[0m[0;34m,[0m [0mtfidf_df[0m[0;34m,[0m [0mdf_final[0m[0;34m[[0m[0;34m'Kategori Berita'[0m[0;34m][0m[0;34m][0m[0;34m,[0m [0maxis[0m[0;34m=[0m[0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      4[0m [0;34m[0m[0m
+[1;32m      5[0m [0;31m# Menampilkan DataFrame asli tanpa format Styler[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'pd' is not defined
+

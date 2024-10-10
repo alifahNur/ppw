@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Welcome to your Jupyter Book &#8212; My sample book</title>
+    <title>Welcome to your Jupyter Book</title>
   
   
   
@@ -70,7 +70,7 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+ <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
   
@@ -108,15 +108,10 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
-  
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+ <header class="bd-header navbar navbar-expand-lg bd-navbar">
     </header>
-  
+
+
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
@@ -143,7 +138,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -180,7 +175,14 @@
                 </a>
             </li>
         </ul>
-        
+  <ul class="nav bd-sidenav">
+    <li class="toctree-l1"><a class="reference internal" href="crowling.html">Crowling Berita</a></li>
+    <li class="toctree-l1"><a class="reference internal" href="skip-gram.html">Skip-Gram</a></li>
+    <li class="toctree-l1"><a class="reference internal" href="tugas1_crowling.html">Tugas 1</a></li>
+    <li class="toctree-l1"><a class="reference internal" href="tugas2_VectorSpaceModel.html">Tugas 2</a></li>
+
+  </ul>
+      
     </div>
 </nav></div>
     </div>
@@ -194,7 +196,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -203,14 +205,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+        </label></div>
       
     </div>
   
@@ -335,10 +337,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -346,7 +348,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -384,6 +386,12 @@ It shows off a few of the major file types, as well as some sample content.
 It does not go in-depth into any particular topic - check out <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a> for more information.</p>
 <p>Check out the content pages bundled with this sample book to see more.</p>
 <div class="toctree-wrapper compound">
+  <ul>
+    <li>class="toctree-l1"><a class="reference internal" href="crowling.html">Crowling</a></li>
+    <li>class="toctree-l1"><a class="reference internal" href="skip-gram.html.html">Skip-Gram</a></li>
+    <li>class="toctree-l1"><a class="reference internal" href="tugas1_crowling.html">Tugas 1</a></li>
+    <li>class="toctree-l1"><a class="reference internal" href="tugas2_VectorSpaceModel.html">Tugas 2</a></li>
+  </ul>
 </div>
 </section>
 
@@ -414,15 +422,15 @@ It does not go in-depth into any particular topic - check out <a class="referenc
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="tugas2_VectorSpaceModel.html"
+       href="crowling.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">Crowling Berita</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -431,7 +439,7 @@ It does not go in-depth into any particular topic - check out <a class="referenc
               
             </div>
             
-            
+           <div class="bd-sidebar-secondary bd-toc"></div>  
               
             
           </div>

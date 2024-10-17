@@ -1,0 +1,1909 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tugas6';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tugas1.html">Crowling Web</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftugas6.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/tugas6.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="c1"># Library untuk data manipulation</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="c1"># Library untuk text similarity</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;hasil_crowling.csv&#39;</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-c6155638-492d-4d12-9f5b-e61fdb9afcd1" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Judul</th>
+      <th>Tanggal</th>
+      <th>Ringkasan</th>
+      <th>Kategori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Natalius Pigai Satu-satunya Calon Menteri Prab...</td>
+      <td>17 Okt 2024 02:12</td>
+      <td>Mantan Komisioner Komnas HAM Natalius Pigai tu...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ungkap Arahan Prabowo Saat Pembekalan Calon Me...</td>
+      <td>17 Okt 2024 01:10</td>
+      <td>Sebanyak 59 tokoh hadir mengikuti kegiatan pem...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Begini Cara Dorong Petani Lokal untuk Capai Pa...</td>
+      <td>16 Okt 2024 23:21</td>
+      <td>Berikut ini adalah beberapa cara yang dapat me...</td>
+      <td>News</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Presiden Jokowi dan Prabowo Subianto Disebut K...</td>
+      <td>16 Okt 2024 20:55</td>
+      <td>Jelang pensiunnya Presiden Joko Widodo atau Jo...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Pembekalan Calon Menteri Prabowo Kelar, Rombon...</td>
+      <td>16 Okt 2024 20:10</td>
+      <td>Mereka mengantre keluar kediaman lantaran bera...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Produksi Pangan Turun, Jokowi Ungkap Hasil Pan...</td>
+      <td>16 Okt 2024 20:05</td>
+      <td>Presiden Joko Widodo atau Jokowi mengatakan pr...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Pesan Prabowo di Pembekalan Calon Menteri: APB...</td>
+      <td>16 Okt 2024 19:31</td>
+      <td>Menteri Hukum dan Hak Asasi Manusia (Menkumham...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Kurangi Sampah ke TPA Sarimukti, Pemkab Bandun...</td>
+      <td>16 Okt 2024 19:27</td>
+      <td>Pjs. Bupati Bandung menindaklanjuti kebijakan ...</td>
+      <td>News</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Polisi Bakal Selidiki Kebenaran Pertemuan Alex...</td>
+      <td>16 Okt 2024 19:03</td>
+      <td>Ade Safri Simanjuntak, menyatakan pihaknya aka...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>6 Fakta Terkait Pramono Anung Sambangi Kediama...</td>
+      <td>16 Okt 2024 18:30</td>
+      <td>Pramono Anung yang merupakan mantan Sekretaris...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Viral Sopir Truk Nekat Lawan Arah di Jakut, Po...</td>
+      <td>16 Okt 2024 18:04</td>
+      <td>Dalam rekaman yang diunggah terlihat sopir tru...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Polisi Pastikan 2 Tersangka Pencabulan di Pant...</td>
+      <td>16 Okt 2024 18:02</td>
+      <td>Kabid Humas Polda Metro Jaya, Kombes Pol Ade A...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>DKP Penajam Paser Utara Gelar Gerakan Pangan M...</td>
+      <td>NaN</td>
+      <td>Tujuan GPM adalah membantu masyarakat untuk me...</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Jokowi Akan Naik Pesawat Komersial dari Halim ...</td>
+      <td>16 Okt 2024 17:45</td>
+      <td>Budi Arie Setiadi mengatakan Jokowi akan beran...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Hakim Agung Sunarto Terpilih sebagai Ketua Mah...</td>
+      <td>16 Okt 2024 17:14</td>
+      <td>Wakil Ketua Mahkamah Agung Bidang Yudisial, Su...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Polisi Minta Hasil Tes Pemeriksaan Kejiwaan An...</td>
+      <td>16 Okt 2024 17:00</td>
+      <td>Polisi hingga hari ini masih mendalami dugaan ...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Mantan Bupati Tangerang yang Juga Ayah Kandung...</td>
+      <td>16 Okt 2024 16:39</td>
+      <td>Semasa hidupnya, Ismet Iskandar juga dikenal s...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Potret Cagub Pramono Anung dan Slank Kompak Ta...</td>
+      <td>16 Okt 2024 16:35</td>
+      <td>Penanaman mangrove ini merupakan wujud dari pr...</td>
+      <td>News</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Pesan Khusus Prabowo Subianto untuk Herindra y...</td>
+      <td>16 Okt 2024 16:31</td>
+      <td>Calon Kepala Badan Intelijen Negara (BIN) Muha...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Sejumlah Tokoh dan Pakar Siap Sukseskan Pelant...</td>
+      <td>16 Okt 2024 16:05</td>
+      <td>Mulusnya transisi pemerintahan dapat menjaga s...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Kasus Emas Antam, Saksi Sebut Budi Said Lakuka...</td>
+      <td>16 Okt 2024 16:01</td>
+      <td>Mantan Manajer Retail PT Antam, Nuning Septi W...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>5 Fakta Terkait Budi Gunawan Diberhentikan dar...</td>
+      <td>16 Okt 2024 16:00</td>
+      <td>Dewan Perwakilan Rakyat (DPR) RI telah menerim...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Pramono: Semua Ketum Parpol Teman Saya, Nanti ...</td>
+      <td>16 Okt 2024 15:51</td>
+      <td>Calon Gubernur Jakarta, Pramono Anung mengaku ...</td>
+      <td>News</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>DPR Minta Herindra Bisa Netral saat Sudah Resm...</td>
+      <td>16 Okt 2024 15:41</td>
+      <td>Kepada Herindra, Puan menitipkan pesan khusus ...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Pengamat Nilai Jika SK-ADT Pimpin Sulut, Dukun...</td>
+      <td>16 Okt 2024 15:25</td>
+      <td>Pengamat politik dan pemerintahan Sulawesi Uta...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Cegah Banjir Terulang, Pramono Bakal Bebaskan ...</td>
+      <td>16 Okt 2024 15:22</td>
+      <td>Untuk mengatasi banjir di daerah bantaran kali...</td>
+      <td>News</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>P3PD Pangkas Waktu Pelatihan Aparatur Desa hin...</td>
+      <td>16 Okt 2024 15:13</td>
+      <td>Ia berharap, mereka terus belajar mengasah pen...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Puan Maharani Masih Irit Bicara soal Pertemuan...</td>
+      <td>16 Okt 2024 15:03</td>
+      <td>Ketua DPP PDI Perjuangan, Puan Maharani belum ...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Selama 3 Hari, 768 Pengendara Terjaring Operas...</td>
+      <td>16 Okt 2024 15:02</td>
+      <td>Ade Ary merincikan, 518 pelanggar dari 768 pel...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Pemberantasan Korupsi Jadi Tantangan Pemerinta...</td>
+      <td>16 Okt 2024 15:01</td>
+      <td>Prabowo-Gibran dihadapkan pada tugas berat unt...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Transaksi Digital Dinilai Mampu Tingkatkan Ink...</td>
+      <td>16 Okt 2024 14:58</td>
+      <td>Erwin melihat perkembangan transaksi digital t...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Puan: DPR Terima Herindra Jadi Calon Kepala BI...</td>
+      <td>16 Okt 2024 14:49</td>
+      <td>Puan mejelaskan, usai Herindra dinyatakan laya...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Polisi Akan Panggil Olla Ramlan sebagai Saksi ...</td>
+      <td>16 Okt 2024 14:44</td>
+      <td>Polisi akan memanggil artis Olla Ramlan sebaga...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Hari Parlemen Indonesia, Novita Hardini Soroti...</td>
+      <td>16 Okt 2024 14:31</td>
+      <td>Novita menegaskan bahwa kehadiran perempuan di...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Tak Senang Ada Penebangan Pohon, Seorang Pria ...</td>
+      <td>16 Okt 2024 14:30</td>
+      <td>Seorang warga diduga mengacungkan senjata api ...</td>
+      <td>Megapolitan</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Polisi Selidiki Laporan Olla Ramlan soal Pence...</td>
+      <td>16 Okt 2024 14:11</td>
+      <td>Polisi menerangkan, akun TikTok dan Instagram ...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Pesantren Didorong Jadi Lembaga Pendidikan Ung...</td>
+      <td>16 Okt 2024 14:04</td>
+      <td>Di masa depan, pesantren diharapkan menjadi le...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>7 Fakta Terkini Terkait Kasus Pelecehan Seksua...</td>
+      <td>16 Okt 2024 14:00</td>
+      <td>Polres Metro Tangerang mengungkap kronologi te...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Jokowi Resmikan Dua Ruas Tol Trans Sumatera Se...</td>
+      <td>16 Okt 2024 13:45</td>
+      <td>Presiden Joko Widodo atau Jokowi meresmikan du...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Pembekalan Calon Menteri, Prabowo Subianto Und...</td>
+      <td>16 Okt 2024 13:40</td>
+      <td>Presiden terpilih Prabowo Subianto mengundang ...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Permintaan Prabowo ke Todotua Pasaribu: Ciptak...</td>
+      <td>16 Okt 2024 13:31</td>
+      <td>Todotua mengungkapkan bahwa pertemuan tersebut...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Jokowi Belum Beli Tiket Pesawat ke Solo untuk ...</td>
+      <td>16 Okt 2024 13:16</td>
+      <td>Presiden Joko Widodo (Jokowi) mengaku belum ta...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Program Asta Cita Prabowo-Gibran Diharap Bisa ...</td>
+      <td>16 Okt 2024 13:00</td>
+      <td>PB HMI berharap Prabowo dan Gibran tidak hanya...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Kalah Lawan China, Jokowi Optimistis Timnas In...</td>
+      <td>16 Okt 2024 12:55</td>
+      <td>Jokowi menanggapi santai soal kekalahan Indone...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Pemprov Kalsel Dorong Perangkat Kehumasan Meng...</td>
+      <td>16 Okt 2024 12:45</td>
+      <td>Pemprov Kalimantan Selatan, melalui Diskominfo...</td>
+      <td>News</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Herindra Bakal Dilantik Sebagai Kepala BIN Bar...</td>
+      <td>16 Okt 2024 12:24</td>
+      <td>Sebelum tes dimulai pukul 11.00 WIB, Herindra ...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Geopolitik hingga Antikorupsi Jadi Materi Pemb...</td>
+      <td>16 Okt 2024 12:10</td>
+      <td>Juru Bicara Prabowo, Dahnil Anzar Simanjuntak,...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>Lapas Narkotika Gunung Sindur Didukung Raih Pr...</td>
+      <td>16 Okt 2024 12:00</td>
+      <td>Pada tahun 2024 Lapas Narkotika Gunung sindur ...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>Pemberhentian Budi Gunawan Jadi Kepala BIN, Jo...</td>
+      <td>16 Okt 2024 11:49</td>
+      <td>Jokowi mengatakan Kepala BIN baru pengganti Bu...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Ketua DPR: Fit and Proper Test Calon Kepala BI...</td>
+      <td>16 Okt 2024 11:43</td>
+      <td>Dewan Perwakilan Rakyat (DPR) menggelar fit an...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>Bertemu Konsul Jenderal Australia, Pj Gubernur...</td>
+      <td>16 Okt 2024 11:27</td>
+      <td>Pj Gubernur Jawa Tengah, Nana Sudjana menerima...</td>
+      <td>News</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>10 Tahun Kerja Bersama: LPDP dan Peran Pendidi...</td>
+      <td>16 Okt 2024 11:12</td>
+      <td>Selama lebih dari satu dekade, LPDP telah mema...</td>
+      <td>News</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-c6155638-492d-4d12-9f5b-e61fdb9afcd1')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-c6155638-492d-4d12-9f5b-e61fdb9afcd1 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-c6155638-492d-4d12-9f5b-e61fdb9afcd1');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+	<span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;((www\.[^\s]+)|(https?://[^\s]+))&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="c1"># Menghapus https* and www*</span>
+	<span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;@[^\s]+&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="c1"># Menghapus username</span>
+	<span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[\s]+&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="c1"># Menghapus tambahan spasi</span>
+	<span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;#([^\s]+)&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="c1"># Menghapus hashtags</span>
+	<span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^a-zA-Z : .]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="c1"># Menghapus tanda baca</span>
+	<span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="c1"># Menghapus angka</span>
+	<span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+	<span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="c1">#Menghapus ASCII dan unicode</span>
+	<span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\x00-\x7f]&#39;</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+	<span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1">#Menghapus baris baru</span>
+	<span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+	<span class="k">return</span> <span class="n">text</span>
+
+<span class="k">def</span> <span class="nf">clean_stopword</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+	<span class="n">listStopword</span> <span class="o">=</span>  <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">))</span>
+	<span class="n">filtered_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span> <span class="k">if</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">listStopword</span><span class="p">]</span>
+	<span class="k">return</span> <span class="n">filtered_words</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="c1"># Download stopwords jika belum diunduh</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fungsi untuk membersihkan teks</span>
+<span class="k">def</span> <span class="nf">clean_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;((www\.[^\s]+)|(https?://[^\s]+))&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>  <span class="c1"># Menghapus https* and www*</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;@[^\s]+&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>  <span class="c1"># Menghapus username</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[\s]+&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>  <span class="c1"># Menghapus tambahan spasi</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;#([^\s]+)&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>  <span class="c1"># Menghapus hashtags</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^a-zA-Z :\.]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>  <span class="c1"># Menghapus tanda baca</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>  <span class="c1"># Menghapus angka</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="s1">&#39;ignore&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>  <span class="c1"># Menghapus ASCII dan unicode</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\x00-\x7f]&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>  <span class="c1"># Menghapus baris baru</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">text</span>
+
+<span class="c1"># Fungsi untuk membersihkan stopwords</span>
+<span class="k">def</span> <span class="nf">clean_stopword</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+    <span class="n">listStopword</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">))</span>
+    <span class="n">filtered_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span> <span class="k">if</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">listStopword</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">filtered_words</span>
+
+<span class="c1"># Fungsi untuk memproses teks</span>
+<span class="k">def</span> <span class="nf">preprocess_text</span><span class="p">(</span><span class="n">content</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm</span><span class="p">(</span><span class="n">content</span><span class="p">)):</span>
+        <span class="n">cleaned_text</span> <span class="o">=</span> <span class="n">clean_text</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">cleaned_text</span><span class="p">)</span>
+        <span class="n">cleaned_stopword</span> <span class="o">=</span> <span class="n">clean_stopword</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cleaned_stopword</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># Misalnya, data adalah DataFrame yang berisi kolom &#39;Ringkasan&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;hasil_crowling.csv&#39;</span><span class="p">)</span>  <span class="c1"># Ganti dengan file yang sesuai</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;cleaned_news&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">preprocess_text</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Ringkasan&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/52 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 52/52 [00:00&lt;00:00, 1302.28it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                Judul            Tanggal  \
+0   Natalius Pigai Satu-satunya Calon Menteri Prab...  17 Okt 2024 02:12   
+1   Ungkap Arahan Prabowo Saat Pembekalan Calon Me...  17 Okt 2024 01:10   
+2   Begini Cara Dorong Petani Lokal untuk Capai Pa...  16 Okt 2024 23:21   
+3   Presiden Jokowi dan Prabowo Subianto Disebut K...  16 Okt 2024 20:55   
+4   Pembekalan Calon Menteri Prabowo Kelar, Rombon...  16 Okt 2024 20:10   
+5   Produksi Pangan Turun, Jokowi Ungkap Hasil Pan...  16 Okt 2024 20:05   
+6   Pesan Prabowo di Pembekalan Calon Menteri: APB...  16 Okt 2024 19:31   
+7   Kurangi Sampah ke TPA Sarimukti, Pemkab Bandun...  16 Okt 2024 19:27   
+8   Polisi Bakal Selidiki Kebenaran Pertemuan Alex...  16 Okt 2024 19:03   
+9   6 Fakta Terkait Pramono Anung Sambangi Kediama...  16 Okt 2024 18:30   
+10  Viral Sopir Truk Nekat Lawan Arah di Jakut, Po...  16 Okt 2024 18:04   
+11  Polisi Pastikan 2 Tersangka Pencabulan di Pant...  16 Okt 2024 18:02   
+12  DKP Penajam Paser Utara Gelar Gerakan Pangan M...                NaN   
+13  Jokowi Akan Naik Pesawat Komersial dari Halim ...  16 Okt 2024 17:45   
+14  Hakim Agung Sunarto Terpilih sebagai Ketua Mah...  16 Okt 2024 17:14   
+15  Polisi Minta Hasil Tes Pemeriksaan Kejiwaan An...  16 Okt 2024 17:00   
+16  Mantan Bupati Tangerang yang Juga Ayah Kandung...  16 Okt 2024 16:39   
+17  Potret Cagub Pramono Anung dan Slank Kompak Ta...  16 Okt 2024 16:35   
+18  Pesan Khusus Prabowo Subianto untuk Herindra y...  16 Okt 2024 16:31   
+19  Sejumlah Tokoh dan Pakar Siap Sukseskan Pelant...  16 Okt 2024 16:05   
+20  Kasus Emas Antam, Saksi Sebut Budi Said Lakuka...  16 Okt 2024 16:01   
+21  5 Fakta Terkait Budi Gunawan Diberhentikan dar...  16 Okt 2024 16:00   
+22  Pramono: Semua Ketum Parpol Teman Saya, Nanti ...  16 Okt 2024 15:51   
+23  DPR Minta Herindra Bisa Netral saat Sudah Resm...  16 Okt 2024 15:41   
+24  Pengamat Nilai Jika SK-ADT Pimpin Sulut, Dukun...  16 Okt 2024 15:25   
+25  Cegah Banjir Terulang, Pramono Bakal Bebaskan ...  16 Okt 2024 15:22   
+26  P3PD Pangkas Waktu Pelatihan Aparatur Desa hin...  16 Okt 2024 15:13   
+27  Puan Maharani Masih Irit Bicara soal Pertemuan...  16 Okt 2024 15:03   
+28  Selama 3 Hari, 768 Pengendara Terjaring Operas...  16 Okt 2024 15:02   
+29  Pemberantasan Korupsi Jadi Tantangan Pemerinta...  16 Okt 2024 15:01   
+30  Transaksi Digital Dinilai Mampu Tingkatkan Ink...  16 Okt 2024 14:58   
+31  Puan: DPR Terima Herindra Jadi Calon Kepala BI...  16 Okt 2024 14:49   
+32  Polisi Akan Panggil Olla Ramlan sebagai Saksi ...  16 Okt 2024 14:44   
+33  Hari Parlemen Indonesia, Novita Hardini Soroti...  16 Okt 2024 14:31   
+34  Tak Senang Ada Penebangan Pohon, Seorang Pria ...  16 Okt 2024 14:30   
+35  Polisi Selidiki Laporan Olla Ramlan soal Pence...  16 Okt 2024 14:11   
+36  Pesantren Didorong Jadi Lembaga Pendidikan Ung...  16 Okt 2024 14:04   
+37  7 Fakta Terkini Terkait Kasus Pelecehan Seksua...  16 Okt 2024 14:00   
+38  Jokowi Resmikan Dua Ruas Tol Trans Sumatera Se...  16 Okt 2024 13:45   
+39  Pembekalan Calon Menteri, Prabowo Subianto Und...  16 Okt 2024 13:40   
+40  Permintaan Prabowo ke Todotua Pasaribu: Ciptak...  16 Okt 2024 13:31   
+41  Jokowi Belum Beli Tiket Pesawat ke Solo untuk ...  16 Okt 2024 13:16   
+42  Program Asta Cita Prabowo-Gibran Diharap Bisa ...  16 Okt 2024 13:00   
+43  Kalah Lawan China, Jokowi Optimistis Timnas In...  16 Okt 2024 12:55   
+44  Pemprov Kalsel Dorong Perangkat Kehumasan Meng...  16 Okt 2024 12:45   
+45  Herindra Bakal Dilantik Sebagai Kepala BIN Bar...  16 Okt 2024 12:24   
+46  Geopolitik hingga Antikorupsi Jadi Materi Pemb...  16 Okt 2024 12:10   
+47  Lapas Narkotika Gunung Sindur Didukung Raih Pr...  16 Okt 2024 12:00   
+48  Pemberhentian Budi Gunawan Jadi Kepala BIN, Jo...  16 Okt 2024 11:49   
+49  Ketua DPR: Fit and Proper Test Calon Kepala BI...  16 Okt 2024 11:43   
+50  Bertemu Konsul Jenderal Australia, Pj Gubernur...  16 Okt 2024 11:27   
+51  10 Tahun Kerja Bersama: LPDP dan Peran Pendidi...  16 Okt 2024 11:12   
+
+                                            Ringkasan     Kategori  \
+0   Mantan Komisioner Komnas HAM Natalius Pigai tu...      Politik   
+1   Sebanyak 59 tokoh hadir mengikuti kegiatan pem...    Peristiwa   
+2   Berikut ini adalah beberapa cara yang dapat me...         News   
+3   Jelang pensiunnya Presiden Joko Widodo atau Jo...      Politik   
+4   Mereka mengantre keluar kediaman lantaran bera...      Politik   
+5   Presiden Joko Widodo atau Jokowi mengatakan pr...    Peristiwa   
+6   Menteri Hukum dan Hak Asasi Manusia (Menkumham...    Peristiwa   
+7   Pjs. Bupati Bandung menindaklanjuti kebijakan ...         News   
+8   Ade Safri Simanjuntak, menyatakan pihaknya aka...    Peristiwa   
+9   Pramono Anung yang merupakan mantan Sekretaris...    Peristiwa   
+10  Dalam rekaman yang diunggah terlihat sopir tru...    Peristiwa   
+11  Kabid Humas Polda Metro Jaya, Kombes Pol Ade A...    Peristiwa   
+12  Tujuan GPM adalah membantu masyarakat untuk me...          NaN   
+13  Budi Arie Setiadi mengatakan Jokowi akan beran...    Peristiwa   
+14  Wakil Ketua Mahkamah Agung Bidang Yudisial, Su...    Peristiwa   
+15  Polisi hingga hari ini masih mendalami dugaan ...    Peristiwa   
+16  Semasa hidupnya, Ismet Iskandar juga dikenal s...    Peristiwa   
+17  Penanaman mangrove ini merupakan wujud dari pr...         News   
+18  Calon Kepala Badan Intelijen Negara (BIN) Muha...    Peristiwa   
+19  Mulusnya transisi pemerintahan dapat menjaga s...      Politik   
+20  Mantan Manajer Retail PT Antam, Nuning Septi W...    Peristiwa   
+21  Dewan Perwakilan Rakyat (DPR) RI telah menerim...    Peristiwa   
+22  Calon Gubernur Jakarta, Pramono Anung mengaku ...         News   
+23  Kepada Herindra, Puan menitipkan pesan khusus ...    Peristiwa   
+24  Pengamat politik dan pemerintahan Sulawesi Uta...      Politik   
+25  Untuk mengatasi banjir di daerah bantaran kali...         News   
+26  Ia berharap, mereka terus belajar mengasah pen...    Peristiwa   
+27  Ketua DPP PDI Perjuangan, Puan Maharani belum ...      Politik   
+28  Ade Ary merincikan, 518 pelanggar dari 768 pel...    Peristiwa   
+29  Prabowo-Gibran dihadapkan pada tugas berat unt...    Peristiwa   
+30  Erwin melihat perkembangan transaksi digital t...    Peristiwa   
+31  Puan mejelaskan, usai Herindra dinyatakan laya...    Peristiwa   
+32  Polisi akan memanggil artis Olla Ramlan sebaga...    Peristiwa   
+33  Novita menegaskan bahwa kehadiran perempuan di...      Politik   
+34  Seorang warga diduga mengacungkan senjata api ...  Megapolitan   
+35  Polisi menerangkan, akun TikTok dan Instagram ...    Peristiwa   
+36  Di masa depan, pesantren diharapkan menjadi le...    Peristiwa   
+37  Polres Metro Tangerang mengungkap kronologi te...    Peristiwa   
+38  Presiden Joko Widodo atau Jokowi meresmikan du...    Peristiwa   
+39  Presiden terpilih Prabowo Subianto mengundang ...      Politik   
+40  Todotua mengungkapkan bahwa pertemuan tersebut...    Peristiwa   
+41  Presiden Joko Widodo (Jokowi) mengaku belum ta...    Peristiwa   
+42  PB HMI berharap Prabowo dan Gibran tidak hanya...    Peristiwa   
+43  Jokowi menanggapi santai soal kekalahan Indone...    Peristiwa   
+44  Pemprov Kalimantan Selatan, melalui Diskominfo...         News   
+45  Sebelum tes dimulai pukul 11.00 WIB, Herindra ...    Peristiwa   
+46  Juru Bicara Prabowo, Dahnil Anzar Simanjuntak,...      Politik   
+47  Pada tahun 2024 Lapas Narkotika Gunung sindur ...    Peristiwa   
+48  Jokowi mengatakan Kepala BIN baru pengganti Bu...      Politik   
+49  Dewan Perwakilan Rakyat (DPR) menggelar fit an...    Peristiwa   
+50  Pj Gubernur Jawa Tengah, Nana Sudjana menerima...         News   
+51  Selama lebih dari satu dekade, LPDP telah mema...         News   
+
+                                         cleaned_news  
+0   mantan komisioner komnas ham natalius pigai me...  
+1   tokoh hadir mengikuti kegiatan pembekalan calo...  
+2      membantu petani lokal mencapai panen optimal .  
+3   jelang pensiunnya presiden joko widodo jokowi ...  
+4   mengantre kediaman lantaran kendaraan masingma...  
+5   presiden joko widodo jokowi produksi pangan ne...  
+6   menteri hukum hak asasi manusia menkumham supr...  
+7   pjs . bupati bandung menindaklanjuti kebijakan...  
+8   ade safri simanjuntak menyelidiki kebenaran kl...  
+9   pramono anung mantan sekretaris kabinet mendad...  
+10  rekaman diunggah sopir truk melaju sisi kanan ...  
+11  kabid humas polda metro jaya kombes pol ade ar...  
+12  tujuan gpm membantu masyarakat memperoleh baha...  
+13  budi arie setiadi jokowi berangkat bandara hal...  
+14  wakil ketua mahkamah agung bidang yudisial sun...  
+15  polisi mendalami dugaan pencabulan aborsi ileg...  
+16  hidupnya ismet iskandar dikenal sosok kental k...  
+17  penanaman mangrove wujud program pramonorano d...  
+18  calon kepala badan intelijen negara bin muhamm...  
+19  mulusnya transisi pemerintahan menjaga stabili...  
+20  mantan manajer retail pt antam nuning septi wa...  
+21  dewan perwakilan rakyat dpr ri menerima surat ...  
+22  calon gubernur jakarta pramono anung mengaku b...  
+23  herindra puan menitipkan pesan khusus kepala b...  
+24  pengamat politik pemerintahan sulawesi utara t...  
+25  mengatasi banjir daerah bantaran kali krukut p...  
+26  berharap belajar mengasah pengetahuan sistem p...  
+27  ketua dpp pdi perjuangan puan maharani lugas d...  
+28  ade ary merincikan pelanggar pelanggar dikenak...  
+29  prabowogibran dihadapkan tugas berat memulihka...  
+30  erwin perkembangan transaksi digital mendorong...  
+31  puan mejelaskan herindra dinyatakan layak pros...  
+32  polisi memanggil artis olla ramlan saksi pelap...  
+33  novita kehadiran perempuan parlemen memperkaya...  
+34  warga diduga mengacungkan senjata api lantaran...  
+35  polisi menerangkan akun tiktok instagram menye...  
+36  pesantren diharapkan lembaga pendidikan unggul...  
+37  polres metro tangerang mengungkap kronologi te...  
+38  presiden joko widodo jokowi meresmikan ruas to...  
+39  presiden terpilih prabowo subianto mengundang ...  
+40  todotua pertemuan membahas visi pemerintahan p...  
+41  presiden joko widodo jokowi mengaku pesawat ko...  
+42  pb hmi berharap prabowo gibran fokus pembangun...  
+43  jokowi menanggapi santai kekalahan indonesia c...  
+44  pemprov kalimantan selatan diskominfo mendoron...  
+45  tes . wib herindra menyapa awak media melambai...  
+46  juru bicara prabowo dahnil anzar simanjuntak m...  
+47  lapas narkotika gunung sindur mengikuti kontes...  
+48  jokowi kepala bin pengganti budi gunawan m her...  
+49  dewan perwakilan rakyat dpr menggelar fit and ...  
+50  pj gubernur jawa nana sudjana menerima kunjung...  
+51  dekade lpdp memainkan peran memperluas akses p...  
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kalimat</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">sent_tokenize</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;cleaned_news&#39;</span><span class="p">][</span><span class="mi">39</span><span class="p">])</span>
+<span class="n">kalimat</span> <span class="o">=</span> <span class="p">[</span><span class="n">sentence</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">kalimat</span><span class="p">]</span>
+<span class="n">kata</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;cleaned_news&#39;</span><span class="p">][</span><span class="mi">39</span><span class="p">])</span>
+<span class="n">kata</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">kata</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s1">&#39;.&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kalimat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;presiden terpilih prabowo subianto mengundang tokoh calon menteri kediaman hambalang bogor jawa barat &#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;mengundang&#39;,
+ &#39;jawa&#39;,
+ &#39;hambalang&#39;,
+ &#39;subianto&#39;,
+ &#39;presiden&#39;,
+ &#39;tokoh&#39;,
+ &#39;prabowo&#39;,
+ &#39;menteri&#39;,
+ &#39;bogor&#39;,
+ &#39;kediaman&#39;,
+ &#39;terpilih&#39;,
+ &#39;barat&#39;,
+ &#39;calon&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">vektor_kata</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+	<span class="n">vektor_kata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="n">kata</span><span class="p">)</span>
+
+	<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sent</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+		<span class="c1"># Tokenisasi kalimat menjadi kata-kata</span>
+		<span class="n">kata_kalimat</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+
+		<span class="c1"># Hitung frekuensi setiap kata dalam kalimat</span>
+		<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">kata_kalimat</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">kata</span><span class="p">:</span>
+				<span class="n">vektor_kata</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+	<span class="k">return</span> <span class="n">vektor_kata</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_vektor_kata</span> <span class="o">=</span> <span class="n">vektor_kata</span><span class="p">(</span><span class="n">kalimat</span><span class="p">)</span>
+<span class="n">df_vektor_kata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-692dd0b4-ec6a-40b0-9927-2724de59c068" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mengundang</th>
+      <th>jawa</th>
+      <th>hambalang</th>
+      <th>subianto</th>
+      <th>presiden</th>
+      <th>tokoh</th>
+      <th>prabowo</th>
+      <th>menteri</th>
+      <th>bogor</th>
+      <th>kediaman</th>
+      <th>terpilih</th>
+      <th>barat</th>
+      <th>calon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-692dd0b4-ec6a-40b0-9927-2724de59c068')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-692dd0b4-ec6a-40b0-9927-2724de59c068 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-692dd0b4-ec6a-40b0-9927-2724de59c068');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_kata</span> <span class="o">=</span> <span class="n">df_vektor_kata</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sorted_kata</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mengundang, jawa, hambalang
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_cooccurrence_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+	<span class="n">vektor_kata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">kata</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">kata</span><span class="p">)</span>
+
+	<span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+		<span class="n">kata_kalimat</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kata_kalimat</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+			<span class="n">vektor_kata</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+			<span class="n">vektor_kata</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">kata_kalimat</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+	<span class="k">return</span> <span class="n">vektor_kata</span>
+
+<span class="n">cooccurrence_matrix</span> <span class="o">=</span> <span class="n">create_cooccurrence_matrix</span><span class="p">(</span><span class="n">kalimat</span><span class="p">)</span>
+<span class="n">cooccurrence_matrix</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-64ddef81-e0f3-436c-95a7-822518d0421b" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mengundang</th>
+      <th>jawa</th>
+      <th>hambalang</th>
+      <th>subianto</th>
+      <th>presiden</th>
+      <th>tokoh</th>
+      <th>prabowo</th>
+      <th>menteri</th>
+      <th>bogor</th>
+      <th>kediaman</th>
+      <th>terpilih</th>
+      <th>barat</th>
+      <th>calon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>mengundang</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>jawa</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>hambalang</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>subianto</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>presiden</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>tokoh</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>prabowo</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>menteri</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>bogor</th>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>kediaman</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>terpilih</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>barat</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>calon</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-64ddef81-e0f3-436c-95a7-822518d0421b')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-64ddef81-e0f3-436c-95a7-822518d0421b button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-64ddef81-e0f3-436c-95a7-822518d0421b');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cossim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">cooccurrence_matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cossim</span><span class="p">)):</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cossim</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cossim</span><span class="p">)):</span>
+        <span class="n">similarity</span> <span class="o">=</span> <span class="n">cossim</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">similarity</span> <span class="o">&gt;</span> <span class="mf">0.1</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/23b4723961f92058b6200148079f8b748267ef57aac84252c703bc9d589e8c6d.png" src="_images/23b4723961f92058b6200148079f8b748267ef57aac84252c703bc9d589e8c6d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pagerank</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+<span class="n">sorted_pagerank</span><span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pagerank</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Page Rank :&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">pagerank</span> <span class="ow">in</span> <span class="n">sorted_pagerank</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">pagerank</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Page Rank :
+Node 2: 0.0920
+Node 3: 0.0920
+Node 6: 0.0907
+Node 8: 0.0907
+Node 5: 0.0881
+Node 7: 0.0881
+Node 0: 0.0861
+Node 9: 0.0861
+Node 12: 0.0847
+Node 1: 0.0507
+Node 10: 0.0507
+Node 4: 0.0501
+Node 11: 0.0501
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tiga Node Tertinggi Page Rank :&quot;</span><span class="p">)</span>
+<span class="n">sentence</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">pagerank</span> <span class="ow">in</span> <span class="n">sorted_pagerank</span><span class="p">[:</span><span class="mi">3</span><span class="p">]:</span>
+  <span class="n">top_sentence</span> <span class="o">=</span> <span class="n">kata</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
+  <span class="n">sentence</span> <span class="o">+=</span> <span class="n">top_sentence</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">: Page Rank = </span><span class="si">{</span><span class="n">pagerank</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kalimat: </span><span class="si">{</span><span class="n">top_sentence</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tiga Node Tertinggi Page Rank :
+Node 2: Page Rank = 0.0920
+Kalimat: hambalang
+Node 3: Page Rank = 0.0920
+Kalimat: subianto
+Node 6: Page Rank = 0.0907
+Kalimat: prabowo
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

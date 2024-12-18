@@ -16,17 +16,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -36,10 +38,11 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -62,6 +65,7 @@
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -77,19 +81,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -97,7 +90,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -105,8 +97,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -124,7 +116,8 @@
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -154,21 +147,17 @@
     
     
     <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -189,9 +178,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -335,24 +329,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -495,21 +481,20 @@ document.write(`
   Downloading Sastrawi-1.0.1-py2.py3-none-any.whl.metadata (909 bytes)
 Downloading Sastrawi-1.0.1-py2.py3-none-any.whl (209 kB)
 ?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/209.7 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-   ━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">92.2/209.7 kB</span> <span class=" -Color -Color-Red">2.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">209.7/209.7 kB</span> <span class=" -Color -Color-Red">3.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">209.7/209.7 kB</span> <span class=" -Color -Color-Red">12.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25h
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: Sastrawi
-Successfully installed Sastrawi-1.0.1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed Sastrawi-1.0.1
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
-[nltk_data]   Unzipping corpora/stopwords.zip.
+[nltk_data]   Package stopwords is already up-to-date!
 [nltk_data] Downloading package punkt_tab to /root/nltk_data...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]   Unzipping tokenizers/punkt_tab.zip.
+[nltk_data]   Package punkt_tab is already up-to-date!
 </pre></div>
 </div>
 </div>
@@ -533,7 +518,7 @@ Successfully installed Sastrawi-1.0.1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-06b0d3fc-d4bd-41ac-85b6-481fbd1c0e3d" class="colab-df-container">
+  <div id="df-60156cb4-c644-4f3c-9a3a-2284c232c15c" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -561,367 +546,388 @@ Successfully installed Sastrawi-1.0.1
   <tbody>
     <tr>
       <th>0</th>
-      <td>Natalius Pigai Satu-satunya Calon Menteri Prab...</td>
-      <td>17 Okt 2024 02:12</td>
-      <td>Mantan Komisioner Komnas HAM Natalius Pigai tu...</td>
-      <td>Politik</td>
+      <td>Mary Jane dan 5 Terpidana Mati Bali Nine Dipul...</td>
+      <td>19 Des 2024 00:01</td>
+      <td>Hingga saat ini baik Filipina dan Australia be...</td>
+      <td>Rajut</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Ungkap Arahan Prabowo Saat Pembekalan Calon Me...</td>
-      <td>17 Okt 2024 01:10</td>
-      <td>Sebanyak 59 tokoh hadir mengikuti kegiatan pem...</td>
+      <td>Antisipasi Bencana, Kantor SAR Jakarta Gelar L...</td>
+      <td>18 Des 2024 21:30</td>
+      <td>120 personel gabungan mengikuti Latihan Gabung...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Begini Cara Dorong Petani Lokal untuk Capai Pa...</td>
-      <td>16 Okt 2024 23:21</td>
-      <td>Berikut ini adalah beberapa cara yang dapat me...</td>
-      <td>News</td>
+      <td>Kejati Jakarta Geledah Kantor Dinas Kebudayaan...</td>
+      <td>18 Des 2024 21:25</td>
+      <td>Kejaksaan Tinggi Jakarta menggeledah sejumlah ...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Presiden Jokowi dan Prabowo Subianto Disebut K...</td>
-      <td>16 Okt 2024 20:55</td>
-      <td>Jelang pensiunnya Presiden Joko Widodo atau Jo...</td>
-      <td>Politik</td>
+      <td>Pulang Main Bilyard, Pria di Tangerang Kota Di...</td>
+      <td>18 Des 2024 21:00</td>
+      <td>Seorang pria dikeroyok usai bermain bilyard di...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Pembekalan Calon Menteri Prabowo Kelar, Rombon...</td>
-      <td>16 Okt 2024 20:10</td>
-      <td>Mereka mengantre keluar kediaman lantaran bera...</td>
-      <td>Politik</td>
+      <td>Kejati Jakarta Geledah Kantor Dinas Kebudayaan...</td>
+      <td>18 Des 2024 20:41</td>
+      <td>Syahron mengatakan, Kejati DK Jakarta mulai me...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>Produksi Pangan Turun, Jokowi Ungkap Hasil Pan...</td>
-      <td>16 Okt 2024 20:05</td>
-      <td>Presiden Joko Widodo atau Jokowi mengatakan pr...</td>
+      <td>Bentrok Warga dengan Pekerja di Tanah Abang Ja...</td>
+      <td>18 Des 2024 20:35</td>
+      <td>Satu orang tewas diduga akibat bentrokan yang ...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>Pesan Prabowo di Pembekalan Calon Menteri: APB...</td>
-      <td>16 Okt 2024 19:31</td>
-      <td>Menteri Hukum dan Hak Asasi Manusia (Menkumham...</td>
-      <td>Peristiwa</td>
+      <td>Pemkab Tangerang Gelar Seleksi Definitif Sekre...</td>
+      <td>18 Des 2024 20:21</td>
+      <td>Kepala BKPSDM Kabupaten Tangerang, Hendar Hera...</td>
+      <td>Megapolitan</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>Kurangi Sampah ke TPA Sarimukti, Pemkab Bandun...</td>
-      <td>16 Okt 2024 19:27</td>
-      <td>Pjs. Bupati Bandung menindaklanjuti kebijakan ...</td>
-      <td>News</td>
+      <td>Polisi Berjaga di Lokasi Keributan di Jakpus, ...</td>
+      <td>18 Des 2024 20:16</td>
+      <td>Satu orang meninggal dunia akibat bentrokan an...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>Polisi Bakal Selidiki Kebenaran Pertemuan Alex...</td>
-      <td>16 Okt 2024 19:03</td>
-      <td>Ade Safri Simanjuntak, menyatakan pihaknya aka...</td>
+      <td>Viral! Aksi Heroik Wanita di Jakut, Terseret S...</td>
+      <td>18 Des 2024 20:07</td>
+      <td>Kapolsek Cilincing, Kompol Fernando Saharta Sa...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>6 Fakta Terkait Pramono Anung Sambangi Kediama...</td>
-      <td>16 Okt 2024 18:30</td>
-      <td>Pramono Anung yang merupakan mantan Sekretaris...</td>
+      <td>Gegara Tanya Utang Piutang, Berujung Penganiay...</td>
+      <td>18 Des 2024 20:00</td>
+      <td>Keributan terjadi di Pasar Tebet Barat, Jakart...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>Viral Sopir Truk Nekat Lawan Arah di Jakut, Po...</td>
-      <td>16 Okt 2024 18:04</td>
-      <td>Dalam rekaman yang diunggah terlihat sopir tru...</td>
+      <td>Amankan Natal dan Tahun Baru, 141.605 Personel...</td>
+      <td>18 Des 2024 19:54</td>
+      <td>Operasi Lilin 2024 tidak hanya berfokus pada k...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>Polisi Pastikan 2 Tersangka Pencabulan di Pant...</td>
-      <td>16 Okt 2024 18:02</td>
-      <td>Kabid Humas Polda Metro Jaya, Kombes Pol Ade A...</td>
+      <td>OJK Pertahankan Predikat Badan Publik Informat...</td>
+      <td>18 Des 2024 19:45</td>
+      <td>Otoritas Jasa Keuangan (OJK) meraih predikat b...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>DKP Penajam Paser Utara Gelar Gerakan Pangan M...</td>
-      <td>NaN</td>
-      <td>Tujuan GPM adalah membantu masyarakat untuk me...</td>
-      <td>NaN</td>
+      <td>Wakil Ketua Komisi X: Fasilitas dan Minim Guru...</td>
+      <td>18 Des 2024 19:38</td>
+      <td>Politikus PKB itu menekankan pentingnya integr...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>13</th>
-      <td>Jokowi Akan Naik Pesawat Komersial dari Halim ...</td>
-      <td>16 Okt 2024 17:45</td>
-      <td>Budi Arie Setiadi mengatakan Jokowi akan beran...</td>
+      <td>Bacakan Pleidoi, Pesan Harvey Moeis ke Anaknya...</td>
+      <td>18 Des 2024 19:27</td>
+      <td>Dalam pleidoinya, Harvey Moeis juga meminta ma...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>14</th>
-      <td>Hakim Agung Sunarto Terpilih sebagai Ketua Mah...</td>
-      <td>16 Okt 2024 17:14</td>
-      <td>Wakil Ketua Mahkamah Agung Bidang Yudisial, Su...</td>
-      <td>Peristiwa</td>
+      <td>PKB Ingatkan Pemerintah Jamin Kelancaran dan I...</td>
+      <td>18 Des 2024 19:18</td>
+      <td>Menurut dia, fokus utama pemerintah dalam peri...</td>
+      <td>Politik</td>
     </tr>
     <tr>
       <th>15</th>
-      <td>Polisi Minta Hasil Tes Pemeriksaan Kejiwaan An...</td>
-      <td>16 Okt 2024 17:00</td>
-      <td>Polisi hingga hari ini masih mendalami dugaan ...</td>
+      <td>Temui Presiden Mesir, Prabowo Disambut Upacara...</td>
+      <td>18 Des 2024 19:00</td>
+      <td>Kedua pimpinan negara bersalaman dan kemudian ...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>16</th>
-      <td>Mantan Bupati Tangerang yang Juga Ayah Kandung...</td>
-      <td>16 Okt 2024 16:39</td>
-      <td>Semasa hidupnya, Ismet Iskandar juga dikenal s...</td>
+      <td>Diperiksa KPK Selama 7 Jam, Yasonna Laoly Dice...</td>
+      <td>18 Des 2024 18:49</td>
+      <td>Yasonna Laoly diperiksa KPK dalam kapasitasnya...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>17</th>
-      <td>Potret Cagub Pramono Anung dan Slank Kompak Ta...</td>
-      <td>16 Okt 2024 16:35</td>
-      <td>Penanaman mangrove ini merupakan wujud dari pr...</td>
-      <td>News</td>
+      <td>Kasus Harun Masiku, Yasonna: Saya Diperiksa Se...</td>
+      <td>18 Des 2024 18:38</td>
+      <td>Yasonna Laoly menjelaskan, dalam pada saat Pem...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>18</th>
-      <td>Pesan Khusus Prabowo Subianto untuk Herindra y...</td>
-      <td>16 Okt 2024 16:31</td>
-      <td>Calon Kepala Badan Intelijen Negara (BIN) Muha...</td>
-      <td>Peristiwa</td>
+      <td>Pembangunan Tanggul Pantai di Jakarta Molor, T...</td>
+      <td>18 Des 2024 18:36</td>
+      <td>Pelaksana tugas (Plt) Kepala Dinas Sumber Daya...</td>
+      <td>Megapolitan</td>
     </tr>
     <tr>
       <th>19</th>
-      <td>Sejumlah Tokoh dan Pakar Siap Sukseskan Pelant...</td>
-      <td>16 Okt 2024 16:05</td>
-      <td>Mulusnya transisi pemerintahan dapat menjaga s...</td>
-      <td>Politik</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>Kasus Emas Antam, Saksi Sebut Budi Said Lakuka...</td>
-      <td>16 Okt 2024 16:01</td>
-      <td>Mantan Manajer Retail PT Antam, Nuning Septi W...</td>
+      <td>Tatap 2025, Program Tekad  Dukung BUMDes Perku...</td>
+      <td>18 Des 2024 18:28</td>
+      <td>Fokus utama Program TEKAD adalah melatih BUMDe...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
+      <th>20</th>
+      <td>NasDem: Kajian Pilkada Dikembalikan ke DPRD Ha...</td>
+      <td>18 Des 2024 18:22</td>
+      <td>Selain kajian mendalam, NasDem juga mendorong ...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
       <th>21</th>
-      <td>5 Fakta Terkait Budi Gunawan Diberhentikan dar...</td>
-      <td>16 Okt 2024 16:00</td>
-      <td>Dewan Perwakilan Rakyat (DPR) RI telah menerim...</td>
+      <td>Komnas HAM Ungkap Potret Situasi Papua Sepanja...</td>
+      <td>18 Des 2024 18:03</td>
+      <td>Dampak dari konflik bersenjata dan kekerasan m...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>22</th>
-      <td>Pramono: Semua Ketum Parpol Teman Saya, Nanti ...</td>
-      <td>16 Okt 2024 15:51</td>
-      <td>Calon Gubernur Jakarta, Pramono Anung mengaku ...</td>
-      <td>News</td>
+      <td>Pengakuan Harvey Moeis, Tidak Pernah Punya dan...</td>
+      <td>18 Des 2024 18:00</td>
+      <td>Terdakwa Harvey Moeis mengaku dirinya, keluarg...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>23</th>
-      <td>DPR Minta Herindra Bisa Netral saat Sudah Resm...</td>
-      <td>16 Okt 2024 15:41</td>
-      <td>Kepada Herindra, Puan menitipkan pesan khusus ...</td>
+      <td>Pemulangan ke Filipina Diapresiasi, Komnas HAM...</td>
+      <td>18 Des 2024 17:44</td>
+      <td>Anis menyayangkqn, kasus TPPO terhadap Mary Ja...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>24</th>
-      <td>Pengamat Nilai Jika SK-ADT Pimpin Sulut, Dukun...</td>
-      <td>16 Okt 2024 15:25</td>
-      <td>Pengamat politik dan pemerintahan Sulawesi Uta...</td>
-      <td>Politik</td>
+      <td>Pakai Samurai, Kawanan Begal Beraksi di Cengka...</td>
+      <td>18 Des 2024 17:35</td>
+      <td>Insiden itu dialami seorang laki-laki berinisi...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>25</th>
-      <td>Cegah Banjir Terulang, Pramono Bakal Bebaskan ...</td>
-      <td>16 Okt 2024 15:22</td>
-      <td>Untuk mengatasi banjir di daerah bantaran kali...</td>
-      <td>News</td>
+      <td>Raih Penghargaan KIP, Gerindra Komitmen Berant...</td>
+      <td>18 Des 2024 17:29</td>
+      <td>Penghargaan ini dapat menjadi bukti bahwa komi...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>26</th>
-      <td>P3PD Pangkas Waktu Pelatihan Aparatur Desa hin...</td>
-      <td>16 Okt 2024 15:13</td>
-      <td>Ia berharap, mereka terus belajar mengasah pen...</td>
+      <td>5 Pernyataan Terpidana Mati Kasus Narkoba Mary...</td>
+      <td>18 Des 2024 17:15</td>
+      <td>Terpidana mati kasus penyelundupan narkoba Mar...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>27</th>
-      <td>Puan Maharani Masih Irit Bicara soal Pertemuan...</td>
-      <td>16 Okt 2024 15:03</td>
-      <td>Ketua DPP PDI Perjuangan, Puan Maharani belum ...</td>
-      <td>Politik</td>
+      <td>Harvey Moeis Baca Pleidoi, Sebut Sang Istri Sa...</td>
+      <td>18 Des 2024 17:07</td>
+      <td>Harvey Moeis mengatakan, Sandra Dewi telah dif...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>28</th>
-      <td>Selama 3 Hari, 768 Pengendara Terjaring Operas...</td>
-      <td>16 Okt 2024 15:02</td>
-      <td>Ade Ary merincikan, 518 pelanggar dari 768 pel...</td>
+      <td>BPBD Jakarta Siapkan Skema Evakuasi Antisipasi...</td>
+      <td>18 Des 2024 17:00</td>
+      <td>Badan Penanggulangan Bencana Daerah (BPDB) Jak...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>29</th>
-      <td>Pemberantasan Korupsi Jadi Tantangan Pemerinta...</td>
-      <td>16 Okt 2024 15:01</td>
-      <td>Prabowo-Gibran dihadapkan pada tugas berat unt...</td>
+      <td>Komnas HAM: PSN Pangan Presiden Prabowo di Mer...</td>
+      <td>18 Des 2024 16:44</td>
+      <td>Aduan itu dikarenakan proses perencanaan pemba...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>30</th>
-      <td>Transaksi Digital Dinilai Mampu Tingkatkan Ink...</td>
-      <td>16 Okt 2024 14:58</td>
-      <td>Erwin melihat perkembangan transaksi digital t...</td>
-      <td>Peristiwa</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>Puan: DPR Terima Herindra Jadi Calon Kepala BI...</td>
-      <td>16 Okt 2024 14:49</td>
-      <td>Puan mejelaskan, usai Herindra dinyatakan laya...</td>
-      <td>Peristiwa</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>Polisi Akan Panggil Olla Ramlan sebagai Saksi ...</td>
-      <td>16 Okt 2024 14:44</td>
-      <td>Polisi akan memanggil artis Olla Ramlan sebaga...</td>
-      <td>Peristiwa</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>Hari Parlemen Indonesia, Novita Hardini Soroti...</td>
-      <td>16 Okt 2024 14:31</td>
-      <td>Novita menegaskan bahwa kehadiran perempuan di...</td>
+      <td>Pramono Anung Sedang Bentuk Tim Transisi Pemer...</td>
+      <td>18 Des 2024 16:25</td>
+      <td>Gubernur terpilih Jakarta Periode 2024-2029 Pr...</td>
       <td>Politik</td>
     </tr>
     <tr>
-      <th>34</th>
-      <td>Tak Senang Ada Penebangan Pohon, Seorang Pria ...</td>
-      <td>16 Okt 2024 14:30</td>
-      <td>Seorang warga diduga mengacungkan senjata api ...</td>
+      <th>31</th>
+      <td>Komitmen Transparansi, Kemendagri Raih Penghar...</td>
+      <td>18 Des 2024 16:18</td>
+      <td>Berdasarkan hasil monitoring dan evaluasi (mon...</td>
+      <td>News</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Projo Tunggu Perintah Jokowi, Siap Berubah Jad...</td>
+      <td>18 Des 2024 16:16</td>
+      <td>Handoko mengatakan pintu Projo akan selalu ter...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Cuaca Ekstrem, Pemprov Jakarta Pastikan Distri...</td>
+      <td>18 Des 2024 16:01</td>
+      <td>Pelaksana tugas (Plt) Asisten Kesejahteraan Ra...</td>
       <td>Megapolitan</td>
     </tr>
     <tr>
-      <th>35</th>
-      <td>Polisi Selidiki Laporan Olla Ramlan soal Pence...</td>
-      <td>16 Okt 2024 14:11</td>
-      <td>Polisi menerangkan, akun TikTok dan Instagram ...</td>
+      <th>34</th>
+      <td>Sidang Kasus Dugaan Korupsi Timah, Terdakwa Su...</td>
+      <td>18 Des 2024 16:00</td>
+      <td>Dalam sidang dengan agenda pembelaan (pledoi) ...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
+      <th>35</th>
+      <td>Fraksi PKB Dukung Usulan Kepala Daerah Dipilih...</td>
+      <td>18 Des 2024 15:48</td>
+      <td>Menurut anggota Fraksi PKB, wacana kepala daer...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
       <th>36</th>
-      <td>Pesantren Didorong Jadi Lembaga Pendidikan Ung...</td>
-      <td>16 Okt 2024 14:04</td>
-      <td>Di masa depan, pesantren diharapkan menjadi le...</td>
+      <td>Transjakarta Akan Tambah Jam Layanan di Malam ...</td>
+      <td>18 Des 2024 15:41</td>
+      <td>PT Transportasi Jakarta (Transjakarta) berenca...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>37</th>
-      <td>7 Fakta Terkini Terkait Kasus Pelecehan Seksua...</td>
-      <td>16 Okt 2024 14:00</td>
-      <td>Polres Metro Tangerang mengungkap kronologi te...</td>
-      <td>Peristiwa</td>
+      <td>Muktamar PPP Digelar April-Mei 2025, DPP Sebut...</td>
+      <td>18 Des 2024 15:41</td>
+      <td>Dalam Mukernas II PPP tidak ada satu pun perwa...</td>
+      <td>Politik</td>
     </tr>
     <tr>
       <th>38</th>
-      <td>Jokowi Resmikan Dua Ruas Tol Trans Sumatera Se...</td>
-      <td>16 Okt 2024 13:45</td>
-      <td>Presiden Joko Widodo atau Jokowi meresmikan du...</td>
+      <td>Mendagri Tito: Ada Anggaran Stunting Rp10 Mili...</td>
+      <td>18 Des 2024 15:14</td>
+      <td>Jangan sampai, kata dia, para kepala daerah ju...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>39</th>
-      <td>Pembekalan Calon Menteri, Prabowo Subianto Und...</td>
-      <td>16 Okt 2024 13:40</td>
-      <td>Presiden terpilih Prabowo Subianto mengundang ...</td>
-      <td>Politik</td>
+      <td>KI Pusat Bakal Laporkan 160 BP Kurang dan Tida...</td>
+      <td>18 Des 2024 15:00</td>
+      <td>Donny Yoesgiantoro tetap memberikan apresiasi ...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>40</th>
-      <td>Permintaan Prabowo ke Todotua Pasaribu: Ciptak...</td>
-      <td>16 Okt 2024 13:31</td>
-      <td>Todotua mengungkapkan bahwa pertemuan tersebut...</td>
+      <td>Polisi Pastikan Tak Beri Perlakuan Khusus terh...</td>
+      <td>18 Des 2024 14:47</td>
+      <td>Meskipun belakangan beredar kabar soal George ...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>41</th>
-      <td>Jokowi Belum Beli Tiket Pesawat ke Solo untuk ...</td>
-      <td>16 Okt 2024 13:16</td>
-      <td>Presiden Joko Widodo (Jokowi) mengaku belum ta...</td>
-      <td>Peristiwa</td>
+      <td>PKS Siap Dukung Kepemimpinan Gubernur Pramono ...</td>
+      <td>18 Des 2024 14:20</td>
+      <td>Khoirudin memastikan Partai Keadilan Sejahtera...</td>
+      <td>Politik</td>
     </tr>
     <tr>
       <th>42</th>
-      <td>Program Asta Cita Prabowo-Gibran Diharap Bisa ...</td>
-      <td>16 Okt 2024 13:00</td>
-      <td>PB HMI berharap Prabowo dan Gibran tidak hanya...</td>
+      <td>Ribuan Banser Depok Bersiaga Amankan Natal dan...</td>
+      <td>18 Des 2024 14:06</td>
+      <td>Nantinya, Banser Depok siap membantu pengamana...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>43</th>
-      <td>Kalah Lawan China, Jokowi Optimistis Timnas In...</td>
-      <td>16 Okt 2024 12:55</td>
-      <td>Jokowi menanggapi santai soal kekalahan Indone...</td>
+      <td>Anindya Bakrie: Malam Renungan Natal Kadin Ind...</td>
+      <td>18 Des 2024 14:05</td>
+      <td>Ketum Kadin Indonesia Anindya Bakrie menyampai...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>44</th>
-      <td>Pemprov Kalsel Dorong Perangkat Kehumasan Meng...</td>
-      <td>16 Okt 2024 12:45</td>
-      <td>Pemprov Kalimantan Selatan, melalui Diskominfo...</td>
-      <td>News</td>
+      <td>Menag Sebut Terowongan Silaturahim Istiqlal-Ka...</td>
+      <td>18 Des 2024 14:02</td>
+      <td>Menag mengatakan, Terowongan Silaturahim memil...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>45</th>
-      <td>Herindra Bakal Dilantik Sebagai Kepala BIN Bar...</td>
-      <td>16 Okt 2024 12:24</td>
-      <td>Sebelum tes dimulai pukul 11.00 WIB, Herindra ...</td>
+      <td>Kemenkop-KemenP2MI Hadirkan Koperasi untuk Pek...</td>
+      <td>18 Des 2024 14:00</td>
+      <td>Kementerian Koperasi bersama dengan Kementeria...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>46</th>
-      <td>Geopolitik hingga Antikorupsi Jadi Materi Pemb...</td>
-      <td>16 Okt 2024 12:10</td>
-      <td>Juru Bicara Prabowo, Dahnil Anzar Simanjuntak,...</td>
-      <td>Politik</td>
-    </tr>
-    <tr>
-      <th>47</th>
-      <td>Lapas Narkotika Gunung Sindur Didukung Raih Pr...</td>
-      <td>16 Okt 2024 12:00</td>
-      <td>Pada tahun 2024 Lapas Narkotika Gunung sindur ...</td>
+      <td>Mendagri Tito Sebut Hampir Separuh BUMD Merugi...</td>
+      <td>18 Des 2024 13:49</td>
+      <td>Tito menjelaskan, kerugian tersebut tidak hany...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
+      <th>47</th>
+      <td>Brando DPRD Jakarta Sambut Positif Penyaluran ...</td>
+      <td>18 Des 2024 13:39</td>
+      <td>Anggota DPRD Jakarta Brando Susanto mengatakan...</td>
+      <td>Megapolitan</td>
+    </tr>
+    <tr>
       <th>48</th>
-      <td>Pemberhentian Budi Gunawan Jadi Kepala BIN, Jo...</td>
-      <td>16 Okt 2024 11:49</td>
-      <td>Jokowi mengatakan Kepala BIN baru pengganti Bu...</td>
-      <td>Politik</td>
+      <td>Curanmor Tewas Diduga Dikeroyok Massa di Taman...</td>
+      <td>18 Des 2024 13:36</td>
+      <td>Pria yang belum diketahui identitas kepergok s...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>49</th>
-      <td>Ketua DPR: Fit and Proper Test Calon Kepala BI...</td>
-      <td>16 Okt 2024 11:43</td>
-      <td>Dewan Perwakilan Rakyat (DPR) menggelar fit an...</td>
+      <td>DPR Ingatkan Pemerintah Antisipasi Lonjakan Pe...</td>
+      <td>18 Des 2024 13:22</td>
+      <td>Kepadatan lalu lintas tidak bisa dihindari set...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>50</th>
-      <td>Bertemu Konsul Jenderal Australia, Pj Gubernur...</td>
-      <td>16 Okt 2024 11:27</td>
-      <td>Pj Gubernur Jawa Tengah, Nana Sudjana menerima...</td>
-      <td>News</td>
+      <td>6 Fakta Terkait Kunjungan Prabowo ke Mesir, Ha...</td>
+      <td>18 Des 2024 13:10</td>
+      <td>Prabowo dijadwalkan akan menghadiri Konferensi...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>51</th>
-      <td>10 Tahun Kerja Bersama: LPDP dan Peran Pendidi...</td>
-      <td>16 Okt 2024 11:12</td>
-      <td>Selama lebih dari satu dekade, LPDP telah mema...</td>
-      <td>News</td>
+      <td>Gerindra Kembali Raih Penghargaan Keterbukaan ...</td>
+      <td>18 Des 2024 13:02</td>
+      <td>Gerindra menerima penghargaan dengan predikat ...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>Ketum Kadin Indonesia Anindya Bakrie Lakukan D...</td>
+      <td>18 Des 2024 13:00</td>
+      <td>Ketum Kadin Indonesia Anindya Bakrie berkesemp...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>KPK: Risiko Korupsi di Instansi Negara Berada ...</td>
+      <td>18 Des 2024 12:55</td>
+      <td>Johanis Tanak menyampaikan, salah satu misi le...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>Perkuat Rehabilitasi Mangrove, M4CR Kumpulkan ...</td>
+      <td>18 Des 2024 12:43</td>
+      <td>Program Mangrove for Coastal Resilience (M4CR)...</td>
+      <td>Peristiwa</td>
     </tr>
   </tbody>
 </table>
@@ -929,7 +935,7 @@ Successfully installed Sastrawi-1.0.1
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-06b0d3fc-d4bd-41ac-85b6-481fbd1c0e3d')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-60156cb4-c644-4f3c-9a3a-2284c232c15c')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -981,12 +987,12 @@ Successfully installed Sastrawi-1.0.1
 
     <script>
       const buttonEl =
-        document.querySelector('#df-06b0d3fc-d4bd-41ac-85b6-481fbd1c0e3d button.colab-df-convert');
+        document.querySelector('#df-60156cb4-c644-4f3c-9a3a-2284c232c15c button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-06b0d3fc-d4bd-41ac-85b6-481fbd1c0e3d');
+        const element = document.querySelector('#df-60156cb4-c644-4f3c-9a3a-2284c232c15c');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1274,111 +1280,118 @@ Successfully installed Sastrawi-1.0.1
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt.zip.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]   Unzipping tokenizers/punkt.zip.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/55 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/52 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2%|▏         | 1/55 [00:00&lt;00:13,  3.98it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2%|▏         | 1/52 [00:01&lt;00:56,  1.10s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4%|▎         | 2/55 [00:00&lt;00:26,  2.03it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4%|▍         | 2/52 [00:01&lt;00:42,  1.18it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5%|▌         | 3/55 [00:01&lt;00:32,  1.60it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  6%|▌         | 3/52 [00:02&lt;00:35,  1.38it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7%|▋         | 4/55 [00:02&lt;00:34,  1.50it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8%|▊         | 4/52 [00:02&lt;00:23,  2.01it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  9%|▉         | 5/55 [00:03&lt;00:46,  1.07it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10%|▉         | 5/52 [00:02&lt;00:21,  2.21it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 11%|█         | 6/55 [00:04&lt;00:45,  1.07it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|█▏        | 6/52 [00:03&lt;00:21,  2.13it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 13%|█▎        | 7/55 [00:05&lt;00:43,  1.11it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 13%|█▎        | 7/52 [00:03&lt;00:16,  2.77it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 15%|█▍        | 8/55 [00:06&lt;00:47,  1.00s/it]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 15%|█▌        | 8/52 [00:04&lt;00:21,  2.05it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16%|█▋        | 9/55 [00:07&lt;00:39,  1.15it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 17%|█▋        | 9/52 [00:05&lt;00:31,  1.36it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 18%|█▊        | 10/55 [00:07&lt;00:33,  1.33it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 19%|█▉        | 10/52 [00:07&lt;00:42,  1.02s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 20%|██        | 11/55 [00:08&lt;00:26,  1.66it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 21%|██        | 11/52 [00:07&lt;00:31,  1.32it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 22%|██▏       | 12/55 [00:08&lt;00:28,  1.50it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 23%|██▎       | 12/52 [00:09&lt;00:43,  1.09s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 24%|██▎       | 13/55 [00:09&lt;00:24,  1.71it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██▌       | 13/52 [00:10&lt;00:39,  1.01s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██▌       | 14/55 [00:10&lt;00:28,  1.42it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 27%|██▋       | 14/52 [00:10&lt;00:34,  1.10it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 27%|██▋       | 15/55 [00:11&lt;00:37,  1.07it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 29%|██▉       | 15/52 [00:11&lt;00:31,  1.16it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 29%|██▉       | 16/55 [00:12&lt;00:28,  1.38it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|███       | 16/52 [00:12&lt;00:33,  1.09it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|███       | 17/55 [00:12&lt;00:25,  1.50it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|███▎      | 17/52 [00:13&lt;00:37,  1.07s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|███▎      | 18/55 [00:13&lt;00:23,  1.58it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|███▍      | 18/52 [00:14&lt;00:32,  1.06it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|███▍      | 19/55 [00:13&lt;00:23,  1.52it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 37%|███▋      | 19/52 [00:15&lt;00:27,  1.21it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 36%|███▋      | 20/55 [00:14&lt;00:22,  1.55it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 20/52 [00:16&lt;00:27,  1.18it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 21/55 [00:14&lt;00:19,  1.79it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 40%|████      | 21/52 [00:17&lt;00:30,  1.02it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 40%|████      | 22/55 [00:15&lt;00:21,  1.55it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 44%|████▍     | 23/52 [00:17&lt;00:17,  1.67it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 42%|████▏     | 23/55 [00:16&lt;00:19,  1.62it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 46%|████▌     | 24/52 [00:19&lt;00:28,  1.02s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 44%|████▎     | 24/55 [00:16&lt;00:18,  1.69it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 48%|████▊     | 25/52 [00:22&lt;00:36,  1.34s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 45%|████▌     | 25/55 [00:18&lt;00:24,  1.21it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 26/52 [00:23&lt;00:36,  1.40s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 47%|████▋     | 26/55 [00:18&lt;00:23,  1.22it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 52%|█████▏    | 27/52 [00:24&lt;00:28,  1.15s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 49%|████▉     | 27/55 [00:20&lt;00:26,  1.04it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 54%|█████▍    | 28/52 [00:25&lt;00:25,  1.07s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 51%|█████     | 28/55 [00:21&lt;00:25,  1.05it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████▌    | 29/52 [00:26&lt;00:26,  1.15s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 53%|█████▎    | 29/55 [00:21&lt;00:18,  1.41it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 58%|█████▊    | 30/52 [00:26&lt;00:18,  1.19it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 55%|█████▍    | 30/55 [00:22&lt;00:23,  1.07it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|█████▉    | 31/52 [00:27&lt;00:16,  1.25it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████▋    | 31/55 [00:23&lt;00:22,  1.06it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████▏   | 32/52 [00:28&lt;00:17,  1.15it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 58%|█████▊    | 32/55 [00:25&lt;00:27,  1.20s/it]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 63%|██████▎   | 33/52 [00:29&lt;00:17,  1.10it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|██████    | 33/55 [00:26&lt;00:28,  1.28s/it]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 63%|██████▎   | 33/52 [00:29&lt;00:16,  1.12it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████▏   | 34/55 [00:28&lt;00:25,  1.21s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 64%|██████▎   | 35/55 [00:29&lt;00:26,  1.33s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 64%|██████▎   | 35/55 [00:29&lt;00:16,  1.18it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -1399,93 +1412,30 @@ Successfully installed Sastrawi-1.0.1
 <span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="k">return</span> <span class="n">result</span>
 
 <span class="nn">&lt;ipython-input-5-6fdb82046374&gt;</span> in <span class="ni">stemming_indo</span><span class="nt">(text)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">stemming_indo</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>         <span class="n">factory</span> <span class="o">=</span> <span class="n">StemmerFactory</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>         <span class="n">stemmer</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">create_stemmer</span><span class="p">()</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>         <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">text</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>         <span class="n">stemmer</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">create_stemmer</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>         <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">text</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="k">return</span> <span class="n">text</span>
 
-<span class="nn">&lt;ipython-input-5-6fdb82046374&gt;</span> in <span class="ni">&lt;genexpr&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>         <span class="n">factory</span> <span class="o">=</span> <span class="n">StemmerFactory</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>         <span class="n">stemmer</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">create_stemmer</span><span class="p">()</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>         <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">text</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="k">return</span> <span class="n">text</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/StemmerFactory.py</span> in <span class="ni">create_stemmer</span><span class="nt">(self, isDev)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span><span class="w">         </span><span class="sd">&quot;&quot;&quot; Returns Stemmer instance &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> 
+<span class="ne">---&gt; </span><span class="mi">14</span>         <span class="n">words</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_words</span><span class="p">(</span><span class="n">isDev</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>         <span class="n">dictionary</span> <span class="o">=</span> <span class="n">ArrayDictionary</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="n">stemmer</span> <span class="o">=</span> <span class="n">Stemmer</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
 
-<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/CachedStemmer.py</span> in <span class="ni">stem</span><span class="nt">(self, text)</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>                 <span class="n">stems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>             <span class="k">else</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">20</span>                 <span class="n">stem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">delegatedStemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">stem</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span>                 <span class="n">stems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stem</span><span class="p">)</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/StemmerFactory.py</span> in <span class="ni">get_words</span><span class="nt">(self, isDev)</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span>         <span class="c1">#        words = self.getWordsFromFile()</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span>         <span class="c1">#        apc_store(self.APC_KEY, words)</span>
+<span class="ne">---&gt; </span><span class="mi">31</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_words_from_file</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span> 
+<span class="g g-Whitespace">     </span><span class="mi">33</span>     <span class="k">def</span> <span class="nf">get_words_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Stemmer.py</span> in <span class="ni">stem</span><span class="nt">(self, text)</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> 
-<span class="g g-Whitespace">     </span><span class="mi">26</span>         <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">27</span>             <span class="n">stems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stem_word</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span> 
-<span class="g g-Whitespace">     </span><span class="mi">29</span>         <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stems</span><span class="p">)</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Stemmer.py</span> in <span class="ni">stem_word</span><span class="nt">(self, word)</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stem_plural_word</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span>         <span class="k">else</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">36</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stem_singular_word</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> 
-<span class="g g-Whitespace">     </span><span class="mi">38</span>     <span class="k">def</span> <span class="nf">is_plural</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Stemmer.py</span> in <span class="ni">stem_singular_word</span><span class="nt">(self, word)</span>
-<span class="g g-Whitespace">     </span><span class="mi">82</span><span class="w">         </span><span class="sd">&quot;&quot;&quot;Stem a singular word to its common stem form.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span>         <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionary</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">visitor_provider</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">84</span>         <span class="n">context</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">85</span> 
-<span class="g g-Whitespace">     </span><span class="mi">86</span>         <span class="k">return</span> <span class="n">context</span><span class="o">.</span><span class="n">result</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Context/Context.py</span> in <span class="ni">execute</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> 
-<span class="g g-Whitespace">     </span><span class="mi">36</span>         <span class="c1">#step 1 - 5</span>
-<span class="ne">---&gt; </span><span class="mi">37</span>         <span class="bp">self</span><span class="o">.</span><span class="n">start_stemming_process</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span> 
-<span class="g g-Whitespace">     </span><span class="mi">39</span>         <span class="c1">#step 6</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Context/Context.py</span> in <span class="ni">start_stemming_process</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span> 
-<span class="g g-Whitespace">     </span><span class="mi">84</span>         <span class="c1">#ECS loop pengembalian akhiran</span>
-<span class="ne">---&gt; </span><span class="mi">85</span>         <span class="bp">self</span><span class="o">.</span><span class="n">loop_pengembalian_akhiran</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span> 
-<span class="g g-Whitespace">     </span><span class="mi">87</span>     <span class="k">def</span> <span class="nf">remove_prefixes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Context/Context.py</span> in <span class="ni">loop_pengembalian_akhiran</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span> 
-<span class="g g-Whitespace">    </span><span class="mi">140</span>             <span class="c1">#step 4,5</span>
-<span class="ne">--&gt; </span><span class="mi">141</span>             <span class="bp">self</span><span class="o">.</span><span class="n">remove_prefixes</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionary</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_word</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span>                 <span class="k">return</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Context/Context.py</span> in <span class="ni">remove_prefixes</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">87</span>     <span class="k">def</span> <span class="nf">remove_prefixes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">88</span>         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">89</span>             <span class="bp">self</span><span class="o">.</span><span class="n">accept_prefix_visitors</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix_pisitors</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">90</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionary</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_word</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">91</span>                 <span class="k">return</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Context/Context.py</span> in <span class="ni">accept_prefix_visitors</span><span class="nt">(self, visitors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span>         <span class="n">removalCount</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">removals</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span>         <span class="k">for</span> <span class="n">visitor</span> <span class="ow">in</span> <span class="n">visitors</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">110</span>             <span class="bp">self</span><span class="o">.</span><span class="n">accept</span><span class="p">(</span><span class="n">visitor</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionary</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_word</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_word</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Context/Context.py</span> in <span class="ni">accept</span><span class="nt">(self, visitor)</span>
-<span class="g g-Whitespace">     </span><span class="mi">95</span> 
-<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="k">def</span> <span class="nf">accept</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visitor</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">97</span>         <span class="n">visitor</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span> 
-<span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="k">def</span> <span class="nf">accept_visitors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visitors</span><span class="p">):</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Context/Visitor/AbstractDisambiguatePrefixRule.py</span> in <span class="ni">visit</span><span class="nt">(self, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>         <span class="k">for</span> <span class="n">disambiguator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">disambiguators</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">disambiguator</span><span class="o">.</span><span class="n">disambiguate</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">current_word</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">15</span>             <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">dictionary</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>                 <span class="k">break</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> 
+<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/StemmerFactory.py</span> in <span class="ni">get_words_from_file</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span>             <span class="n">dictionaryContent</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span> 
+<span class="ne">---&gt; </span><span class="mi">43</span>         <span class="k">return</span> <span class="n">dictionaryContent</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -1529,7 +1479,7 @@ Successfully installed Sastrawi-1.0.1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-35015bb6-5d49-48db-9b86-425d2f6300d6" class="colab-df-container">
+  <div id="df-bcd9740f-83e1-4e38-b584-912a3aa27e58" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1558,166 +1508,6 @@ Successfully installed Sastrawi-1.0.1
   <tbody>
     <tr>
       <th>0</th>
-      <td>Jokowi Resmikan Dua Ruas Tol Trans Sumatera Se...</td>
-      <td>16 Okt 2024 13:45</td>
-      <td>Presiden Joko Widodo atau Jokowi meresmikan du...</td>
-      <td>Peristiwa</td>
-      <td>presiden joko widodo jokowi resmi ruas tol tra...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Geopolitik hingga Antikorupsi Jadi Materi Pemb...</td>
-      <td>16 Okt 2024 12:10</td>
-      <td>Juru Bicara Prabowo, Dahnil Anzar Simanjuntak,...</td>
-      <td>Politik</td>
-      <td>juru bicara prabowo dahnil anzar simanjuntak b...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Budi Gunawan Hadiri Pembekalan Prabowo Subiant...</td>
-      <td>16 Okt 2024 09:19</td>
-      <td>Sejumlah tokoh negara tampak menghadiri pembek...</td>
-      <td>Peristiwa</td>
-      <td>tokoh negara hadir bekal gelar presiden pilih ...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Calon Menteri, Wakil Menteri dan Kepala Badan ...</td>
-      <td>16 Okt 2024 07:36</td>
-      <td>Presiden terpilih Prabowo Subianto akan member...</td>
-      <td>Peristiwa</td>
-      <td>presiden pilih prabowo subianto bekal calon me...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Cuaca Indonesia Hari Ini Rabu 16 Oktober 2024:...</td>
-      <td>16 Okt 2024 07:30</td>
-      <td>Pada Rabu (16/10/2024), cuaca Indonesia di pag...</td>
-      <td>Peristiwa</td>
-      <td>rabu cuaca indonesia pagi bagi prediksi cerah ...</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Lapas Narkotika Gunung Sindur Didukung Raih Pr...</td>
-      <td>16 Okt 2024 12:00</td>
-      <td>Pada tahun 2024 Lapas Narkotika Gunung sindur ...</td>
-      <td>Peristiwa</td>
-      <td>lapas narkotika gunung sindur ikut kontestasi ...</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>5 Fakta Terkait Budi Gunawan Diberhentikan dar...</td>
-      <td>16 Okt 2024 16:00</td>
-      <td>Dewan Perwakilan Rakyat (DPR) RI telah menerim...</td>
-      <td>Peristiwa</td>
-      <td>dewan wakil rakyat dpr ri terima surat preside...</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Pesantren Didorong Jadi Lembaga Pendidikan Ung...</td>
-      <td>16 Okt 2024 14:04</td>
-      <td>Di masa depan, pesantren diharapkan menjadi le...</td>
-      <td>Peristiwa</td>
-      <td>pesantren harap lembaga didik unggul indonesia...</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Pengamat Nilai Jika SK-ADT Pimpin Sulut, Dukun...</td>
-      <td>16 Okt 2024 15:25</td>
-      <td>Pengamat politik dan pemerintahan Sulawesi Uta...</td>
-      <td>Politik</td>
-      <td>amat politik perintah sulawesi utara taufik tu...</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>Dasco Bersuara soal Kehadiran Pramono di Kerta...</td>
-      <td>16 Okt 2024 07:45</td>
-      <td>Politikus senior PDIP sekaligus Cagub Jakarta ...</td>
-      <td>Politik</td>
-      <td>politikus senior pdip cagub jaka a pramono anu...</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>Permintaan Prabowo ke Todotua Pasaribu: Ciptak...</td>
-      <td>16 Okt 2024 13:31</td>
-      <td>Todotua mengungkapkan bahwa pertemuan tersebut...</td>
-      <td>Peristiwa</td>
-      <td>todotua pe emuan bahas visi perintah prabowo p...</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>Program Asta Cita Prabowo-Gibran Diharap Bisa ...</td>
-      <td>16 Okt 2024 13:00</td>
-      <td>PB HMI berharap Prabowo dan Gibran tidak hanya...</td>
-      <td>Peristiwa</td>
-      <td>pb hmi harap prabowo gibran fokus bangun fisik...</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>Puan: DPR Terima Herindra Jadi Calon Kepala BI...</td>
-      <td>16 Okt 2024 14:49</td>
-      <td>Puan mejelaskan, usai Herindra dinyatakan laya...</td>
-      <td>Peristiwa</td>
-      <td>puan mejelaskan herindra nyata layak proses ba...</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>Hari Parlemen Indonesia, Novita Hardini Soroti...</td>
-      <td>16 Okt 2024 14:31</td>
-      <td>Novita menegaskan bahwa kehadiran perempuan di...</td>
-      <td>Politik</td>
-      <td>novita hadir perempuan parlemen kaya isi kursi...</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Tak Senang Ada Penebangan Pohon, Seorang Pria ...</td>
-      <td>16 Okt 2024 14:30</td>
-      <td>Seorang warga diduga mengacungkan senjata api ...</td>
-      <td>Megapolitan</td>
-      <td>warga duga acung senjata api lantar senang teb...</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>Selama 3 Hari, 768 Pengendara Terjaring Operas...</td>
-      <td>16 Okt 2024 15:02</td>
-      <td>Ade Ary merincikan, 518 pelanggar dari 768 pel...</td>
-      <td>Peristiwa</td>
-      <td>ade ary merincikan langgar langgar kena sanksi...</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>Cuaca Besok Kamis 17 Oktober 2024: Langit Jaka...</td>
-      <td>16 Okt 2024 08:15</td>
-      <td>Cuaca pagi Jakarta besok, Kamis, 17 Oktober 20...</td>
-      <td>Peristiwa</td>
-      <td>cuaca pagi jaka a besok kamis oktober prakira ...</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>194 Kendaraan Terjaring Operasi Zebra Jaya, Te...</td>
-      <td>16 Okt 2024 08:45</td>
-      <td>Operasi Zebra Jaya dilakukan dalam rangka peng...</td>
-      <td>Megapolitan</td>
-      <td>operasi zebra jaya rangka aman jelang lantik p...</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>Pemberhentian Budi Gunawan Jadi Kepala BIN, Jo...</td>
-      <td>16 Okt 2024 11:49</td>
-      <td>Jokowi mengatakan Kepala BIN baru pengganti Bu...</td>
-      <td>Politik</td>
-      <td>jokowi kepala bin ganti budi gunawan m herindr...</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>Bertemu Konsul Jenderal Australia, Pj Gubernur...</td>
-      <td>16 Okt 2024 11:27</td>
-      <td>Pj Gubernur Jawa Tengah, Nana Sudjana menerima...</td>
-      <td>News</td>
-      <td>pj gubernur jawa nana sudjana terima kunjung k...</td>
-    </tr>
-    <tr>
-      <th>20</th>
       <td>7 Fakta Terkini Terkait Kasus Pelecehan Seksua...</td>
       <td>16 Okt 2024 14:00</td>
       <td>Polres Metro Tangerang mengungkap kronologi te...</td>
@@ -1725,55 +1515,23 @@ Successfully installed Sastrawi-1.0.1
       <td>polres metro tangerang ungkap kronologi bongka...</td>
     </tr>
     <tr>
-      <th>21</th>
-      <td>Sejumlah Tokoh dan Pakar Siap Sukseskan Pelant...</td>
-      <td>16 Okt 2024 16:05</td>
-      <td>Mulusnya transisi pemerintahan dapat menjaga s...</td>
+      <th>1</th>
+      <td>Puan Maharani Masih Irit Bicara soal Pertemuan...</td>
+      <td>16 Okt 2024 15:03</td>
+      <td>Ketua DPP PDI Perjuangan, Puan Maharani belum ...</td>
       <td>Politik</td>
-      <td>mulus transisi perintah jaga stabilitas politi...</td>
+      <td>ketua dpp pdi juang puan maharani lugas konfir...</td>
     </tr>
     <tr>
-      <th>22</th>
-      <td>Jokowi Belum Beli Tiket Pesawat ke Solo untuk ...</td>
-      <td>16 Okt 2024 13:16</td>
-      <td>Presiden Joko Widodo (Jokowi) mengaku belum ta...</td>
+      <th>2</th>
+      <td>WSBP Dapat Kontrak Proyek Konstruksi Pembangun...</td>
+      <td>16 Okt 2024 07:08</td>
+      <td>Proyek Pembangunan UNIPI PERSIS ini nantinya d...</td>
       <td>Peristiwa</td>
-      <td>presiden joko widodo jokowi aku pesawat komers...</td>
+      <td>proyek bangun unipi persis harap tingkat saran...</td>
     </tr>
     <tr>
-      <th>23</th>
-      <td>Jokowi Kunjungi AMANAH, Puji Karya Anak Muda Aceh</td>
-      <td>16 Okt 2024 08:04</td>
-      <td>Jokowi pun memamerkan sejumlah karya yang diha...</td>
-      <td>Peristiwa</td>
-      <td>jokowi pamer karya hasil anak muda aceh salah ...</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>Perjalanan Hidup Denny Tuejeh, dari Anak Sopir...</td>
-      <td>16 Okt 2024 05:45</td>
-      <td>Kisah Denny Tuejeh di panggung Pilkada Sulut 2...</td>
-      <td>News</td>
-      <td>kisah denny tuejeh panggung pilkada sulut jala...</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>Pramono: Semua Ketum Parpol Teman Saya, Nanti ...</td>
-      <td>16 Okt 2024 15:51</td>
-      <td>Calon Gubernur Jakarta, Pramono Anung mengaku ...</td>
-      <td>News</td>
-      <td>calon gubernur jaka a pramono anung aku be ema...</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>Budi Gunawan Banjiri Pujian ke Jokowi Usai Dib...</td>
-      <td>16 Okt 2024 07:15</td>
-      <td>Budi Gunawan menyebut bahwa Jokowi adalah pemi...</td>
-      <td>Politik</td>
-      <td>budi gunawan sebut jokowi pimpin tingkat perca...</td>
-    </tr>
-    <tr>
-      <th>27</th>
+      <th>3</th>
       <td>Jokowi Resmikan Bendungan Lausimeme Senilai Rp...</td>
       <td>16 Okt 2024 10:17</td>
       <td>Jokowi menegaskan pentingnya proyek pembanguna...</td>
@@ -1781,7 +1539,103 @@ Successfully installed Sastrawi-1.0.1
       <td>jokowi proyek bangun habis anggar rp triliun</td>
     </tr>
     <tr>
-      <th>28</th>
+      <th>4</th>
+      <td>Herindra Bakal Dilantik Sebagai Kepala BIN Bar...</td>
+      <td>16 Okt 2024 12:24</td>
+      <td>Sebelum tes dimulai pukul 11.00 WIB, Herindra ...</td>
+      <td>Peristiwa</td>
+      <td>tes wib herindra sapa awak media lambai tangan...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Hari Parlemen Indonesia, Novita Hardini Soroti...</td>
+      <td>16 Okt 2024 14:31</td>
+      <td>Novita menegaskan bahwa kehadiran perempuan di...</td>
+      <td>Politik</td>
+      <td>novita hadir perempuan parlemen kaya isi kursi...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Program Asta Cita Prabowo-Gibran Diharap Bisa ...</td>
+      <td>16 Okt 2024 13:00</td>
+      <td>PB HMI berharap Prabowo dan Gibran tidak hanya...</td>
+      <td>Peristiwa</td>
+      <td>pb hmi harap prabowo gibran fokus bangun fisik...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Bejat, Ayah Tiri di Cipondoh Tangerang Cabuli ...</td>
+      <td>16 Okt 2024 06:00</td>
+      <td>Pelaku berinisial MA (42) telah ditetapkan seb...</td>
+      <td>Megapolitan</td>
+      <td>laku inisial ma tetap sangka tahan mapolres me...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Profil Muhammad Herindra yang Ditunjuk Jokowi ...</td>
+      <td>16 Okt 2024 09:31</td>
+      <td>Herindra adalah lulusan Akademi Militer (Akmil...</td>
+      <td>Peristiwa</td>
+      <td>herindra lulus akademi militer akmil baik raih...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Perjalanan Hidup Denny Tuejeh, dari Anak Sopir...</td>
+      <td>16 Okt 2024 05:45</td>
+      <td>Kisah Denny Tuejeh di panggung Pilkada Sulut 2...</td>
+      <td>News</td>
+      <td>kisah denny tuejeh panggung pilkada sulut jala...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Tak Senang Ada Penebangan Pohon, Seorang Pria ...</td>
+      <td>16 Okt 2024 14:30</td>
+      <td>Seorang warga diduga mengacungkan senjata api ...</td>
+      <td>Megapolitan</td>
+      <td>warga duga acung senjata api lantar senang teb...</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Pemberhentian Budi Gunawan Jadi Kepala BIN, Jo...</td>
+      <td>16 Okt 2024 11:49</td>
+      <td>Jokowi mengatakan Kepala BIN baru pengganti Bu...</td>
+      <td>Politik</td>
+      <td>jokowi kepala bin ganti budi gunawan m herindr...</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Viral Sopir Truk Nekat Lawan Arah di Jakut, Po...</td>
+      <td>16 Okt 2024 18:04</td>
+      <td>Dalam rekaman yang diunggah terlihat sopir tru...</td>
+      <td>Peristiwa</td>
+      <td>rekam unggah sopir truk laju sisi kanan ruas j...</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Pengamat Nilai Jika SK-ADT Pimpin Sulut, Dukun...</td>
+      <td>16 Okt 2024 15:25</td>
+      <td>Pengamat politik dan pemerintahan Sulawesi Uta...</td>
+      <td>Politik</td>
+      <td>amat politik perintah sulawesi utara taufik tu...</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Lapas Narkotika Gunung Sindur Didukung Raih Pr...</td>
+      <td>16 Okt 2024 12:00</td>
+      <td>Pada tahun 2024 Lapas Narkotika Gunung sindur ...</td>
+      <td>Peristiwa</td>
+      <td>lapas narkotika gunung sindur ikut kontestasi ...</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Cuaca Indonesia Hari Ini Rabu 16 Oktober 2024:...</td>
+      <td>16 Okt 2024 07:30</td>
+      <td>Pada Rabu (16/10/2024), cuaca Indonesia di pag...</td>
+      <td>Peristiwa</td>
+      <td>rabu cuaca indonesia pagi bagi prediksi cerah ...</td>
+    </tr>
+    <tr>
+      <th>16</th>
       <td>Kasus Emas Antam, Saksi Sebut Budi Said Lakuka...</td>
       <td>16 Okt 2024 16:01</td>
       <td>Mantan Manajer Retail PT Antam, Nuning Septi W...</td>
@@ -1789,12 +1643,108 @@ Successfully installed Sastrawi-1.0.1
       <td>mantan manajer retail pt antam nuning septi wa...</td>
     </tr>
     <tr>
-      <th>29</th>
-      <td>Polisi Pastikan 2 Tersangka Pencabulan di Pant...</td>
-      <td>16 Okt 2024 18:02</td>
-      <td>Kabid Humas Polda Metro Jaya, Kombes Pol Ade A...</td>
+      <th>17</th>
+      <td>Bertemu Konsul Jenderal Australia, Pj Gubernur...</td>
+      <td>16 Okt 2024 11:27</td>
+      <td>Pj Gubernur Jawa Tengah, Nana Sudjana menerima...</td>
+      <td>News</td>
+      <td>pj gubernur jawa nana sudjana terima kunjung k...</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Jokowi Belum Beli Tiket Pesawat ke Solo untuk ...</td>
+      <td>16 Okt 2024 13:16</td>
+      <td>Presiden Joko Widodo (Jokowi) mengaku belum ta...</td>
       <td>Peristiwa</td>
-      <td>kabid humas polda metro jaya kombes pol ade ar...</td>
+      <td>presiden joko widodo jokowi aku pesawat komers...</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Transaksi Digital Dinilai Mampu Tingkatkan Ink...</td>
+      <td>16 Okt 2024 14:58</td>
+      <td>Erwin melihat perkembangan transaksi digital t...</td>
+      <td>Peristiwa</td>
+      <td>erwin kembang transaksi digital dorong mudah p...</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Pembekalan Calon Menteri, Prabowo Subianto Und...</td>
+      <td>16 Okt 2024 13:40</td>
+      <td>Presiden terpilih Prabowo Subianto mengundang ...</td>
+      <td>Politik</td>
+      <td>presiden pilih prabowo subianto undang tokoh c...</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Kebijakan Ganjil Genap Jakarta Berlaku Rabu 16...</td>
+      <td>16 Okt 2024 07:00</td>
+      <td>Kebijakan ganjil genap di Jakarta kembali berl...</td>
+      <td>Peristiwa</td>
+      <td>bijak ganjil genap jaka a laku rabu</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Polisi Selidiki Laporan Olla Ramlan soal Pence...</td>
+      <td>16 Okt 2024 14:11</td>
+      <td>Polisi menerangkan, akun TikTok dan Instagram ...</td>
+      <td>Peristiwa</td>
+      <td>polisi terang akun tiktok instagram sebar post...</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Prabowo Hari Ini Beri Pembekalan Calon Menteri...</td>
+      <td>16 Okt 2024 06:45</td>
+      <td>Prabowo telah memanggil 100 lebih tokoh, polit...</td>
+      <td>Peristiwa</td>
+      <td>prabowo panggil tokoh politikus akademisi siap...</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Budi Gunawan Hadiri Pembekalan Prabowo Subiant...</td>
+      <td>16 Okt 2024 09:19</td>
+      <td>Sejumlah tokoh negara tampak menghadiri pembek...</td>
+      <td>Peristiwa</td>
+      <td>tokoh negara hadir bekal gelar presiden pilih ...</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Budi Gunawan Banjiri Pujian ke Jokowi Usai Dib...</td>
+      <td>16 Okt 2024 07:15</td>
+      <td>Budi Gunawan menyebut bahwa Jokowi adalah pemi...</td>
+      <td>Politik</td>
+      <td>budi gunawan sebut jokowi pimpin tingkat perca...</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Ketua DPR: Fit and Proper Test Calon Kepala BI...</td>
+      <td>16 Okt 2024 11:43</td>
+      <td>Dewan Perwakilan Rakyat (DPR) menggelar fit an...</td>
+      <td>Peristiwa</td>
+      <td>dewan wakil rakyat dpr gelar fit and proper te...</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Sejumlah Tokoh dan Pakar Siap Sukseskan Pelant...</td>
+      <td>16 Okt 2024 16:05</td>
+      <td>Mulusnya transisi pemerintahan dapat menjaga s...</td>
+      <td>Politik</td>
+      <td>mulus transisi perintah jaga stabilitas politi...</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Jelang Pensiun, Jokowi Bakal Resmikan Bendunga...</td>
+      <td>16 Okt 2024 10:00</td>
+      <td>Presiden Joko Widodo atau Jokowi melanjutkan k...</td>
+      <td>Peristiwa</td>
+      <td>presiden joko widodo jokowi lanjut giat kunjun...</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Pemprov Kalsel Dorong Perangkat Kehumasan Meng...</td>
+      <td>16 Okt 2024 12:45</td>
+      <td>Pemprov Kalimantan Selatan, melalui Diskominfo...</td>
+      <td>News</td>
+      <td>pemprov kalimantan selatan diskominfo dorong p...</td>
     </tr>
   </tbody>
 </table>
@@ -1802,7 +1752,7 @@ Successfully installed Sastrawi-1.0.1
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-35015bb6-5d49-48db-9b86-425d2f6300d6')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-bcd9740f-83e1-4e38-b584-912a3aa27e58')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1854,12 +1804,12 @@ Successfully installed Sastrawi-1.0.1
 
     <script>
       const buttonEl =
-        document.querySelector('#df-35015bb6-5d49-48db-9b86-425d2f6300d6 button.colab-df-convert');
+        document.querySelector('#df-bcd9740f-83e1-4e38-b584-912a3aa27e58 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-35015bb6-5d49-48db-9b86-425d2f6300d6');
+        const element = document.querySelector('#df-bcd9740f-83e1-4e38-b584-912a3aa27e58');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1879,8 +1829,8 @@ Successfully installed Sastrawi-1.0.1
   </div>
 
 
-<div id="df-016b359b-d1f8-4bf5-bf71-c91f6f8e7d2f">
-  <button class="colab-df-quickchart" onclick="quickchart('df-016b359b-d1f8-4bf5-bf71-c91f6f8e7d2f')"
+<div id="df-fc3f07a0-ede1-4f33-85e5-9b50fea83182">
+  <button class="colab-df-quickchart" onclick="quickchart('df-fc3f07a0-ede1-4f33-85e5-9b50fea83182')"
             title="Suggest charts"
             style="display:none;">
 
@@ -1999,14 +1949,14 @@ Successfully installed Sastrawi-1.0.1
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-016b359b-d1f8-4bf5-bf71-c91f6f8e7d2f button');
+        document.querySelector('#df-fc3f07a0-ede1-4f33-85e5-9b50fea83182 button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
 
-  <div id="id_45220fb0-fbaa-4b35-9a0a-516b59f14a62">
+  <div id="id_861ee605-6d83-4670-9dc9-c8d6752fad3a">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -2050,7 +2000,7 @@ Successfully installed Sastrawi-1.0.1
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_45220fb0-fbaa-4b35-9a0a-516b59f14a62 button.colab-df-generate');
+        document.querySelector('#id_861ee605-6d83-4670-9dc9-c8d6752fad3a button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -2190,7 +2140,7 @@ Successfully installed Sastrawi-1.0.1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-3af4eeb2-a90a-480f-9251-b3e673df90d1" class="colab-df-container">
+  <div id="df-0f2499b8-ea77-4e03-8246-4f26ee33ad4b" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2210,48 +2160,48 @@ Successfully installed Sastrawi-1.0.1
     <tr style="text-align: right;">
       <th></th>
       <th>Kategori Berita</th>
-      <th>aceh</th>
       <th>acung</th>
-      <th>ade</th>
-      <th>ai</th>
+      <th>adhi</th>
+      <th>administrasi</th>
+      <th>akademi</th>
+      <th>akademisi</th>
+      <th>akmil</th>
+      <th>aktif</th>
+      <th>aktivitas</th>
       <th>aku</th>
-      <th>aman</th>
-      <th>amat</th>
-      <th>an</th>
-      <th>anak</th>
       <th>...</th>
+      <th>utup</th>
       <th>wahyuningsih</th>
       <th>wakil</th>
-      <th>wapres</th>
       <th>warga</th>
       <th>wbk</th>
+      <th>wib</th>
       <th>widodo</th>
       <th>wilayah</th>
       <th>yayasan</th>
-      <th>zebra</th>
       <th>zona</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>Peristiwa</td>
+      <td>Politik</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.00000</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.255991</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2268,11 +2218,8 @@ Successfully installed Sastrawi-1.0.1
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
+      <td>0.000000</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.00000</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.000000</td>
@@ -2280,10 +2227,13 @@ Successfully installed Sastrawi-1.0.1
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Peristiwa</td>
+      <td>News</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2292,14 +2242,14 @@ Successfully installed Sastrawi-1.0.1
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
+      <td>0.417029</td>
       <td>...</td>
       <td>0.0</td>
-      <td>0.20431</td>
+      <td>0.0</td>
+      <td>0.000000</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.220451</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2316,14 +2266,14 @@ Successfully installed Sastrawi-1.0.1
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
+      <td>0.000000</td>
       <td>...</td>
       <td>0.0</td>
-      <td>0.00000</td>
+      <td>0.0</td>
+      <td>0.252205</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000000</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2331,7 +2281,7 @@ Successfully installed Sastrawi-1.0.1
     </tr>
     <tr>
       <th>4</th>
-      <td>News</td>
+      <td>Peristiwa</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2340,11 +2290,8 @@ Successfully installed Sastrawi-1.0.1
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
+      <td>0.000000</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.00000</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.000000</td>
@@ -2352,15 +2299,18 @@ Successfully installed Sastrawi-1.0.1
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 307 columns</p>
+<p>5 rows × 321 columns</p>
 </div>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-3af4eeb2-a90a-480f-9251-b3e673df90d1')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-0f2499b8-ea77-4e03-8246-4f26ee33ad4b')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -2412,12 +2362,12 @@ Successfully installed Sastrawi-1.0.1
 
     <script>
       const buttonEl =
-        document.querySelector('#df-3af4eeb2-a90a-480f-9251-b3e673df90d1 button.colab-df-convert');
+        document.querySelector('#df-0f2499b8-ea77-4e03-8246-4f26ee33ad4b button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-3af4eeb2-a90a-480f-9251-b3e673df90d1');
+        const element = document.querySelector('#df-0f2499b8-ea77-4e03-8246-4f26ee33ad4b');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2437,8 +2387,8 @@ Successfully installed Sastrawi-1.0.1
   </div>
 
 
-<div id="df-99be6dc1-ab9c-4233-b36a-d783c6009549">
-  <button class="colab-df-quickchart" onclick="quickchart('df-99be6dc1-ab9c-4233-b36a-d783c6009549')"
+<div id="df-91e0471e-077b-49a4-b704-f043d3ca1ecc">
+  <button class="colab-df-quickchart" onclick="quickchart('df-91e0471e-077b-49a4-b704-f043d3ca1ecc')"
             title="Suggest charts"
             style="display:none;">
 
@@ -2557,7 +2507,7 @@ Successfully installed Sastrawi-1.0.1
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-99be6dc1-ab9c-4233-b36a-d783c6009549 button');
+        document.querySelector('#df-91e0471e-077b-49a4-b704-f043d3ca1ecc button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
@@ -2600,7 +2550,7 @@ Successfully installed Sastrawi-1.0.1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-3975d4e3-c0a5-494c-b84e-fc7718a4d9cd" class="colab-df-container">
+  <div id="df-3a6e4ecc-7f00-4873-a983-ea809280a825" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2620,25 +2570,25 @@ Successfully installed Sastrawi-1.0.1
     <tr style="text-align: right;">
       <th></th>
       <th>Kategori Berita</th>
-      <th>aceh</th>
       <th>acung</th>
-      <th>ade</th>
-      <th>ai</th>
+      <th>adhi</th>
+      <th>administrasi</th>
+      <th>akademi</th>
+      <th>akademisi</th>
+      <th>akmil</th>
+      <th>aktif</th>
+      <th>aktivitas</th>
       <th>aku</th>
-      <th>aman</th>
-      <th>amat</th>
-      <th>an</th>
-      <th>anak</th>
       <th>...</th>
+      <th>utup</th>
       <th>wahyuningsih</th>
       <th>wakil</th>
-      <th>wapres</th>
       <th>warga</th>
       <th>wbk</th>
+      <th>wib</th>
       <th>widodo</th>
       <th>wilayah</th>
       <th>yayasan</th>
-      <th>zebra</th>
       <th>zona</th>
     </tr>
   </thead>
@@ -2653,7 +2603,7 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
@@ -2661,10 +2611,10 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.193344</td>
       <td>0.000000</td>
-      <td>0.00000</td>
       <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.200927</td>
       <td>0.000000</td>
     </tr>
     <tr>
@@ -2677,7 +2627,7 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
@@ -2687,7 +2637,7 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
@@ -2696,12 +2646,12 @@ Successfully installed Sastrawi-1.0.1
       <td>Peristiwa</td>
       <td>0.000000</td>
       <td>0.000000</td>
+      <td>0.251956</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.251956</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
@@ -2711,7 +2661,7 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
@@ -2725,17 +2675,17 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
-      <td>0.237803</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
@@ -2749,23 +2699,23 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
+      <td>0.203137</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
+      <td>0.203137</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>Peristiwa</td>
+      <td>Politik</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -2773,19 +2723,19 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.283311</td>
       <td>0.000000</td>
-      <td>0.252603</td>
-      <td>0.00000</td>
       <td>0.000000</td>
-      <td>0.283311</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
     </tr>
     <tr>
       <th>6</th>
@@ -2797,23 +2747,23 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
-      <td>0.173494</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.187201</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>Peristiwa</td>
+      <td>Megapolitan</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -2821,7 +2771,7 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
@@ -2831,36 +2781,84 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>Politik</td>
+      <td>Peristiwa</td>
+      <td>0.000000</td>
+      <td>0.326772</td>
+      <td>0.000000</td>
+      <td>0.326772</td>
+      <td>0.000000</td>
+      <td>0.326772</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.185606</td>
-      <td>0.00000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
-      <td>0.140143</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>9</th>
+      <td>News</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Megapolitan</td>
+      <td>0.267261</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.267261</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>11</th>
       <td>Politik</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -2869,31 +2867,7 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
       <td>0.000000</td>
-      <td>...</td>
-      <td>0.000000</td>
-      <td>0.196052</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>Peristiwa</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
@@ -2903,31 +2877,7 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
       <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>Peristiwa</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.000000</td>
-      <td>...</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
@@ -2941,7 +2891,7 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
@@ -2951,7 +2901,7 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
@@ -2965,55 +2915,55 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
       <td>0.000000</td>
+      <td>0.150210</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>14</th>
-      <td>Megapolitan</td>
-      <td>0.000000</td>
-      <td>0.267261</td>
+      <td>Peristiwa</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.267261</td>
+      <td>0.000000</td>
+      <td>0.282855</td>
       <td>0.000000</td>
       <td>0.000000</td>
+      <td>0.282855</td>
       <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
+      <td>0.282855</td>
     </tr>
     <tr>
       <th>15</th>
       <td>Peristiwa</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.191889</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
@@ -3023,7 +2973,7 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
@@ -3037,70 +2987,22 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
+      <td>0.228881</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>17</th>
-      <td>Megapolitan</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.210817</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.000000</td>
-      <td>...</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.210817</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.187967</td>
-      <td>0.00000</td>
-      <td>0.210817</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>Politik</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.000000</td>
-      <td>...</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>19</th>
       <td>News</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -3109,7 +3011,7 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
@@ -3119,12 +3021,12 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
-      <th>20</th>
+      <th>18</th>
       <td>Peristiwa</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -3133,8 +3035,32 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.19819</td>
-      <td>0.176708</td>
+      <td>0.000000</td>
+      <td>0.326992</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.266403</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Peristiwa</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -3143,12 +3069,12 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.19819</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
-      <th>21</th>
+      <th>20</th>
       <td>Politik</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -3157,7 +3083,7 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
@@ -3167,7 +3093,31 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Peristiwa</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
@@ -3178,10 +3128,10 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.296101</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
@@ -3189,39 +3139,39 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.270562</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>23</th>
       <td>Peristiwa</td>
-      <td>0.267394</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
+      <td>0.275265</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.238411</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
       <td>0.000000</td>
+      <td>0.224260</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>24</th>
-      <td>News</td>
+      <td>Peristiwa</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -3229,7 +3179,7 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
@@ -3239,36 +3189,12 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>25</th>
-      <td>News</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.294674</td>
-      <td>0.262735</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.000000</td>
-      <td>...</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>26</th>
       <td>Politik</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -3277,7 +3203,7 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
@@ -3287,12 +3213,12 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
-      <th>27</th>
+      <th>26</th>
       <td>Peristiwa</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -3301,7 +3227,31 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.195156</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.195156</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Politik</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
@@ -3311,7 +3261,7 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
@@ -3325,31 +3275,31 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
-      <td>0.227243</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.253427</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>29</th>
-      <td>Peristiwa</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.239635</td>
+      <td>News</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.230924</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>...</td>
       <td>0.000000</td>
@@ -3359,18 +3309,18 @@ Successfully installed Sastrawi-1.0.1
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
   </tbody>
 </table>
-<p>30 rows × 307 columns</p>
+<p>30 rows × 321 columns</p>
 </div>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-3975d4e3-c0a5-494c-b84e-fc7718a4d9cd')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-3a6e4ecc-7f00-4873-a983-ea809280a825')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -3422,12 +3372,12 @@ Successfully installed Sastrawi-1.0.1
 
     <script>
       const buttonEl =
-        document.querySelector('#df-3975d4e3-c0a5-494c-b84e-fc7718a4d9cd button.colab-df-convert');
+        document.querySelector('#df-3a6e4ecc-7f00-4873-a983-ea809280a825 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-3975d4e3-c0a5-494c-b84e-fc7718a4d9cd');
+        const element = document.querySelector('#df-3a6e4ecc-7f00-4873-a983-ea809280a825');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -3447,8 +3397,8 @@ Successfully installed Sastrawi-1.0.1
   </div>
 
 
-<div id="df-b090e6e1-3b2f-4d95-ae3b-21d6694563a7">
-  <button class="colab-df-quickchart" onclick="quickchart('df-b090e6e1-3b2f-4d95-ae3b-21d6694563a7')"
+<div id="df-b71181e5-1a98-4716-83de-393dff82f539">
+  <button class="colab-df-quickchart" onclick="quickchart('df-b71181e5-1a98-4716-83de-393dff82f539')"
             title="Suggest charts"
             style="display:none;">
 
@@ -3567,14 +3517,14 @@ Successfully installed Sastrawi-1.0.1
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-b090e6e1-3b2f-4d95-ae3b-21d6694563a7 button');
+        document.querySelector('#df-b71181e5-1a98-4716-83de-393dff82f539 button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
 
-  <div id="id_41d6eadf-4627-4ca1-a657-bddb780ecc7c">
+  <div id="id_531263c8-48ec-4850-ad08-9ec8caaff207">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -3618,7 +3568,7 @@ Successfully installed Sastrawi-1.0.1
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_41d6eadf-4627-4ca1-a657-bddb780ecc7c button.colab-df-generate');
+        document.querySelector('#id_531263c8-48ec-4850-ad08-9ec8caaff207 button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -3714,7 +3664,8 @@ Akan berisi data TF-IDF dari data pengujian (df_tfidf_test), dengan format yang 
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -3793,8 +3744,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

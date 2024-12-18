@@ -16,17 +16,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -36,10 +38,11 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -60,9 +63,11 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'tugas1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="Tugas6.html" />
     <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -78,19 +83,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -98,7 +92,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -106,8 +99,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -123,7 +116,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -153,21 +147,17 @@
     
     
     <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -188,9 +178,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -334,24 +329,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -464,7 +451,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dis
 Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests) (3.4.0)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests) (3.10)
 Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests) (2.2.3)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests) (2024.8.30)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests) (2024.12.14)
 </pre></div>
 </div>
 </div>
@@ -520,7 +507,6 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.1
 
 <span class="c1"># Temukan elemen &lt;div&gt; dengan kelas &#39;overflow margin-bottom-xs&#39;</span>
 <span class="n">judul</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;articles&#39;</span><span class="p">)</span>
-
 <span class="c1"># Jika elemen ditemukan, cari semua elemen &lt;span&gt; di dalamnya dan tampilkan teksnya</span>
 <span class="k">if</span> <span class="n">judul</span><span class="p">:</span>
     <span class="c1"># Inisialisasi counter</span>
@@ -535,58 +521,61 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. Natalius Pigai Satu-satunya Calon Menteri Prabowo yang Nyetir Sendiri Mobilnya ke Hambalan...
-2. Ungkap Arahan Prabowo Saat Pembekalan Calon Menteri, Nusron: Jangan Korupsi hingga Jaga AP...
-3. Begini Cara Dorong Petani Lokal untuk Capai Panen yang Optimal
-4. Presiden Jokowi dan Prabowo Subianto Disebut Kompak Hadapi Transisi Pemerintahan
-5. Pembekalan Calon Menteri Prabowo Kelar, Rombongan Antre Keluar
-6. Produksi Pangan Turun, Jokowi Ungkap Hasil Panen Indonesia Tertinggal dari Negara Lain
-7. Pesan Prabowo di Pembekalan Calon Menteri: APBN untuk Rakyat Bukan Pribadi
-8. Kurangi Sampah ke TPA Sarimukti, Pemkab Bandung Minta Warga Olah Sampah Organik dan Anorga...
-9. Polisi Bakal Selidiki Kebenaran Pertemuan Alexander Marwata dengan Eko Darmanto
-10. 6 Fakta Terkait Pramono Anung Sambangi Kediaman Prabowo Subianto di Rumah Kertanegara
-11. Viral Sopir Truk Nekat Lawan Arah di Jakut, Polisi Turun Tangan
-12. Polisi Pastikan 2 Tersangka Pencabulan di Panti Asuhan Tangerang Tidak Alami Gangguan Keji...
-13. DKP Penajam Paser Utara Gelar Gerakan Pangan Murah, Hadirkan Harga Bapok yang Terjangkau
-14. Jokowi Akan Naik Pesawat Komersial dari Halim Usai Pelantikan Prabowo-Gibran 20 Oktober
-15. Hakim Agung Sunarto Terpilih sebagai Ketua Mahkamah Agung
-16. Polisi Minta Hasil Tes Pemeriksaan Kejiwaan Anak Nikita Mirzani ke UPT P3A
-17. Mantan Bupati Tangerang yang Juga Ayah Kandung Cawabup Intan Nurul Hikmah, Meninggal Dunia
-18. Potret Cagub Pramono Anung dan Slank Kompak Tanam Mangrove di Marunda
-19. Pesan Khusus Prabowo Subianto untuk Herindra yang Bakal Jabat Kepala BIN
-20. Sejumlah Tokoh dan Pakar Siap Sukseskan Pelantikan dan Dukung Program Prioritas Prabowo-Gi...
-21. Kasus Emas Antam, Saksi Sebut Budi Said Lakukan 149 Transaksi Mencurigakan
-22. 5 Fakta Terkait Budi Gunawan Diberhentikan dari Jabatan Kepala BIN, Surpres Sudah Diterima...
-23. Pramono: Semua Ketum Parpol Teman Saya, Nanti Mungkin Ada yang CFD Bareng
-24. DPR Minta Herindra Bisa Netral saat Sudah Resmi Jadi Kepala BIN
-25. Pengamat Nilai Jika SK-ADT Pimpin Sulut, Dukungan Pemerintah Pusat Mudah Terwujud
-26. Cegah Banjir Terulang, Pramono Bakal Bebaskan Lahan di Bantaran Kali Krukut
-27. P3PD Pangkas Waktu Pelatihan Aparatur Desa hingga Puluhan Tahun
-28. Puan Maharani Masih Irit Bicara soal Pertemuan Megawati dan Prabowo: Insyaallah
-29. Selama 3 Hari, 768 Pengendara Terjaring Operasi Patuh Jaya 2024
-30. Pemberantasan Korupsi Jadi Tantangan Pemerintahan Prabowo-Gibran
-31. Transaksi Digital Dinilai Mampu Tingkatkan Inklusi Keuangan
-32. Puan: DPR Terima Herindra Jadi Calon Kepala BIN, Diparipurna Besok dan Akan Dilantik Prabo...
-33. Polisi Akan Panggil Olla Ramlan sebagai Saksi Pelapor Dugaan Pencemaran Nama Baik
-34. Hari Parlemen Indonesia, Novita Hardini Soroti Peran Ekonomi Perempuan dalam Legislatif
-35. Tak Senang Ada Penebangan Pohon, Seorang Pria di Jaksel Todong Senjata Api ke PPSU
-36. Polisi Selidiki Laporan Olla Ramlan soal Pencemaran Nama Baik
-37. Pesantren Didorong Jadi Lembaga Pendidikan Unggulan
-38. 7 Fakta Terkini Terkait Kasus Pelecehan Seksual di Panti Asuhan Yayasan Darussalam An Nur
-39. Jokowi Resmikan Dua Ruas Tol Trans Sumatera Senilai Rp11,92 Triliun
-40. Pembekalan Calon Menteri, Prabowo Subianto Undang 59 Nama ke Hambalang
-41. Permintaan Prabowo ke Todotua Pasaribu: Ciptakan Iklim Investasi Lebih Baik
-42. Jokowi Belum Beli Tiket Pesawat ke Solo untuk 20 Oktober 2024
-43. Program Asta Cita Prabowo-Gibran Diharap Bisa Navigasi Indonesia Menuju Kemandirian Ekonom...
-44. Kalah Lawan China, Jokowi Optimistis Timnas Indonesia Lolos Piala Dunia 2026
-45. Pemprov Kalsel Dorong Perangkat Kehumasan Mengelola Isu untuk Tingkatkan Citra dan Keperca...
-46. Herindra Bakal Dilantik Sebagai Kepala BIN Bareng Menteri Kabinet Prabowo?
-47. Geopolitik hingga Antikorupsi Jadi Materi Pembekalan Calon Menteri Kabinet Prabowo di Hamb...
-48. Lapas Narkotika Gunung Sindur Didukung Raih Predikat WBK
-49. Pemberhentian Budi Gunawan Jadi Kepala BIN, Jokowi: Itu Permintaan Prabowo
-50. Ketua DPR: Fit and Proper Test Calon Kepala BIN Digelar Tertutup
-51. Bertemu Konsul Jenderal Australia, Pj Gubernur Jateng Tawarkan Investasi di 6 Kawasan Indu...
-52. 10 Tahun Kerja Bersama: LPDP dan Peran Pendidikan untuk Investasi Masa Depan
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. Mary Jane dan 5 Terpidana Mati Bali Nine Dipulangkan ke Negara Asal, Apa Timbal Baliknya?
+2. Antisipasi Bencana, Kantor SAR Jakarta Gelar Latihan Gabungan Mulai Basarnas hingga Pengel...
+3. Kejati Jakarta Geledah Kantor Dinas Kebudayaan, Ratusan Stempel Palsu Disita
+4. Pulang Main Bilyard, Pria di Tangerang Kota Dikeroyok Kelompok Pemotor
+5. Kejati Jakarta Geledah Kantor Dinas Kebudayaan Jakarta, Laptop hingga Ratusan Stempel Disi...
+6. Bentrok Warga dengan Pekerja di Tanah Abang Jakpus, Polisi Buru Pelaku
+7. Pemkab Tangerang Gelar Seleksi Definitif Sekretaris Daerah
+8. Polisi Berjaga di Lokasi Keributan di Jakpus, Cegah Bentrokan Terulang
+9. Viral! Aksi Heroik Wanita di Jakut, Terseret Saat Berusaha Merebut Motornya dari Pencuri
+10. Gegara Tanya Utang Piutang, Berujung Penganiayaan hingga Penusukan di Tebet Jaksel
+11. Amankan Natal dan Tahun Baru, 141.605 Personel Disiapkan dalam Operasi Lilin 2024
+12. OJK Pertahankan Predikat Badan Publik Informatif Selama Dua Tahun Berturut-turut
+13. Wakil Ketua Komisi X: Fasilitas dan Minim Guru Olahraga Jadi Kendala Gerakan Indonesia Bug...
+14. Bacakan Pleidoi, Pesan Harvey Moeis ke Anaknya: Papa Bukan Koruptor
+15. PKB Ingatkan Pemerintah Jamin Kelancaran dan Infrastruktur Nataru
+16. Temui Presiden Mesir, Prabowo Disambut Upacara Kenegaraan
+17. Diperiksa KPK Selama 7 Jam, Yasonna Laoly Dicecar Soal Perlintasan Harun Masiku
+18. Kasus Harun Masiku, Yasonna: Saya Diperiksa Sebagai Ketua DPP
+19. Pembangunan Tanggul Pantai di Jakarta Molor, Target Rampung Jadi 2030
+20. Tatap 2025, Program Tekad  Dukung BUMDes Perkuat Program Makan Gizi Gratis
+21. NasDem: Kajian Pilkada Dikembalikan ke DPRD Harus Libatkan Semua Pihak
+22. Komnas HAM Ungkap Potret Situasi Papua Sepanjang 2024, Berikut Catatannya
+23. Pengakuan Harvey Moeis, Tidak Pernah Punya dan Nikmati Uang Korupsi Rp300 Triliun
+24. Pemulangan ke Filipina Diapresiasi, Komnas HAM: Mary Jane Sejatinya Korban TPPO
+25. Pakai Samurai, Kawanan Begal Beraksi di Cengkareng
+26. Raih Penghargaan KIP, Gerindra Komitmen Berantas Korupsi
+27. 5 Pernyataan Terpidana Mati Kasus Narkoba Mary Jane saat Hendak Dipulangkan ke Filipina
+28. Harvey Moeis Baca Pleidoi, Sebut Sang Istri Sandra Dewi Wanita Paling Kuat
+29. BPBD Jakarta Siapkan Skema Evakuasi Antisipasi Rob di Muara Angke Meningkat
+30. Komnas HAM: PSN Pangan Presiden Prabowo di Merauka Bemasalah
+31. Pramono Anung Sedang Bentuk Tim Transisi Pemerintahan di Jakarta, Ini Tugasnya
+32. Komitmen Transparansi, Kemendagri Raih Penghargaan Keterbukaan Informasi Publik Tahun 2024
+33. Projo Tunggu Perintah Jokowi, Siap Berubah Jadi Partai Politik
+34. Cuaca Ekstrem, Pemprov Jakarta Pastikan Distribusi Pangan di Kepulauan Seribu Tetap Berjal...
+35. Sidang Kasus Dugaan Korupsi Timah, Terdakwa Suparta Beberkan Penerimaan Negara dari Kerjas...
+36. Fraksi PKB Dukung Usulan Kepala Daerah Dipilih DPRD
+37. Transjakarta Akan Tambah Jam Layanan di Malam Tahun Baru 2025
+38. Muktamar PPP Digelar April-Mei 2025, DPP Sebut Belum Ada Nama Calon Ketum Resmi
+39. Mendagri Tito: Ada Anggaran Stunting Rp10 Miliar, tapi Sampai ke Rakyat Hanya Rp2 Miliar
+40. KI Pusat Bakal Laporkan 160 BP Kurang dan Tidak Informatif kepada Presiden
+41. Polisi Pastikan Tak Beri Perlakuan Khusus terhadap Anak Bos Toko Roti yang Aniaya Karyawat...
+42. PKS Siap Dukung Kepemimpinan Gubernur Pramono Anung-Rano Karno di Jakarta
+43. Ribuan Banser Depok Bersiaga Amankan Natal dan Tahun Baru 2025
+44. Anindya Bakrie: Malam Renungan Natal Kadin Indonesia Jadi Momen Kedamaian dan Cinta Kasih
+45. Menag Sebut Terowongan Silaturahim Istiqlal-Katedral Dibuka saat Perayaan Natal 2024
+46. Kemenkop-KemenP2MI Hadirkan Koperasi untuk Pekerja Migran
+47. Mendagri Tito Sebut Hampir Separuh BUMD Merugi Akibat Praktik &#39;Ordal&#39;
+48. Brando DPRD Jakarta Sambut Positif Penyaluran Air Siap Minum di Wilayah Timur dan Utara
+49. Curanmor Tewas Diduga Dikeroyok Massa di Tamansari Jakarta Barat
+50. DPR Ingatkan Pemerintah Antisipasi Lonjakan Penumpang dan Cuaca Ekstrem Jelang Nataru
+51. 6 Fakta Terkait Kunjungan Prabowo ke Mesir, Hadiri KTT D-8 hingga Bertemu Presiden Abdul F...
+52. Gerindra Kembali Raih Penghargaan Keterbukaan Informasi Publik
+53. Ketum Kadin Indonesia Anindya Bakrie Lakukan Diplomasi Ekonomi dengan Dubes Eropa dan AS
+54. KPK: Risiko Korupsi di Instansi Negara Berada di Level Waspada
+55. Perkuat Rehabilitasi Mangrove, M4CR Kumpulkan Pemangku Kepentingan di Riau
 </pre></div>
 </div>
 </div>
@@ -643,58 +632,61 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.1
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Daftar Link:
-1. https://www.liputan6.com/news/read/5750596/natalius-pigai-satu-satunya-calon-menteri-prabowo-yang-nyetir-sendiri-mobilnya-ke-hambalang
-2. https://www.liputan6.com/news/read/5750583/ungkap-arahan-prabowo-saat-pembekalan-calon-menteri-nusron-jangan-korupsi-hingga-jaga-apbn
-3. https://www.liputan6.com/news/read/5669298/begini-cara-dorong-petani-lokal-untuk-capai-panen-yang-optimal
-4. https://www.liputan6.com/news/read/5750625/presiden-jokowi-dan-prabowo-subianto-disebut-kompak-hadapi-transisi-pemerintahan
-5. https://www.liputan6.com/news/read/5750529/pembekalan-calon-menteri-prabowo-kelar-rombongan-antre-keluar
-6. https://www.liputan6.com/news/read/5750517/produksi-pangan-turun-jokowi-ungkap-hasil-panen-indonesia-tertinggal-dari-negara-lain
-7. https://www.liputan6.com/news/read/5750496/pesan-prabowo-di-pembekalan-calon-menteri-apbn-untuk-rakyat-bukan-pribadi
-8. https://www.liputan6.com/news/read/5750494/kurangi-sampah-ke-tpa-sarimukti-pemkab-bandung-minta-warga-olah-sampah-organik-dan-anorganik
-9. https://www.liputan6.com/news/read/5750480/polisi-bakal-selidiki-kebenaran-pertemuan-alexander-marwata-dengan-eko-darmanto
-10. https://www.liputan6.com/news/read/5750458/6-fakta-terkait-pramono-anung-sambangi-kediaman-prabowo-subianto-di-rumah-kertanegara
-11. https://www.liputan6.com/news/read/5750418/viral-sopir-truk-nekat-lawan-arah-di-jakut-polisi-turun-tangan
-12. https://www.liputan6.com/news/read/5750349/polisi-pastikan-2-tersangka-pencabulan-di-panti-asuhan-tangerang-tidak-alami-gangguan-kejiwaan
-13. https://www.liputan6.com/news/read/5750430/dkp-penajam-paser-utara-gelar-gerakan-pangan-murah-hadirkan-harga-bapok-yang-terjangkau
-14. https://www.liputan6.com/news/read/5750414/jokowi-akan-naik-pesawat-komersial-dari-halim-usai-pelantikan-prabowo-gibran-20-oktober
-15. https://www.liputan6.com/news/read/5750374/hakim-agung-sunarto-terpilih-sebagai-ketua-mahkamah-agung
-16. https://www.liputan6.com/news/read/5750353/polisi-minta-hasil-tes-pemeriksaan-kejiwaan-anak-nikita-mirzani-ke-upt-p3a
-17. https://www.liputan6.com/news/read/5750341/mantan-bupati-tangerang-yang-juga-ayah-kandung-cawabup-intan-nurul-hikmah-meninggal-dunia
-18. https://www.liputan6.com/news/read/5750304/potret-cagub-pramono-anung-dan-slank-kompak-tanam-mangrove-di-marunda
-19. https://www.liputan6.com/news/read/5750308/pesan-khusus-prabowo-subianto-untuk-herindra-yang-bakal-jabat-kepala-bin
-20. https://www.liputan6.com/news/read/5750443/sejumlah-tokoh-dan-pakar-siap-sukseskan-pelantikan-dan-dukung-program-prioritas-prabowo-gibran
-21. https://www.liputan6.com/news/read/5750303/kasus-emas-antam-saksi-sebut-budi-said-lakukan-149-transaksi-mencurigakan
-22. https://www.liputan6.com/news/read/5750277/5-fakta-terkait-budi-gunawan-diberhentikan-dari-jabatan-kepala-bin-surpres-sudah-diterima-dpr-ri
-23. https://www.liputan6.com/news/read/5750260/pramono-semua-ketum-parpol-teman-saya-nanti-mungkin-ada-yang-cfd-bareng
-24. https://www.liputan6.com/news/read/5750254/dpr-minta-herindra-bisa-netral-saat-sudah-resmi-jadi-kepala-bin
-25. https://www.liputan6.com/news/read/5750253/pengamat-nilai-jika-sk-adt-pimpin-sulut-dukungan-pemerintah-pusat-mudah-terwujud
-26. https://www.liputan6.com/news/read/5750247/cegah-banjir-terulang-pramono-bakal-bebaskan-lahan-di-bantaran-kali-krukut
-27. https://www.liputan6.com/news/read/5750453/p3pd-pangkas-waktu-pelatihan-aparatur-desa-hingga-puluhan-tahun
-28. https://www.liputan6.com/news/read/5750229/puan-maharani-masih-irit-bicara-soal-pertemuan-megawati-dan-prabowo-insyaallah
-29. https://www.liputan6.com/news/read/5750220/selama-3-hari-768-pengendara-terjaring-operasi-patuh-jaya-2024
-30. https://www.liputan6.com/news/read/5750433/pemberantasan-korupsi-jadi-tantangan-pemerintahan-prabowo-gibran
-31. https://www.liputan6.com/news/read/5750368/transaksi-digital-dinilai-mampu-tingkatkan-inklusi-keuangan
-32. https://www.liputan6.com/news/read/5750212/puan-dpr-terima-herindra-jadi-calon-kepala-bin-diparipurna-besok-dan-akan-dilantik-prabowo
-33. https://www.liputan6.com/news/read/5750187/polisi-akan-panggil-olla-ramlan-sebagai-saksi-pelapor-dugaan-pencemaran-nama-baik
-34. https://www.liputan6.com/news/read/5750194/hari-parlemen-indonesia-novita-hardini-soroti-peran-ekonomi-perempuan-dalam-legislatif
-35. https://www.liputan6.com/news/read/5750163/tak-senang-ada-penebangan-pohon-seorang-pria-di-jaksel-todong-senjata-api-ke-ppsu
-36. https://www.liputan6.com/news/read/5750166/polisi-selidiki-laporan-olla-ramlan-soal-pencemaran-nama-baik
-37. https://www.liputan6.com/news/read/5750371/pesantren-didorong-jadi-lembaga-pendidikan-unggulan
-38. https://www.liputan6.com/news/read/5750157/7-fakta-terkini-terkait-kasus-pelecehan-seksual-di-panti-asuhan-yayasan-darussalam-an-nur
-39. https://www.liputan6.com/news/read/5750143/jokowi-resmikan-dua-ruas-tol-trans-sumatera-senilai-rp1192-triliun
-40. https://www.liputan6.com/news/read/5750138/pembekalan-calon-menteri-prabowo-subianto-undang-59-nama-ke-hambalang
-41. https://www.liputan6.com/news/read/5750140/permintaan-prabowo-ke-todotua-pasaribu-ciptakan-iklim-investasi-lebih-baik
-42. https://www.liputan6.com/news/read/5750110/jokowi-belum-beli-tiket-pesawat-ke-solo-untuk-20-oktober-2024
-43. https://www.liputan6.com/news/read/5750203/program-asta-cita-prabowo-gibran-diharap-bisa-navigasi-indonesia-menuju-kemandirian-ekonomi
-44. https://www.liputan6.com/news/read/5750088/kalah-lawan-china-jokowi-optimistis-timnas-indonesia-lolos-piala-dunia-2026
-45. https://www.liputan6.com/news/read/5750005/pemprov-kalsel-dorong-perangkat-kehumasan-mengelola-isu-untuk-tingkatkan-citra-dan-kepercayaan-publik
-46. https://www.liputan6.com/news/read/5750055/herindra-bakal-dilantik-sebagai-kepala-bin-bareng-menteri-kabinet-prabowo
-47. https://www.liputan6.com/news/read/5750045/geopolitik-hingga-antikorupsi-jadi-materi-pembekalan-calon-menteri-kabinet-prabowo-di-hambalang
-48. https://www.liputan6.com/news/read/5750295/lapas-narkotika-gunung-sindur-didukung-raih-predikat-wbk
-49. https://www.liputan6.com/news/read/5750021/pemberhentian-budi-gunawan-jadi-kepala-bin-jokowi-itu-permintaan-prabowo
-50. https://www.liputan6.com/news/read/5750023/ketua-dpr-fit-and-proper-test-calon-kepala-bin-digelar-tertutup
-51. https://www.liputan6.com/news/read/5749960/bertemu-konsul-jenderal-australia-pj-gubernur-jateng-tawarkan-investasi-di-6-kawasan-industri-besar
-52. https://www.liputan6.com/news/read/5749959/10-tahun-kerja-bersama-lpdp-dan-peran-pendidikan-untuk-investasi-masa-depan
+1. https://www.liputan6.com/news/read/5840960/mary-jane-dan-5-terpidana-mati-bali-nine-dipulangkan-ke-negara-asal-apa-timbal-baliknya
+2. https://www.liputan6.com/news/read/5841394/antisipasi-bencana-kantor-sar-jakarta-gelar-latihan-gabungan-mulai-basarnas-hingga-pengelola-gedung
+3. https://www.liputan6.com/news/read/5841410/kejati-jakarta-geledah-kantor-dinas-kebudayaan-ratusan-stempel-palsu-disita
+4. https://www.liputan6.com/news/read/5841208/pulang-main-bilyard-pria-di-tangerang-kota-dikeroyok-kelompok-pemotor
+5. https://www.liputan6.com/news/read/5841365/kejati-jakarta-geledah-kantor-dinas-kebudayaan-jakarta-laptop-hingga-ratusan-stempel-disita
+6. https://www.liputan6.com/news/read/5841233/bentrok-warga-dengan-pekerja-di-tanah-abang-jakpus-polisi-buru-pelaku
+7. https://www.liputan6.com/news/read/5841351/pemkab-tangerang-gelar-seleksi-definitif-sekretaris-daerah
+8. https://www.liputan6.com/news/read/5841227/polisi-berjaga-di-lokasi-keributan-di-jakpus-cegah-bentrokan-terulang
+9. https://www.liputan6.com/news/read/5841341/viral-aksi-heroik-wanita-di-jakut-terseret-saat-berusaha-merebut-motornya-dari-pencuri
+10. https://www.liputan6.com/news/read/5841182/gegara-tanya-utang-piutang-berujung-penganiayaan-hingga-penusukan-di-tebet-jaksel
+11. https://www.liputan6.com/news/read/5841328/amankan-natal-dan-tahun-baru-141605-personel-disiapkan-dalam-operasi-lilin-2024
+12. https://www.liputan6.com/news/read/5841321/ojk-pertahankan-predikat-badan-publik-informatif-selama-dua-tahun-berturut-turut
+13. https://www.liputan6.com/news/read/5841356/wakil-ketua-komisi-x-fasilitas-dan-minim-guru-olahraga-jadi-kendala-gerakan-indonesia-bugar
+14. https://www.liputan6.com/news/read/5841302/bacakan-pleidoi-pesan-harvey-moeis-ke-anaknya-papa-bukan-koruptor
+15. https://www.liputan6.com/news/read/5841173/pkb-ingatkan-pemerintah-jamin-kelancaran-dan-infrastruktur-nataru
+16. https://www.liputan6.com/news/read/5841219/temui-presiden-mesir-prabowo-disambut-upacara-kenegaraan
+17. https://www.liputan6.com/news/read/5841246/diperiksa-kpk-selama-7-jam-yasonna-laoly-dicecar-soal-perlintasan-harun-masiku
+18. https://www.liputan6.com/news/read/5841245/kasus-harun-masiku-yasonna-saya-diperiksa-sebagai-ketua-dpp
+19. https://www.liputan6.com/news/read/5841146/pembangunan-tanggul-pantai-di-jakarta-molor-target-rampung-jadi-2030
+20. https://www.liputan6.com/news/read/5841370/tatap-2025-program-tekad-dukung-bumdes-perkuat-program-makan-gizi-gratis
+21. https://www.liputan6.com/news/read/5841156/nasdem-kajian-pilkada-dikembalikan-ke-dprd-harus-libatkan-semua-pihak
+22. https://www.liputan6.com/news/read/5841167/komnas-ham-ungkap-potret-situasi-papua-sepanjang-2024-berikut-catatannya
+23. https://www.liputan6.com/news/read/5841149/pengakuan-harvey-moeis-tidak-pernah-punya-dan-nikmati-uang-korupsi-rp300-triliun
+24. https://www.liputan6.com/news/read/5841134/pemulangan-ke-filipina-diapresiasi-komnas-ham-mary-jane-sejatinya-korban-tppo
+25. https://www.liputan6.com/news/read/5841076/pakai-samurai-kawanan-begal-beraksi-di-cengkareng
+26. https://www.liputan6.com/news/read/5841617/raih-penghargaan-kip-gerindra-komitmen-berantas-korupsi
+27. https://www.liputan6.com/news/read/5841092/5-pernyataan-terpidana-mati-kasus-narkoba-mary-jane-saat-hendak-dipulangkan-ke-filipina
+28. https://www.liputan6.com/news/read/5841106/harvey-moeis-baca-pleidoi-sebut-sang-istri-sandra-dewi-wanita-paling-kuat
+29. https://www.liputan6.com/news/read/5841067/bpbd-jakarta-siapkan-skema-evakuasi-antisipasi-rob-di-muara-angke-meningkat
+30. https://www.liputan6.com/news/read/5841074/komnas-ham-psn-pangan-presiden-prabowo-di-merauka-bemasalah
+31. https://www.liputan6.com/news/read/5841007/pramono-anung-sedang-bentuk-tim-transisi-pemerintahan-di-jakarta-ini-tugasnya
+32. https://www.liputan6.com/news/read/5841032/komitmen-transparansi-kemendagri-raih-penghargaan-keterbukaan-informasi-publik-tahun-2024
+33. https://www.liputan6.com/news/read/5841023/projo-tunggu-perintah-jokowi-siap-berubah-jadi-partai-politik
+34. https://www.liputan6.com/news/read/5840890/cuaca-ekstrem-pemprov-jakarta-pastikan-distribusi-pangan-di-kepulauan-seribu-tetap-berjalan
+35. https://www.liputan6.com/news/read/5841256/sidang-kasus-dugaan-korupsi-timah-terdakwa-suparta-beberkan-penerimaan-negara-dari-kerjasama-pt-timah-dan-swasta
+36. https://www.liputan6.com/news/read/5840964/fraksi-pkb-dukung-usulan-kepala-daerah-dipilih-dprd
+37. https://www.liputan6.com/news/read/5840965/transjakarta-akan-tambah-jam-layanan-di-malam-tahun-baru-2025
+38. https://www.liputan6.com/news/read/5840981/muktamar-ppp-digelar-april-mei-2025-dpp-sebut-belum-ada-nama-calon-ketum-resmi
+39. https://www.liputan6.com/news/read/5840911/mendagri-tito-ada-anggaran-stunting-rp10-miliar-tapi-sampai-ke-rakyat-hanya-rp2-miliar
+40. https://www.liputan6.com/news/read/5840876/ki-pusat-bakal-laporkan-160-bp-kurang-dan-tidak-informatif-kepada-presiden
+41. https://www.liputan6.com/news/read/5840889/polisi-pastikan-tak-beri-perlakuan-khusus-terhadap-anak-bos-toko-roti-yang-aniaya-karyawati
+42. https://www.liputan6.com/news/read/5840862/pks-siap-dukung-kepemimpinan-gubernur-pramono-anung-rano-karno-di-jakarta
+43. https://www.liputan6.com/news/read/5840817/ribuan-banser-depok-bersiaga-amankan-natal-dan-tahun-baru-2025
+44. https://www.liputan6.com/news/read/5840978/anindya-bakrie-malam-renungan-natal-kadin-indonesia-jadi-momen-kedamaian-dan-cinta-kasih
+45. https://www.liputan6.com/news/read/5840838/menag-sebut-terowongan-silaturahim-istiqlal-katedral-dibuka-saat-perayaan-natal-2024
+46. https://www.liputan6.com/news/read/5840865/kemenkop-kemenp2mi-hadirkan-koperasi-untuk-pekerja-migran
+47. https://www.liputan6.com/news/read/5840804/mendagri-tito-sebut-hampir-separuh-bumd-merugi-akibat-praktik-ordal
+48. https://www.liputan6.com/news/read/5840988/brando-dprd-jakarta-sambut-positif-penyaluran-air-siap-minum-di-wilayah-timur-dan-utara
+49. https://www.liputan6.com/news/read/5840784/curanmor-tewas-diduga-dikeroyok-massa-di-tamansari-jakarta-barat
+50. https://www.liputan6.com/news/read/5840765/dpr-ingatkan-pemerintah-antisipasi-lonjakan-penumpang-dan-cuaca-ekstrem-jelang-nataru
+51. https://www.liputan6.com/news/read/5840712/6-fakta-terkait-kunjungan-prabowo-ke-mesir-hadiri-ktt-d-8-hingga-bertemu-presiden-abdul-fattah
+52. https://www.liputan6.com/news/read/5840841/gerindra-kembali-raih-penghargaan-keterbukaan-informasi-publik
+53. https://www.liputan6.com/news/read/5840945/ketum-kadin-indonesia-anindya-bakrie-lakukan-diplomasi-ekonomi-dengan-dubes-eropa-dan-as
+54. https://www.liputan6.com/news/read/5840733/kpk-risiko-korupsi-di-instansi-negara-berada-di-level-waspada
+55. https://www.liputan6.com/news/read/5840714/perkuat-rehabilitasi-mangrove-m4cr-kumpulkan-pemangku-kepentingan-di-riau
 </pre></div>
 </div>
 </div>
@@ -799,7 +791,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-13693895-eb3e-4ff2-a956-1655afef8a36" class="colab-df-container">
+  <div id="df-e9cbdc6c-b2ed-4468-82f7-5a12d478f788" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -827,367 +819,388 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.1
   <tbody>
     <tr>
       <th>0</th>
-      <td>Natalius Pigai Satu-satunya Calon Menteri Prab...</td>
-      <td>17 Okt 2024 02:12</td>
-      <td>Mantan Komisioner Komnas HAM Natalius Pigai tu...</td>
-      <td>Politik</td>
+      <td>Mary Jane dan 5 Terpidana Mati Bali Nine Dipul...</td>
+      <td>19 Des 2024 00:01</td>
+      <td>Hingga saat ini baik Filipina dan Australia be...</td>
+      <td>Rajut</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Ungkap Arahan Prabowo Saat Pembekalan Calon Me...</td>
-      <td>17 Okt 2024 01:10</td>
-      <td>Sebanyak 59 tokoh hadir mengikuti kegiatan pem...</td>
+      <td>Antisipasi Bencana, Kantor SAR Jakarta Gelar L...</td>
+      <td>18 Des 2024 21:30</td>
+      <td>120 personel gabungan mengikuti Latihan Gabung...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Begini Cara Dorong Petani Lokal untuk Capai Pa...</td>
-      <td>16 Okt 2024 23:21</td>
-      <td>Berikut ini adalah beberapa cara yang dapat me...</td>
-      <td>News</td>
+      <td>Kejati Jakarta Geledah Kantor Dinas Kebudayaan...</td>
+      <td>18 Des 2024 21:25</td>
+      <td>Kejaksaan Tinggi Jakarta menggeledah sejumlah ...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Presiden Jokowi dan Prabowo Subianto Disebut K...</td>
-      <td>16 Okt 2024 20:55</td>
-      <td>Jelang pensiunnya Presiden Joko Widodo atau Jo...</td>
-      <td>Politik</td>
+      <td>Pulang Main Bilyard, Pria di Tangerang Kota Di...</td>
+      <td>18 Des 2024 21:00</td>
+      <td>Seorang pria dikeroyok usai bermain bilyard di...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Pembekalan Calon Menteri Prabowo Kelar, Rombon...</td>
-      <td>16 Okt 2024 20:10</td>
-      <td>Mereka mengantre keluar kediaman lantaran bera...</td>
-      <td>Politik</td>
+      <td>Kejati Jakarta Geledah Kantor Dinas Kebudayaan...</td>
+      <td>18 Des 2024 20:41</td>
+      <td>Syahron mengatakan, Kejati DK Jakarta mulai me...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>Produksi Pangan Turun, Jokowi Ungkap Hasil Pan...</td>
-      <td>16 Okt 2024 20:05</td>
-      <td>Presiden Joko Widodo atau Jokowi mengatakan pr...</td>
+      <td>Bentrok Warga dengan Pekerja di Tanah Abang Ja...</td>
+      <td>18 Des 2024 20:35</td>
+      <td>Satu orang tewas diduga akibat bentrokan yang ...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>Pesan Prabowo di Pembekalan Calon Menteri: APB...</td>
-      <td>16 Okt 2024 19:31</td>
-      <td>Menteri Hukum dan Hak Asasi Manusia (Menkumham...</td>
-      <td>Peristiwa</td>
+      <td>Pemkab Tangerang Gelar Seleksi Definitif Sekre...</td>
+      <td>18 Des 2024 20:21</td>
+      <td>Kepala BKPSDM Kabupaten Tangerang, Hendar Hera...</td>
+      <td>Megapolitan</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>Kurangi Sampah ke TPA Sarimukti, Pemkab Bandun...</td>
-      <td>16 Okt 2024 19:27</td>
-      <td>Pjs. Bupati Bandung menindaklanjuti kebijakan ...</td>
-      <td>News</td>
+      <td>Polisi Berjaga di Lokasi Keributan di Jakpus, ...</td>
+      <td>18 Des 2024 20:16</td>
+      <td>Satu orang meninggal dunia akibat bentrokan an...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>Polisi Bakal Selidiki Kebenaran Pertemuan Alex...</td>
-      <td>16 Okt 2024 19:03</td>
-      <td>Ade Safri Simanjuntak, menyatakan pihaknya aka...</td>
+      <td>Viral! Aksi Heroik Wanita di Jakut, Terseret S...</td>
+      <td>18 Des 2024 20:07</td>
+      <td>Kapolsek Cilincing, Kompol Fernando Saharta Sa...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>6 Fakta Terkait Pramono Anung Sambangi Kediama...</td>
-      <td>16 Okt 2024 18:30</td>
-      <td>Pramono Anung yang merupakan mantan Sekretaris...</td>
+      <td>Gegara Tanya Utang Piutang, Berujung Penganiay...</td>
+      <td>18 Des 2024 20:00</td>
+      <td>Keributan terjadi di Pasar Tebet Barat, Jakart...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>Viral Sopir Truk Nekat Lawan Arah di Jakut, Po...</td>
-      <td>16 Okt 2024 18:04</td>
-      <td>Dalam rekaman yang diunggah terlihat sopir tru...</td>
+      <td>Amankan Natal dan Tahun Baru, 141.605 Personel...</td>
+      <td>18 Des 2024 19:54</td>
+      <td>Operasi Lilin 2024 tidak hanya berfokus pada k...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>Polisi Pastikan 2 Tersangka Pencabulan di Pant...</td>
-      <td>16 Okt 2024 18:02</td>
-      <td>Kabid Humas Polda Metro Jaya, Kombes Pol Ade A...</td>
+      <td>OJK Pertahankan Predikat Badan Publik Informat...</td>
+      <td>18 Des 2024 19:45</td>
+      <td>Otoritas Jasa Keuangan (OJK) meraih predikat b...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>DKP Penajam Paser Utara Gelar Gerakan Pangan M...</td>
-      <td>N/A</td>
-      <td>Tujuan GPM adalah membantu masyarakat untuk me...</td>
-      <td>N/A</td>
+      <td>Wakil Ketua Komisi X: Fasilitas dan Minim Guru...</td>
+      <td>18 Des 2024 19:38</td>
+      <td>Politikus PKB itu menekankan pentingnya integr...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>13</th>
-      <td>Jokowi Akan Naik Pesawat Komersial dari Halim ...</td>
-      <td>16 Okt 2024 17:45</td>
-      <td>Budi Arie Setiadi mengatakan Jokowi akan beran...</td>
+      <td>Bacakan Pleidoi, Pesan Harvey Moeis ke Anaknya...</td>
+      <td>18 Des 2024 19:27</td>
+      <td>Dalam pleidoinya, Harvey Moeis juga meminta ma...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>14</th>
-      <td>Hakim Agung Sunarto Terpilih sebagai Ketua Mah...</td>
-      <td>16 Okt 2024 17:14</td>
-      <td>Wakil Ketua Mahkamah Agung Bidang Yudisial, Su...</td>
-      <td>Peristiwa</td>
+      <td>PKB Ingatkan Pemerintah Jamin Kelancaran dan I...</td>
+      <td>18 Des 2024 19:18</td>
+      <td>Menurut dia, fokus utama pemerintah dalam peri...</td>
+      <td>Politik</td>
     </tr>
     <tr>
       <th>15</th>
-      <td>Polisi Minta Hasil Tes Pemeriksaan Kejiwaan An...</td>
-      <td>16 Okt 2024 17:00</td>
-      <td>Polisi hingga hari ini masih mendalami dugaan ...</td>
+      <td>Temui Presiden Mesir, Prabowo Disambut Upacara...</td>
+      <td>18 Des 2024 19:00</td>
+      <td>Kedua pimpinan negara bersalaman dan kemudian ...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>16</th>
-      <td>Mantan Bupati Tangerang yang Juga Ayah Kandung...</td>
-      <td>16 Okt 2024 16:39</td>
-      <td>Semasa hidupnya, Ismet Iskandar juga dikenal s...</td>
+      <td>Diperiksa KPK Selama 7 Jam, Yasonna Laoly Dice...</td>
+      <td>18 Des 2024 18:49</td>
+      <td>Yasonna Laoly diperiksa KPK dalam kapasitasnya...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>17</th>
-      <td>Potret Cagub Pramono Anung dan Slank Kompak Ta...</td>
-      <td>16 Okt 2024 16:35</td>
-      <td>Penanaman mangrove ini merupakan wujud dari pr...</td>
-      <td>News</td>
+      <td>Kasus Harun Masiku, Yasonna: Saya Diperiksa Se...</td>
+      <td>18 Des 2024 18:38</td>
+      <td>Yasonna Laoly menjelaskan, dalam pada saat Pem...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>18</th>
-      <td>Pesan Khusus Prabowo Subianto untuk Herindra y...</td>
-      <td>16 Okt 2024 16:31</td>
-      <td>Calon Kepala Badan Intelijen Negara (BIN) Muha...</td>
-      <td>Peristiwa</td>
+      <td>Pembangunan Tanggul Pantai di Jakarta Molor, T...</td>
+      <td>18 Des 2024 18:36</td>
+      <td>Pelaksana tugas (Plt) Kepala Dinas Sumber Daya...</td>
+      <td>Megapolitan</td>
     </tr>
     <tr>
       <th>19</th>
-      <td>Sejumlah Tokoh dan Pakar Siap Sukseskan Pelant...</td>
-      <td>16 Okt 2024 16:05</td>
-      <td>Mulusnya transisi pemerintahan dapat menjaga s...</td>
-      <td>Politik</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>Kasus Emas Antam, Saksi Sebut Budi Said Lakuka...</td>
-      <td>16 Okt 2024 16:01</td>
-      <td>Mantan Manajer Retail PT Antam, Nuning Septi W...</td>
+      <td>Tatap 2025, Program Tekad  Dukung BUMDes Perku...</td>
+      <td>18 Des 2024 18:28</td>
+      <td>Fokus utama Program TEKAD adalah melatih BUMDe...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
+      <th>20</th>
+      <td>NasDem: Kajian Pilkada Dikembalikan ke DPRD Ha...</td>
+      <td>18 Des 2024 18:22</td>
+      <td>Selain kajian mendalam, NasDem juga mendorong ...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
       <th>21</th>
-      <td>5 Fakta Terkait Budi Gunawan Diberhentikan dar...</td>
-      <td>16 Okt 2024 16:00</td>
-      <td>Dewan Perwakilan Rakyat (DPR) RI telah menerim...</td>
+      <td>Komnas HAM Ungkap Potret Situasi Papua Sepanja...</td>
+      <td>18 Des 2024 18:03</td>
+      <td>Dampak dari konflik bersenjata dan kekerasan m...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>22</th>
-      <td>Pramono: Semua Ketum Parpol Teman Saya, Nanti ...</td>
-      <td>16 Okt 2024 15:51</td>
-      <td>Calon Gubernur Jakarta, Pramono Anung mengaku ...</td>
-      <td>News</td>
+      <td>Pengakuan Harvey Moeis, Tidak Pernah Punya dan...</td>
+      <td>18 Des 2024 18:00</td>
+      <td>Terdakwa Harvey Moeis mengaku dirinya, keluarg...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>23</th>
-      <td>DPR Minta Herindra Bisa Netral saat Sudah Resm...</td>
-      <td>16 Okt 2024 15:41</td>
-      <td>Kepada Herindra, Puan menitipkan pesan khusus ...</td>
+      <td>Pemulangan ke Filipina Diapresiasi, Komnas HAM...</td>
+      <td>18 Des 2024 17:44</td>
+      <td>Anis menyayangkqn, kasus TPPO terhadap Mary Ja...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>24</th>
-      <td>Pengamat Nilai Jika SK-ADT Pimpin Sulut, Dukun...</td>
-      <td>16 Okt 2024 15:25</td>
-      <td>Pengamat politik dan pemerintahan Sulawesi Uta...</td>
-      <td>Politik</td>
+      <td>Pakai Samurai, Kawanan Begal Beraksi di Cengka...</td>
+      <td>18 Des 2024 17:35</td>
+      <td>Insiden itu dialami seorang laki-laki berinisi...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>25</th>
-      <td>Cegah Banjir Terulang, Pramono Bakal Bebaskan ...</td>
-      <td>16 Okt 2024 15:22</td>
-      <td>Untuk mengatasi banjir di daerah bantaran kali...</td>
-      <td>News</td>
+      <td>Raih Penghargaan KIP, Gerindra Komitmen Berant...</td>
+      <td>18 Des 2024 17:29</td>
+      <td>Penghargaan ini dapat menjadi bukti bahwa komi...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>26</th>
-      <td>P3PD Pangkas Waktu Pelatihan Aparatur Desa hin...</td>
-      <td>16 Okt 2024 15:13</td>
-      <td>Ia berharap, mereka terus belajar mengasah pen...</td>
+      <td>5 Pernyataan Terpidana Mati Kasus Narkoba Mary...</td>
+      <td>18 Des 2024 17:15</td>
+      <td>Terpidana mati kasus penyelundupan narkoba Mar...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>27</th>
-      <td>Puan Maharani Masih Irit Bicara soal Pertemuan...</td>
-      <td>16 Okt 2024 15:03</td>
-      <td>Ketua DPP PDI Perjuangan, Puan Maharani belum ...</td>
-      <td>Politik</td>
+      <td>Harvey Moeis Baca Pleidoi, Sebut Sang Istri Sa...</td>
+      <td>18 Des 2024 17:07</td>
+      <td>Harvey Moeis mengatakan, Sandra Dewi telah dif...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>28</th>
-      <td>Selama 3 Hari, 768 Pengendara Terjaring Operas...</td>
-      <td>16 Okt 2024 15:02</td>
-      <td>Ade Ary merincikan, 518 pelanggar dari 768 pel...</td>
+      <td>BPBD Jakarta Siapkan Skema Evakuasi Antisipasi...</td>
+      <td>18 Des 2024 17:00</td>
+      <td>Badan Penanggulangan Bencana Daerah (BPDB) Jak...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>29</th>
-      <td>Pemberantasan Korupsi Jadi Tantangan Pemerinta...</td>
-      <td>16 Okt 2024 15:01</td>
-      <td>Prabowo-Gibran dihadapkan pada tugas berat unt...</td>
+      <td>Komnas HAM: PSN Pangan Presiden Prabowo di Mer...</td>
+      <td>18 Des 2024 16:44</td>
+      <td>Aduan itu dikarenakan proses perencanaan pemba...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>30</th>
-      <td>Transaksi Digital Dinilai Mampu Tingkatkan Ink...</td>
-      <td>16 Okt 2024 14:58</td>
-      <td>Erwin melihat perkembangan transaksi digital t...</td>
-      <td>Peristiwa</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>Puan: DPR Terima Herindra Jadi Calon Kepala BI...</td>
-      <td>16 Okt 2024 14:49</td>
-      <td>Puan mejelaskan, usai Herindra dinyatakan laya...</td>
-      <td>Peristiwa</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>Polisi Akan Panggil Olla Ramlan sebagai Saksi ...</td>
-      <td>16 Okt 2024 14:44</td>
-      <td>Polisi akan memanggil artis Olla Ramlan sebaga...</td>
-      <td>Peristiwa</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>Hari Parlemen Indonesia, Novita Hardini Soroti...</td>
-      <td>16 Okt 2024 14:31</td>
-      <td>Novita menegaskan bahwa kehadiran perempuan di...</td>
+      <td>Pramono Anung Sedang Bentuk Tim Transisi Pemer...</td>
+      <td>18 Des 2024 16:25</td>
+      <td>Gubernur terpilih Jakarta Periode 2024-2029 Pr...</td>
       <td>Politik</td>
     </tr>
     <tr>
-      <th>34</th>
-      <td>Tak Senang Ada Penebangan Pohon, Seorang Pria ...</td>
-      <td>16 Okt 2024 14:30</td>
-      <td>Seorang warga diduga mengacungkan senjata api ...</td>
+      <th>31</th>
+      <td>Komitmen Transparansi, Kemendagri Raih Penghar...</td>
+      <td>18 Des 2024 16:18</td>
+      <td>Berdasarkan hasil monitoring dan evaluasi (mon...</td>
+      <td>News</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Projo Tunggu Perintah Jokowi, Siap Berubah Jad...</td>
+      <td>18 Des 2024 16:16</td>
+      <td>Handoko mengatakan pintu Projo akan selalu ter...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Cuaca Ekstrem, Pemprov Jakarta Pastikan Distri...</td>
+      <td>18 Des 2024 16:01</td>
+      <td>Pelaksana tugas (Plt) Asisten Kesejahteraan Ra...</td>
       <td>Megapolitan</td>
     </tr>
     <tr>
-      <th>35</th>
-      <td>Polisi Selidiki Laporan Olla Ramlan soal Pence...</td>
-      <td>16 Okt 2024 14:11</td>
-      <td>Polisi menerangkan, akun TikTok dan Instagram ...</td>
+      <th>34</th>
+      <td>Sidang Kasus Dugaan Korupsi Timah, Terdakwa Su...</td>
+      <td>18 Des 2024 16:00</td>
+      <td>Dalam sidang dengan agenda pembelaan (pledoi) ...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
+      <th>35</th>
+      <td>Fraksi PKB Dukung Usulan Kepala Daerah Dipilih...</td>
+      <td>18 Des 2024 15:48</td>
+      <td>Menurut anggota Fraksi PKB, wacana kepala daer...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
       <th>36</th>
-      <td>Pesantren Didorong Jadi Lembaga Pendidikan Ung...</td>
-      <td>16 Okt 2024 14:04</td>
-      <td>Di masa depan, pesantren diharapkan menjadi le...</td>
+      <td>Transjakarta Akan Tambah Jam Layanan di Malam ...</td>
+      <td>18 Des 2024 15:41</td>
+      <td>PT Transportasi Jakarta (Transjakarta) berenca...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>37</th>
-      <td>7 Fakta Terkini Terkait Kasus Pelecehan Seksua...</td>
-      <td>16 Okt 2024 14:00</td>
-      <td>Polres Metro Tangerang mengungkap kronologi te...</td>
-      <td>Peristiwa</td>
+      <td>Muktamar PPP Digelar April-Mei 2025, DPP Sebut...</td>
+      <td>18 Des 2024 15:41</td>
+      <td>Dalam Mukernas II PPP tidak ada satu pun perwa...</td>
+      <td>Politik</td>
     </tr>
     <tr>
       <th>38</th>
-      <td>Jokowi Resmikan Dua Ruas Tol Trans Sumatera Se...</td>
-      <td>16 Okt 2024 13:45</td>
-      <td>Presiden Joko Widodo atau Jokowi meresmikan du...</td>
+      <td>Mendagri Tito: Ada Anggaran Stunting Rp10 Mili...</td>
+      <td>18 Des 2024 15:14</td>
+      <td>Jangan sampai, kata dia, para kepala daerah ju...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>39</th>
-      <td>Pembekalan Calon Menteri, Prabowo Subianto Und...</td>
-      <td>16 Okt 2024 13:40</td>
-      <td>Presiden terpilih Prabowo Subianto mengundang ...</td>
-      <td>Politik</td>
+      <td>KI Pusat Bakal Laporkan 160 BP Kurang dan Tida...</td>
+      <td>18 Des 2024 15:00</td>
+      <td>Donny Yoesgiantoro tetap memberikan apresiasi ...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>40</th>
-      <td>Permintaan Prabowo ke Todotua Pasaribu: Ciptak...</td>
-      <td>16 Okt 2024 13:31</td>
-      <td>Todotua mengungkapkan bahwa pertemuan tersebut...</td>
+      <td>Polisi Pastikan Tak Beri Perlakuan Khusus terh...</td>
+      <td>18 Des 2024 14:47</td>
+      <td>Meskipun belakangan beredar kabar soal George ...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>41</th>
-      <td>Jokowi Belum Beli Tiket Pesawat ke Solo untuk ...</td>
-      <td>16 Okt 2024 13:16</td>
-      <td>Presiden Joko Widodo (Jokowi) mengaku belum ta...</td>
-      <td>Peristiwa</td>
+      <td>PKS Siap Dukung Kepemimpinan Gubernur Pramono ...</td>
+      <td>18 Des 2024 14:20</td>
+      <td>Khoirudin memastikan Partai Keadilan Sejahtera...</td>
+      <td>Politik</td>
     </tr>
     <tr>
       <th>42</th>
-      <td>Program Asta Cita Prabowo-Gibran Diharap Bisa ...</td>
-      <td>16 Okt 2024 13:00</td>
-      <td>PB HMI berharap Prabowo dan Gibran tidak hanya...</td>
+      <td>Ribuan Banser Depok Bersiaga Amankan Natal dan...</td>
+      <td>18 Des 2024 14:06</td>
+      <td>Nantinya, Banser Depok siap membantu pengamana...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>43</th>
-      <td>Kalah Lawan China, Jokowi Optimistis Timnas In...</td>
-      <td>16 Okt 2024 12:55</td>
-      <td>Jokowi menanggapi santai soal kekalahan Indone...</td>
+      <td>Anindya Bakrie: Malam Renungan Natal Kadin Ind...</td>
+      <td>18 Des 2024 14:05</td>
+      <td>Ketum Kadin Indonesia Anindya Bakrie menyampai...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>44</th>
-      <td>Pemprov Kalsel Dorong Perangkat Kehumasan Meng...</td>
-      <td>16 Okt 2024 12:45</td>
-      <td>Pemprov Kalimantan Selatan, melalui Diskominfo...</td>
-      <td>News</td>
+      <td>Menag Sebut Terowongan Silaturahim Istiqlal-Ka...</td>
+      <td>18 Des 2024 14:02</td>
+      <td>Menag mengatakan, Terowongan Silaturahim memil...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>45</th>
-      <td>Herindra Bakal Dilantik Sebagai Kepala BIN Bar...</td>
-      <td>16 Okt 2024 12:24</td>
-      <td>Sebelum tes dimulai pukul 11.00 WIB, Herindra ...</td>
+      <td>Kemenkop-KemenP2MI Hadirkan Koperasi untuk Pek...</td>
+      <td>18 Des 2024 14:00</td>
+      <td>Kementerian Koperasi bersama dengan Kementeria...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>46</th>
-      <td>Geopolitik hingga Antikorupsi Jadi Materi Pemb...</td>
-      <td>16 Okt 2024 12:10</td>
-      <td>Juru Bicara Prabowo, Dahnil Anzar Simanjuntak,...</td>
-      <td>Politik</td>
-    </tr>
-    <tr>
-      <th>47</th>
-      <td>Lapas Narkotika Gunung Sindur Didukung Raih Pr...</td>
-      <td>16 Okt 2024 12:00</td>
-      <td>Pada tahun 2024 Lapas Narkotika Gunung sindur ...</td>
+      <td>Mendagri Tito Sebut Hampir Separuh BUMD Merugi...</td>
+      <td>18 Des 2024 13:49</td>
+      <td>Tito menjelaskan, kerugian tersebut tidak hany...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
+      <th>47</th>
+      <td>Brando DPRD Jakarta Sambut Positif Penyaluran ...</td>
+      <td>18 Des 2024 13:39</td>
+      <td>Anggota DPRD Jakarta Brando Susanto mengatakan...</td>
+      <td>Megapolitan</td>
+    </tr>
+    <tr>
       <th>48</th>
-      <td>Pemberhentian Budi Gunawan Jadi Kepala BIN, Jo...</td>
-      <td>16 Okt 2024 11:49</td>
-      <td>Jokowi mengatakan Kepala BIN baru pengganti Bu...</td>
-      <td>Politik</td>
+      <td>Curanmor Tewas Diduga Dikeroyok Massa di Taman...</td>
+      <td>18 Des 2024 13:36</td>
+      <td>Pria yang belum diketahui identitas kepergok s...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>49</th>
-      <td>Ketua DPR: Fit and Proper Test Calon Kepala BI...</td>
-      <td>16 Okt 2024 11:43</td>
-      <td>Dewan Perwakilan Rakyat (DPR) menggelar fit an...</td>
+      <td>DPR Ingatkan Pemerintah Antisipasi Lonjakan Pe...</td>
+      <td>18 Des 2024 13:22</td>
+      <td>Kepadatan lalu lintas tidak bisa dihindari set...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>50</th>
-      <td>Bertemu Konsul Jenderal Australia, Pj Gubernur...</td>
-      <td>16 Okt 2024 11:27</td>
-      <td>Pj Gubernur Jawa Tengah, Nana Sudjana menerima...</td>
-      <td>News</td>
+      <td>6 Fakta Terkait Kunjungan Prabowo ke Mesir, Ha...</td>
+      <td>18 Des 2024 13:10</td>
+      <td>Prabowo dijadwalkan akan menghadiri Konferensi...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>51</th>
-      <td>10 Tahun Kerja Bersama: LPDP dan Peran Pendidi...</td>
-      <td>16 Okt 2024 11:12</td>
-      <td>Selama lebih dari satu dekade, LPDP telah mema...</td>
-      <td>News</td>
+      <td>Gerindra Kembali Raih Penghargaan Keterbukaan ...</td>
+      <td>18 Des 2024 13:02</td>
+      <td>Gerindra menerima penghargaan dengan predikat ...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>Ketum Kadin Indonesia Anindya Bakrie Lakukan D...</td>
+      <td>18 Des 2024 13:00</td>
+      <td>Ketum Kadin Indonesia Anindya Bakrie berkesemp...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>KPK: Risiko Korupsi di Instansi Negara Berada ...</td>
+      <td>18 Des 2024 12:55</td>
+      <td>Johanis Tanak menyampaikan, salah satu misi le...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>Perkuat Rehabilitasi Mangrove, M4CR Kumpulkan ...</td>
+      <td>18 Des 2024 12:43</td>
+      <td>Program Mangrove for Coastal Resilience (M4CR)...</td>
+      <td>Peristiwa</td>
     </tr>
   </tbody>
 </table>
@@ -1195,7 +1208,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.1
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-13693895-eb3e-4ff2-a956-1655afef8a36')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-e9cbdc6c-b2ed-4468-82f7-5a12d478f788')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -1247,12 +1260,12 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.1
 
     <script>
       const buttonEl =
-        document.querySelector('#df-13693895-eb3e-4ff2-a956-1655afef8a36 button.colab-df-convert');
+        document.querySelector('#df-e9cbdc6c-b2ed-4468-82f7-5a12d478f788 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-13693895-eb3e-4ff2-a956-1655afef8a36');
+        const element = document.querySelector('#df-e9cbdc6c-b2ed-4468-82f7-5a12d478f788');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1394,6 +1407,15 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.1
         <p class="prev-next-title">Welcome to your Jupyter Book</p>
       </div>
     </a>
+    <a class="right-next"
+       href="Tugas6.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1401,7 +1423,8 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.1
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1480,8 +1503,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

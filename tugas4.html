@@ -16,17 +16,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -36,10 +38,11 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -64,6 +67,7 @@
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -79,19 +83,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -99,7 +92,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,8 +99,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -126,7 +118,8 @@
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -156,21 +149,17 @@
     
     
     <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -191,9 +180,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -337,24 +331,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -508,7 +494,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-10d6ea2e-3f30-4e4d-a143-32ada4a4381f" class="colab-df-container">
+  <div id="df-c19edfa6-95d5-4531-a03e-42949883726d" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -536,38 +522,38 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>Natalius Pigai Satu-satunya Calon Menteri Prab...</td>
-      <td>17 Okt 2024 02:12</td>
-      <td>Mantan Komisioner Komnas HAM Natalius Pigai tu...</td>
-      <td>Politik</td>
+      <td>Mary Jane dan 5 Terpidana Mati Bali Nine Dipul...</td>
+      <td>19 Des 2024 00:01</td>
+      <td>Hingga saat ini baik Filipina dan Australia be...</td>
+      <td>Rajut</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Ungkap Arahan Prabowo Saat Pembekalan Calon Me...</td>
-      <td>17 Okt 2024 01:10</td>
-      <td>Sebanyak 59 tokoh hadir mengikuti kegiatan pem...</td>
+      <td>Antisipasi Bencana, Kantor SAR Jakarta Gelar L...</td>
+      <td>18 Des 2024 21:30</td>
+      <td>120 personel gabungan mengikuti Latihan Gabung...</td>
       <td>Peristiwa</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Begini Cara Dorong Petani Lokal untuk Capai Pa...</td>
-      <td>16 Okt 2024 23:21</td>
-      <td>Berikut ini adalah beberapa cara yang dapat me...</td>
-      <td>News</td>
+      <td>Kejati Jakarta Geledah Kantor Dinas Kebudayaan...</td>
+      <td>18 Des 2024 21:25</td>
+      <td>Kejaksaan Tinggi Jakarta menggeledah sejumlah ...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Presiden Jokowi dan Prabowo Subianto Disebut K...</td>
-      <td>16 Okt 2024 20:55</td>
-      <td>Jelang pensiunnya Presiden Joko Widodo atau Jo...</td>
-      <td>Politik</td>
+      <td>Pulang Main Bilyard, Pria di Tangerang Kota Di...</td>
+      <td>18 Des 2024 21:00</td>
+      <td>Seorang pria dikeroyok usai bermain bilyard di...</td>
+      <td>Peristiwa</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Pembekalan Calon Menteri Prabowo Kelar, Rombon...</td>
-      <td>16 Okt 2024 20:10</td>
-      <td>Mereka mengantre keluar kediaman lantaran bera...</td>
-      <td>Politik</td>
+      <td>Kejati Jakarta Geledah Kantor Dinas Kebudayaan...</td>
+      <td>18 Des 2024 20:41</td>
+      <td>Syahron mengatakan, Kejati DK Jakarta mulai me...</td>
+      <td>Peristiwa</td>
     </tr>
   </tbody>
 </table>
@@ -575,7 +561,7 @@ document.write(`
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-10d6ea2e-3f30-4e4d-a143-32ada4a4381f')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-c19edfa6-95d5-4531-a03e-42949883726d')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -627,12 +613,12 @@ document.write(`
 
     <script>
       const buttonEl =
-        document.querySelector('#df-10d6ea2e-3f30-4e4d-a143-32ada4a4381f button.colab-df-convert');
+        document.querySelector('#df-c19edfa6-95d5-4531-a03e-42949883726d button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-10d6ea2e-3f30-4e4d-a143-32ada4a4381f');
+        const element = document.querySelector('#df-c19edfa6-95d5-4531-a03e-42949883726d');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -721,64 +707,67 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/52 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/55 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 52/52 [00:00&lt;00:00, 1281.22it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 55/55 [00:00&lt;00:00, 937.75it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0: mantan komisioner komnas ham natalius pigai menghadiri pembekalan calon menteri kabinet prabowogibran hambalang . menarik pigiai satusatunya calon menteri hadir hambalang menyetir mobil ditemani sopir .
-1: tokoh hadir mengikuti kegiatan pembekalan calon menteri prabowogibran digelar padepokan garuda yaksa hambalang bogor jawa barat rabu . prabowo langsung arahan calon pembantunya pemerintahan .
-2: membantu petani lokal mencapai panen optimal .
-3: jelang pensiunnya presiden joko widodo jokowi digantikan sosok presiden terpilih prabowo subianto bertemu keakraban .
-4: mengantre kediaman lantaran kendaraan masingmasing .
-5: presiden joko widodo jokowi produksi pangan negara menurun akibat perubahan iklim dunia .
-6: menteri hukum hak asasi manusia menkumham supratman andi agtas hadir pembekalan calon menteri kabinet pemerintahan prabowo subianto .
-7: pjs . bupati bandung menindaklanjuti kebijakan pemerintah provinsi jawa barat pembatasan pengurangan pengiriman sampah tpa sarimukti kabupaten bandung barat kbb
-8: ade safri simanjuntak menyelidiki kebenaran klaim alexander marwata terkait pertemuan .
-9: pramono anung mantan sekretaris kabinet mendadak menyambangi kediaman kertanegara jakarta selatan selasa oktober .
-10: rekaman diunggah sopir truk melaju sisi kanan ruas jalan cakungcilincing jakarta utara selasa oktober .
-11: kabid humas polda metro jaya kombes pol ade ary syam indradi menerangkan kesimpulan tim pemeriksa .
-12: tujuan gpm membantu masyarakat memperoleh bahan pokok utamanya beras harga terjangkau harga pasar menjaga ketersediaan bahan pangan .
-13: budi arie setiadi jokowi berangkat bandara halim perdanakusuma jakarta timur solo . penerbangan jokowi dijadwalkan . wib .
-14: wakil ketua mahkamah agung bidang yudisial sunarto resmi terpilih ketua mahkamah agung ma sidang paripurna khusus pemilihan ketua ma gedung ma jakarta rabu .
-15: polisi mendalami dugaan pencabulan aborsi ilegal uang menyeret tiktoker vadel badjideh .
-16: hidupnya ismet iskandar dikenal sosok kental keberpihakkannya masyarakat tangerang . t
-17: penanaman mangrove wujud program pramonorano dicanangkan jakarta mengubah giant sea wall giant mangrove wall .
-18: calon kepala badan intelijen negara bin muhammad herindra mengaku pesan khusus presiden terpilih prabowo subianto dilantik resmi menjabat kepala bin .
-19: mulusnya transisi pemerintahan menjaga stabilitas politik indonesia
-20: mantan manajer retail pt antam nuning septi wahyuningsih memaparkan transaksi mencurigakan budi said sistem pt antam .
-21: dewan perwakilan rakyat dpr ri menerima surat presiden joko widodo jokowi perihal permohonan pertimbangan pemberhentian pengangkatan kepala badan intelijen negara kepala bin .
-22: calon gubernur jakarta pramono anung mengaku berteman ketua partai politik indonesia memiliki .
-23: herindra puan menitipkan pesan khusus kepala bin menjaga nkri utuh sesuai tugas fungsi bin netral .
-24: pengamat politik pemerintahan sulawesi utara taufik tumbelaka menyebut pasangan calon gubernur wakil gubernur sulawesi utara steven kandouwalfrets denny tuejeh skadt pasangan calon realistis masyarakat sulut .
-25: mengatasi banjir daerah bantaran kali krukut pemerintah pusat pengerukan pembebasan lahan .
-26: berharap belajar mengasah pengetahuan sistem pembelajaran online learning management systemlms .
-27: ketua dpp pdi perjuangan puan maharani lugas dikonfirmasi pertemuan presiden terpilih prabowo subianto ketua pdip megawati soekarnoputri .
-28: ade ary merincikan pelanggar pelanggar dikenakan sanksi teguran . sisanya pelanggar terkena tilang elektronik etle .
-29: prabowogibran dihadapkan tugas berat memulihkan kepercayaan rakyat pemerintahan .
-30: erwin perkembangan transaksi digital mendorong mempermudah proses perdagangan industri karet kancah internasional .
-31: puan mejelaskan herindra dinyatakan layak proses membawanya rapat paripurna disahkan . rencananya rapat paripurna dilangsungkan besok kamis oktober .
-32: polisi memanggil artis olla ramlan saksi pelapor menindaklanjuti laporan polda metro jaya .
-33: novita kehadiran perempuan parlemen memperkaya mengisi kursi jabatan .
-34: warga diduga mengacungkan senjata api lantaran senang penebangan pohon . beruntung korban jiwa luka insiden .
-35: polisi menerangkan akun tiktok instagram menyebarkan postingan bermuatan pencemaran nama olla ramlan
-36: pesantren diharapkan lembaga pendidikan unggulan indonesia tujuan internasional dunia islam indonesia
-37: polres metro tangerang mengungkap kronologi terbongkarnya pelecehan seksual menimpa anak asuh panti asuhan yayasan darussalam an nur kecamatan pinang kota tangerang banten .
-38: presiden joko widodo jokowi meresmikan ruas tol trans sumatera gerbang tol kisaran kabupaten asahan provinsi sumatra utara rabu .
-39: presiden terpilih prabowo subianto mengundang tokoh calon menteri kediaman hambalang bogor jawa barat .
-40: todotua pertemuan membahas visi pemerintahan prabowo periode .
-41: presiden joko widodo jokowi mengaku pesawat komersial pulang solo jawa purnatugas oktober .
-42: pb hmi berharap prabowo gibran fokus pembangunan fisik pengembangan mental karakter bangsa .
-43: jokowi menanggapi santai kekalahan indonesia china putaran klasemen kualifikasi piala dunia zona asia . jokowi menyebut kalah menang pertandingan sepak bola .
-44: pemprov kalimantan selatan diskominfo mendorong perangkat kehumasan aktif terkoordinasi mengelola isu membangun citra positif meningkatkan kepercayaan publik strategi komunikasi responsif .
-45: tes . wib herindra menyapa awak media melambaikan tangan juru kamera . mengambil gambar tim pewarta dipersilakan meninggalkan ruang rapat komisi i tes berjalan tertutup .
-46: juru bicara prabowo dahnil anzar simanjuntak membagikan jadwal rangkaian pembekalan calon menteri hambalang .
-47: lapas narkotika gunung sindur mengikuti kontestasi pembangunan zona integritas wilayah bebas korupsi wbk .
-48: jokowi kepala bin pengganti budi gunawan m herindra dilantik menterimenteri kabinet prabowogibran oktober .
-49: dewan perwakilan rakyat dpr menggelar fit and proper test calon kepala badan intelijen negara bin pengganti budi gunawan diberhentikan presiden joko widodo jokowi .
-50: pj gubernur jawa nana sudjana menerima kunjungan konsul jenderal australia he glen askew kantornya selasa oktober .
-51: dekade lpdp memainkan peran memperluas akses pendidikan pendanaan riset indonesia meningkatkan lulusan ss .
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0: filipina australia menyinggung timbal pemerintah indonesia mengembalikan mary jane kelompok bali nine .
+1: personel gabungan mengikuti latihan gabungan urban search and rescue sar salah pusat perbelanjaan kawasan kuningan setiabudi jakarta selatan jaksel rabu .
+2: kejaksaan jakarta menggeledah terkait penyidikan dugaan korupsi dinas kebudayaan provinsi jakarta . barang bukti disita ratusan stempel .
+3: pria dikeroyok bermain bilyard mal kawasan tangerang banten . korban daw menderita lukaluka kepala akibat kejadian .
+4: syahron kejati dk jakarta penyelidikan november
+5: orang tewas diduga akibat bentrokan warga pekerja . insiden bentrokan jalan kebon kacang tanah abang jakarta pusat jakpus . pelaku dicari polisi .
+6: kepala bkpsdm kabupaten tangerang hendar herawan seleksi definitif sekretaris daerah kabupaten tangerang sesuai aturan belaku .
+7: orang meninggal dunia akibat bentrokan antarwarga pekerja selasa . wib .
+8: kapolsek cilincing kompol fernando saharta saragi membenarkan kejadian . peristiwa dialami ejs jalan kebantenan iii rt . kelurahan semper timur jakarta utara .
+9: keributan pasar tebet barat jakarta selatan jaksel selasa sore desember . pria berinisial im ditikam alami lukaluka .
+10: operasi lilin berfokus kelancaran lintas pengamanan lokasi strategis ibadah objek wisata .
+11: otoritas jasa keuangan ojk meraih predikat badan publik informatif level nasional lembaga negara lembaga pemerintah non kementerian komisi informasi pusat kip selasa .
+12: politikus pkb menekankan integrasi pendidikan jasmani kesehatan pendidikan olahraga mencapai tujuan utama pendidikan
+13: pleidoinya harvey moeis maaf anaknya hadir sosok ayah usia emas .
+14: fokus utama pemerintah periode nataru kali menjaga kelancaran transportasi mengantisipasi lonjakan arus mudik ketersediaan kebutuhan pokok keamanan .
+15: pimpinan negara bersalaman berjalan beriringan saluting dais mengikuti upacara penyambutan kenegaraan pasukan kehormatan .
+16: yasonna laoly diperiksa kpk kapasitasnya menteri hukum ham menkumham .
+17: yasonna laoly pemilu perbedaan tafsir komisi pemilihan kpu dpp pdip suara caleg meninggal .
+18: pelaksana tugas plt kepala dinas sumber daya air sda jakarta ika agustin ningrum menyebut tantangan utama menyebabkan molornya penyelesaian proyek tanggul pantai .
+19: fokus utama program tekad melatih bumdes desadesa sasaran mengembangkan sektor pemasaran pertanian perikanan .
+20: kajian mendalam nasdem mendorong konsensus politik .
+21: dampak konflik bersenjata kekerasan menimbulkan korban jiwa lukaluka pengungsi internal terhentinya layanan publik .
+22: terdakwa harvey moeis mengaku keluarganya terdakwa dugaan korupsi timah menikmati uang korupsi senilai rp triliun .
+23: anis menyayangkqn tppo mary jane kelanjutan proses pengadilan indonesia tingkat tingkat .
+24: insiden dialami lakilaki berinisial mf sabtu november .
+25: penghargaan bukti komitmen prabowo memerangi korupsi retorika .
+26: terpidana mati penyelundupan narkoba mary jane veloso bandara internasional soekarnohatta soetta tangerang banten selasa malam desember .
+27: harvey moeis sandra dewi difitnah dihujat dicaci maki kehilangan nama kehilangan karier pekerjaan diparadekan kepentingan publisitas timah .
+28: badan penanggulangan bencana daerah bpdb jakarta menyusun mitigasi evakuasi langkah antisipasi genangan banjir pesisir rob
+29: aduan proses perencanaan pembangungan psn melibatkan masyarakat menerapkan prinsip free prior and informed consent fpic .
+30: gubernur terpilih jakarta periode pramono anung menyusun tim transisi peralihan pemerintahan jakarta .
+31: berdasarkan hasil monitoring evaluasi monev komisi informasi pusat kemendagri berhasil meraih nilai .
+32: handoko pintu projo terbuka jokowi mendukung langkah politik mantan gubernur dki jakarta .
+33: pelaksana tugas plt asisten kesejahteraan rakyat sekretaris daerah dki jakarta suharini eliawati gerai pangan warung toko penjual pangan tersebar pulau beroperasi .
+34: sidang agenda pembelaan pledoi terdakwa dugaan korupsi timah suparta kebingungan tebang pilih sikap diperlakukan .
+35: anggota fraksi pkb wacana kepala daerah ditentukan dprd membajak hak politik rakyat masyarakat hak pilih pemilu pileg pilpres .
+36: pt transportasi jakarta transjakarta berencana menambah jam layanan malam pergantian .
+37: mukernas ii ppp perwakilan daerah membahas terkait nama calon ketua .
+38: kepala daerah tertipu pejabat bawahnya mainmain penggunaan anggaran .
+39: donny yoesgiantoro apresiasi bp masuk kualifikasi terbaik informatif meningkat bp informatif bp informatif .
+40: beredar kabar george memiliki keterbelakangan kecerdasan . pemberlakuan khusus anak jos toko roti .
+41: khoirudin partai keadilan sejahtera pks mendukung kepemimpinan pramono anungrano karno jakarta .
+42: banser depok membantu pengamanan gereja wilayah depok .
+43: ketum kadin indonesia anindya bakrie pesan penuh makna acara malam renungan natal kadin indonesia digelar hotel aryaduta jakarta senin malam desember .
+44: menag terowongan silaturahim memiliki nilai ikonik memamerkan kekayaankekayaan seni berharga .
+45: kementerian koperasi kementerian perlindungan pekerja migran indonesia kemenpmi meresmikan koperasi pekerja migran indonesia .
+46: tito kerugian berdampak operasional perusahaan berimbas pendapatan asli daerah pad optimal .
+47: anggota dprd jakarta brando susanto langkah . air minum masyarakat wilayah timur utara jakarta dialirkan spam jatiluhur cilincing jakarta utara .
+48: pria identitas kepergok beraksi parkiran rumah kost jalan mangga raya tamansari jakarta barat .
+49: kepadatan lintas dihindari liburan natal . masyarakat pulang kampung berwisata berkunjung rumah saudara aktivitas .
+50: prabowo dijadwalkan menghadiri konferensi tingkat ktt kelompok d bertemu presiden mesir abdul fattah assisi .
+51: gerindra menerima penghargaan predikat kualifikasi informatif partai politik parpol terbaik partai keadilan sejahtera pks partai demokrasi indonesia perjuangan pdip .
+52: ketum kadin indonesia anindya bakrie berkesempatan kebijakan negeri ekonomi pemerintahan prabowo subiantogibran rakabuming raka dubes negaranegara uni eropa indonesia .
+53: johanis tanak salah misi lembaganya meningkatkan upaya pencegahan pendekatan sistem memperbaiki sistem pengelolaan administrasi lembaga negara pemerintahan .
+54: program mangrove for coastal resilience mcr program rehabilitasi mangrove didukung world bank . pemerintah menargetkan kegiatan rehabilitasi mangrove terdegradasi mencapai total . hektar .
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -4834,7 +4823,8 @@ Politikus senior PDIP sekaligus Cagub Jakarta Pramono Anung tiba-tiba mendatangi
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -4918,8 +4908,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,0 +1,1350 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Implementasi Reduksi Dimensi PCA dan Fuzzy C-Means untuk Clustering Data &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tugassembilan';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="tugasdelapan.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tugas1.html">Crowling Web</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Implementasi Reduksi Dimensi PCA dan Fuzzy C-Means untuk Clustering Data</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftugassembilan.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/tugassembilan.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Implementasi Reduksi Dimensi PCA dan Fuzzy C-Means untuk Clustering Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="implementasi-reduksi-dimensi-pca-dan-fuzzy-c-means-untuk-clustering-data">
+<h1><strong>Implementasi Reduksi Dimensi PCA dan Fuzzy C-Means untuk Clustering Data</strong><a class="headerlink" href="#implementasi-reduksi-dimensi-pca-dan-fuzzy-c-means-untuk-clustering-data" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>scikit-fuzzy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting scikit-fuzzy
+  Downloading scikit_fuzzy-0.5.0-py2.py3-none-any.whl.metadata (2.6 kB)
+Downloading scikit_fuzzy-0.5.0-py2.py3-none-any.whl (920 kB)
+?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/920.8 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+   ━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">81.9/920.8 kB</span> <span class=" -Color -Color-Red">3.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━ <span class=" -Color -Color-Green">634.9/920.8 kB</span> <span class=" -Color -Color-Red">9.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">920.8/920.8 kB</span> <span class=" -Color -Color-Red">9.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: scikit-fuzzy
+Successfully installed scikit-fuzzy-0.5.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">skfuzzy.cluster</span> <span class="kn">import</span> <span class="n">cmeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>scikit-fuzzy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scikit-fuzzy in /usr/local/lib/python3.10/dist-packages (0.5.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">skfuzzy.cluster</span> <span class="kn">import</span> <span class="n">cmeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;hasil_crowling.csv&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-ef1a22f9-16c9-4a69-a702-fb5e8d3c7229" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Judul</th>
+      <th>Tanggal</th>
+      <th>Ringkasan</th>
+      <th>Kategori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ketum MUI: Dampak Judol dan Pinjol Sebabkan Ke...</td>
+      <td>19 Des 2024 12:30</td>
+      <td>Ketua Umum Majelis Ulama Indonesia (MUI), KH A...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Emak-Emak Jadi Korban Hipnotis di Pasar Depok,...</td>
+      <td>19 Des 2024 11:27</td>
+      <td>Seorang perempuan berinisial FNL (56) menjadi ...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Pj Gubernur Jakarta Minta Inspektorat Investig...</td>
+      <td>19 Des 2024 11:13</td>
+      <td>Hasil sementara Inspektorat memang ditemukan a...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Bertemu PM Pakistan, Prabowo Bahas Kerja Sama ...</td>
+      <td>19 Des 2024 11:00</td>
+      <td>Prabowo menyampaikan sejumlah upaya yang dilak...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Jaga Kondusifitas, Kapolda Metro Imbau Malam T...</td>
+      <td>19 Des 2024 10:42</td>
+      <td>Kapolda Metro Jaya, Irjen Pol Karyoto mengimba...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>KAI Pastikan Kelayakan Armada Beroperasi pada ...</td>
+      <td>19 Des 2024 10:34</td>
+      <td>Mursid menegaskan komitmen Balai Yasa untuk me...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Pemerintah Berikan Diskon Listrik 50%, Ekonom:...</td>
+      <td>19 Des 2024 10:05</td>
+      <td>Kepala Center of Food, Energy &amp; Sustainable De...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Infografis Pemulangan Mary Jane dan 5 Terpidan...</td>
+      <td>19 Des 2024 10:04</td>
+      <td>Mary Jane, terpidana mati kasus narkotika asal...</td>
+      <td>Infografis</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Apa Saja Sektor Penting Bebas PPN 12 Persen ?</td>
+      <td>19 Des 2024 09:55</td>
+      <td>Kenaikan tarif PPN 12 persen ini tidak berlaku...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Cuaca Besok Jumat 20 Desember 2024: Hujan Dipr...</td>
+      <td>19 Des 2024 08:15</td>
+      <td>Cuaca pagi Jakarta besok, Jumat, 20 Desember 2...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Raih Penghargaan KIP, Nasaruddin Umar Janji Ke...</td>
+      <td>19 Des 2024 08:01</td>
+      <td>Komisi Informasi Pusat (KIP) menganugerahkan p...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Prabowo Temui Grand Syekh Al-Azhar di Mesir, P...</td>
+      <td>19 Des 2024 07:45</td>
+      <td>Presiden Prabowo Subianto menemui Grand Syekh ...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Cuaca Indonesia Hari Ini Kamis 19 Desember 202...</td>
+      <td>19 Des 2024 07:30</td>
+      <td>Langit sebagian besar wilayah Indonesia pada K...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Hadapi Cuaca Ekstrem, Kepala BMKG Cek Kesiapan...</td>
+      <td>19 Des 2024 07:15</td>
+      <td>Kepala Badan Meteorologi, Klimatologi, dan Geo...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Berlaku Hari Ini! Cek 26 Titik Ganjil Genap Ja...</td>
+      <td>19 Des 2024 07:00</td>
+      <td>Pada Kamis (19/12/2024) aturan ganjil genap Ja...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Cuaca Hari Ini Kamis 19 Desember 2024: Jabodet...</td>
+      <td>19 Des 2024 06:20</td>
+      <td>Cuaca pagi di Jakarta pada hari ini, Kamis (19...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Pramono Anung Ungkap Alasan Akan Terbuka denga...</td>
+      <td>19 Des 2024 06:06</td>
+      <td>Calon Gubernur Jakarta Pramono Anung mengaku s...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Gandeng JAM Intel Kejagung, Mendes Yandri Hara...</td>
+      <td>19 Des 2024 06:06</td>
+      <td>Kemendes PDTT saat ini tengah menggodok peratu...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>BPIP Raih Penghargaan Kualifikasi Informatif d...</td>
+      <td>19 Des 2024 05:58</td>
+      <td>Tahun ini BPIP meraih predikat kualifikasi Inf...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Bacakan Pleidoi, Terdakwa Reza Jelaskan Awal J...</td>
+      <td>19 Des 2024 04:46</td>
+      <td>Terdakwa kasus korupsi timah, Rezma Andriansya...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>5 Siswa SMA 70 Jaksel yang Terlibat Pengeroyok...</td>
+      <td>19 Des 2024 04:10</td>
+      <td>Pihak Sekolah Menengah Atas (SMA) 70 Jakarta p...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Dishub Jakarta Bahas Wacana Kenaikan Tarif Tra...</td>
+      <td>19 Des 2024 03:46</td>
+      <td>Dinas Perhubungan (Dishub) Jakarta tengah memb...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Mary Jane dan 5 Terpidana Mati Bali Nine Dipul...</td>
+      <td>19 Des 2024 00:01</td>
+      <td>Hingga saat ini baik Filipina dan Australia be...</td>
+      <td>Rajut</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Kemenag Raih Predikat 'Sangat Baik' dalam IPPN...</td>
+      <td>18 Des 2024 23:33</td>
+      <td>Penilaian IPPN merupakan bagian dari reformasi...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Prabowo-Presiden Mesir Bahas Penguatan Kerja S...</td>
+      <td>18 Des 2024 23:10</td>
+      <td>Presiden Prabowo Subianto melakukan pertemuan ...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Terdakwa Kasus Korupsi Timah Suparta: Niat Ban...</td>
+      <td>18 Des 2024 22:40</td>
+      <td>Terdakwa kasus korupsi timah, Suparta, menyamp...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>PLTP Ulumbu 5-6 Ditargetkan Beroperasi 2026, B...</td>
+      <td>18 Des 2024 21:46</td>
+      <td>Dengan laju pertumbuhan penduduk yang terus me...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Antisipasi Bencana, Kantor SAR Jakarta Gelar L...</td>
+      <td>18 Des 2024 21:30</td>
+      <td>120 personel gabungan mengikuti Latihan Gabung...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Kejati Jakarta Geledah Kantor Dinas Kebudayaan...</td>
+      <td>18 Des 2024 21:25</td>
+      <td>Kejaksaan Tinggi Jakarta menggeledah sejumlah ...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Pulang Main Bilyard, Pria di Tangerang Kota Di...</td>
+      <td>18 Des 2024 21:00</td>
+      <td>Seorang pria dikeroyok usai bermain bilyard di...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Kejati Jakarta Geledah Kantor Dinas Kebudayaan...</td>
+      <td>18 Des 2024 20:41</td>
+      <td>Syahron mengatakan, Kejati DK Jakarta mulai me...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Bentrok Warga dengan Pekerja di Tanah Abang Ja...</td>
+      <td>18 Des 2024 20:35</td>
+      <td>Satu orang tewas diduga akibat bentrokan yang ...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Pemkab Tangerang Gelar Seleksi Definitif Sekre...</td>
+      <td>18 Des 2024 20:21</td>
+      <td>Kepala BKPSDM Kabupaten Tangerang, Hendar Hera...</td>
+      <td>Megapolitan</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Polisi Berjaga di Lokasi Keributan di Jakpus, ...</td>
+      <td>18 Des 2024 20:16</td>
+      <td>Satu orang meninggal dunia akibat bentrokan an...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Viral! Aksi Heroik Wanita di Jakut, Terseret S...</td>
+      <td>18 Des 2024 20:07</td>
+      <td>Kapolsek Cilincing, Kompol Fernando Saharta Sa...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Gegara Tanya Utang Piutang, Berujung Penganiay...</td>
+      <td>18 Des 2024 20:00</td>
+      <td>Keributan terjadi di Pasar Tebet Barat, Jakart...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Amankan Natal dan Tahun Baru, 141.605 Personel...</td>
+      <td>18 Des 2024 19:54</td>
+      <td>Operasi Lilin 2024 tidak hanya berfokus pada k...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>OJK Pertahankan Predikat Badan Publik Informat...</td>
+      <td>18 Des 2024 19:45</td>
+      <td>Otoritas Jasa Keuangan (OJK) meraih predikat b...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Wakil Ketua Komisi X: Fasilitas dan Minim Guru...</td>
+      <td>18 Des 2024 19:38</td>
+      <td>Politikus PKB itu menekankan pentingnya integr...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Bacakan Pleidoi, Pesan Harvey Moeis ke Anaknya...</td>
+      <td>18 Des 2024 19:27</td>
+      <td>Dalam pleidoinya, Harvey Moeis juga meminta ma...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>PKB Ingatkan Pemerintah Jamin Kelancaran dan I...</td>
+      <td>18 Des 2024 19:18</td>
+      <td>Menurut dia, fokus utama pemerintah dalam peri...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Temui Presiden Mesir, Prabowo Disambut Upacara...</td>
+      <td>18 Des 2024 19:00</td>
+      <td>Kedua pimpinan negara bersalaman dan kemudian ...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Diperiksa KPK Selama 7 Jam, Yasonna Laoly Dice...</td>
+      <td>18 Des 2024 18:49</td>
+      <td>Yasonna Laoly diperiksa KPK dalam kapasitasnya...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Kasus Harun Masiku, Yasonna: Saya Diperiksa Se...</td>
+      <td>18 Des 2024 18:38</td>
+      <td>Yasonna Laoly menjelaskan, dalam pada saat Pem...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Pembangunan Tanggul Pantai di Jakarta Molor, T...</td>
+      <td>18 Des 2024 18:36</td>
+      <td>Pelaksana tugas (Plt) Kepala Dinas Sumber Daya...</td>
+      <td>Megapolitan</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Tatap 2025, Program Tekad  Dukung BUMDes Perku...</td>
+      <td>18 Des 2024 18:28</td>
+      <td>Fokus utama Program TEKAD adalah melatih BUMDe...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>NasDem: Kajian Pilkada Dikembalikan ke DPRD Ha...</td>
+      <td>18 Des 2024 18:22</td>
+      <td>Selain kajian mendalam, NasDem juga mendorong ...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>Komnas HAM Ungkap Potret Situasi Papua Sepanja...</td>
+      <td>18 Des 2024 18:03</td>
+      <td>Dampak dari konflik bersenjata dan kekerasan m...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>Pengakuan Harvey Moeis, Tidak Pernah Punya dan...</td>
+      <td>18 Des 2024 18:00</td>
+      <td>Terdakwa Harvey Moeis mengaku dirinya, keluarg...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Pemulangan ke Filipina Diapresiasi, Komnas HAM...</td>
+      <td>18 Des 2024 17:44</td>
+      <td>Anis menyayangkqn, kasus TPPO terhadap Mary Ja...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>Pakai Samurai, Kawanan Begal Beraksi di Cengka...</td>
+      <td>18 Des 2024 17:35</td>
+      <td>Insiden itu dialami seorang laki-laki berinisi...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>Raih Penghargaan KIP, Gerindra Komitmen Berant...</td>
+      <td>18 Des 2024 17:29</td>
+      <td>Penghargaan ini dapat menjadi bukti bahwa komi...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>5 Pernyataan Terpidana Mati Kasus Narkoba Mary...</td>
+      <td>18 Des 2024 17:15</td>
+      <td>Terpidana mati kasus penyelundupan narkoba Mar...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>Harvey Moeis Baca Pleidoi, Sebut Sang Istri Sa...</td>
+      <td>18 Des 2024 17:07</td>
+      <td>Harvey Moeis mengatakan, Sandra Dewi telah dif...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>BPBD Jakarta Siapkan Skema Evakuasi Antisipasi...</td>
+      <td>18 Des 2024 17:00</td>
+      <td>Badan Penanggulangan Bencana Daerah (BPDB) Jak...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>Komnas HAM: PSN Pangan Presiden Prabowo di Mer...</td>
+      <td>18 Des 2024 16:44</td>
+      <td>Aduan itu dikarenakan proses perencanaan pemba...</td>
+      <td>Peristiwa</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>Pramono Anung Sedang Bentuk Tim Transisi Pemer...</td>
+      <td>18 Des 2024 16:25</td>
+      <td>Gubernur terpilih Jakarta Periode 2024-2029 Pr...</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>Komitmen Transparansi, Kemendagri Raih Penghar...</td>
+      <td>18 Des 2024 16:18</td>
+      <td>Berdasarkan hasil monitoring dan evaluasi (mon...</td>
+      <td>News</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>Projo Tunggu Perintah Jokowi, Siap Berubah Jad...</td>
+      <td>18 Des 2024 16:16</td>
+      <td>Handoko mengatakan pintu Projo akan selalu ter...</td>
+      <td>Politik</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-ef1a22f9-16c9-4a69-a702-fb5e8d3c7229')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-ef1a22f9-16c9-4a69-a702-fb5e8d3c7229 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-ef1a22f9-16c9-4a69-a702-fb5e8d3c7229');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;hasil_crowling.csv&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Judul&#39;, &#39;Tanggal&#39;, &#39;Ringkasan&#39;, &#39;Kategori&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;hasil_crowling.csv&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan nama kolom dalam baris terpisah setiap 20 kolom</span>
+<span class="n">column_names</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">column_names</span><span class="p">),</span> <span class="mi">20</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">column_names</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">20</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Judul, Tanggal, Ringkasan, Kategori
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Kategori&#39;</span><span class="p">]</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Kategori&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_encoder</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">encoded_labels</span> <span class="o">=</span> <span class="n">label_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>scikit-fuzzy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scikit-fuzzy in /usr/local/lib/python3.10/dist-packages (0.5.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">skfuzzy.cluster</span> <span class="kn">import</span> <span class="n">cmeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Contoh data</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>  <span class="c1"># 100 sampel, 50 fitur</span>
+<span class="n">encoded_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># 100 label biner</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Fuzzy C-Means Clustering dan PCA untuk dimensi yang berbeda</span>
+<span class="n">max_dim</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_dim</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># Kurangi dimensi data</span>
+    <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
+    <span class="n">reduced_features</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+
+    <span class="c1"># Fuzzy C-Means Clustering</span>
+    <span class="n">cntr</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">u0</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">jm</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">fpc</span> <span class="o">=</span> <span class="n">cmeans</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">reduced_features</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+        <span class="n">c</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                  <span class="c1"># 2 clusters</span>
+        <span class="n">m</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>                <span class="c1"># Tingkat fuzziness</span>
+        <span class="n">error</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>          <span class="c1"># Toleransi error</span>
+        <span class="n">maxiter</span><span class="o">=</span><span class="mi">1000</span>          <span class="c1"># Iterasi maksimum</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Keanggotaan cluster</span>
+    <span class="n">cluster_membership</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Hitung akurasi berdasarkan label asli</span>
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+        <span class="n">accuracy_score</span><span class="p">(</span><span class="n">encoded_labels</span><span class="p">,</span> <span class="n">cluster_membership</span><span class="p">),</span>
+        <span class="n">accuracy_score</span><span class="p">(</span><span class="n">encoded_labels</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">cluster_membership</span><span class="p">)</span>  <span class="c1"># Cek inversi cluster</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Simpan hasil</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">dim</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;pca_features&#39;</span><span class="p">:</span> <span class="n">reduced_features</span><span class="p">,</span>
+        <span class="s1">&#39;centroids&#39;</span><span class="p">:</span> <span class="n">cntr</span><span class="p">,</span>
+        <span class="s1">&#39;membership&#39;</span><span class="p">:</span> <span class="n">cluster_membership</span><span class="p">,</span>
+        <span class="s1">&#39;accuracy&#39;</span><span class="p">:</span> <span class="n">accuracy</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">best_dim</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">dim</span><span class="p">:</span> <span class="n">results</span><span class="p">[</span><span class="n">dim</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+<span class="n">best_accuracy</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">best_dim</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi terbaik: </span><span class="si">{</span><span class="n">best_accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> pada dimensi </span><span class="si">{</span><span class="n">best_dim</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi terbaik: 0.64 pada dimensi 32.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Scatter plot untuk dimensi terbaik (2 dimensi)</span>
+<span class="n">final_result</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">best_dim</span><span class="p">]</span>
+<span class="n">pca_features</span> <span class="o">=</span> <span class="n">final_result</span><span class="p">[</span><span class="s1">&#39;pca_features&#39;</span><span class="p">]</span>
+<span class="n">centroids</span> <span class="o">=</span> <span class="n">final_result</span><span class="p">[</span><span class="s1">&#39;centroids&#39;</span><span class="p">]</span>
+<span class="n">membership</span> <span class="o">=</span> <span class="n">final_result</span><span class="p">[</span><span class="s1">&#39;membership&#39;</span><span class="p">]</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">final_result</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>  <span class="c1"># Untuk 2 cluster</span>
+    <span class="n">cluster_points</span> <span class="o">=</span> <span class="n">pca_features</span><span class="p">[</span><span class="n">membership</span> <span class="o">==</span> <span class="n">i</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cluster_points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cluster_points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Cluster </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="c1"># Tambahkan centroid</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">centroids</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">centroids</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Centroid&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fuzzy C-Means Clustering (Dimensi PCA </span><span class="si">{</span><span class="n">best_dim</span><span class="si">}</span><span class="s2">) - Akurasi: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Komponen PCA 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Komponen PCA 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3ac590cf17d347513595c9094ab061637d2dd2183e60415560ed443b18621c83.png" src="_images/3ac590cf17d347513595c9094ab061637d2dd2183e60415560ed443b18621c83.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_result_2d</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">pca_features_2d</span> <span class="o">=</span> <span class="n">final_result_2d</span><span class="p">[</span><span class="s1">&#39;pca_features&#39;</span><span class="p">]</span>
+<span class="n">centroids_2d</span> <span class="o">=</span> <span class="n">final_result_2d</span><span class="p">[</span><span class="s1">&#39;centroids&#39;</span><span class="p">]</span>
+<span class="n">membership_2d</span> <span class="o">=</span> <span class="n">final_result_2d</span><span class="p">[</span><span class="s1">&#39;membership&#39;</span><span class="p">]</span>
+<span class="n">accuracy_2d</span> <span class="o">=</span> <span class="n">final_result_2d</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span>
+
+<span class="c1"># Scatter Plot untuk Dimensi 2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>  <span class="c1"># Untuk 2 cluster</span>
+    <span class="n">cluster_points</span> <span class="o">=</span> <span class="n">pca_features_2d</span><span class="p">[</span><span class="n">membership_2d</span> <span class="o">==</span> <span class="n">i</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cluster_points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cluster_points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Cluster </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="c1"># Tambahkan centroid</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">centroids_2d</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">centroids_2d</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Centroid&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fuzzy C-Means Clustering (Dimensi PCA 2) - Akurasi: </span><span class="si">{</span><span class="n">accuracy_2d</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Komponen PCA 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Komponen PCA 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ff38cf1ec17c660a91201a6741cc8acca918789ce5f9b13636be03d5b5982055.png" src="_images/ff38cf1ec17c660a91201a6741cc8acca918789ce5f9b13636be03d5b5982055.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dim_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">accuracy_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dim_list</span><span class="p">,</span> <span class="n">accuracy_list</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Akurasi per Dimensi&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Jumlah Dimensi&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Akurasi&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perbandingan Akurasi Fuzzy C-Means Clustering dengan PCA&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">best_dim</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Akurasi Terbaik: </span><span class="si">{</span><span class="n">best_accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b5bc212c6fbf39155072c970f41c007f5dcf65b8ce4ee18ef9f74385bedaaa58.png" src="_images/b5bc212c6fbf39155072c970f41c007f5dcf65b8ce4ee18ef9f74385bedaaa58.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">dim</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dimensi: </span><span class="si">{</span><span class="n">dim</span><span class="si">}</span><span class="s2">, Akurasi: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dimensi: 50, Akurasi: 0.52
+Dimensi: 49, Akurasi: 0.63
+Dimensi: 48, Akurasi: 0.57
+Dimensi: 47, Akurasi: 0.52
+Dimensi: 46, Akurasi: 0.57
+Dimensi: 45, Akurasi: 0.51
+Dimensi: 44, Akurasi: 0.56
+Dimensi: 43, Akurasi: 0.59
+Dimensi: 42, Akurasi: 0.58
+Dimensi: 41, Akurasi: 0.53
+Dimensi: 40, Akurasi: 0.53
+Dimensi: 39, Akurasi: 0.54
+Dimensi: 38, Akurasi: 0.54
+Dimensi: 37, Akurasi: 0.51
+Dimensi: 36, Akurasi: 0.54
+Dimensi: 35, Akurasi: 0.55
+Dimensi: 34, Akurasi: 0.52
+Dimensi: 33, Akurasi: 0.56
+Dimensi: 32, Akurasi: 0.64
+Dimensi: 31, Akurasi: 0.53
+Dimensi: 30, Akurasi: 0.54
+Dimensi: 29, Akurasi: 0.58
+Dimensi: 28, Akurasi: 0.57
+Dimensi: 27, Akurasi: 0.50
+Dimensi: 26, Akurasi: 0.55
+Dimensi: 25, Akurasi: 0.51
+Dimensi: 24, Akurasi: 0.51
+Dimensi: 23, Akurasi: 0.54
+Dimensi: 22, Akurasi: 0.50
+Dimensi: 21, Akurasi: 0.59
+Dimensi: 20, Akurasi: 0.61
+Dimensi: 19, Akurasi: 0.55
+Dimensi: 18, Akurasi: 0.59
+Dimensi: 17, Akurasi: 0.53
+Dimensi: 16, Akurasi: 0.52
+Dimensi: 15, Akurasi: 0.62
+Dimensi: 14, Akurasi: 0.56
+Dimensi: 13, Akurasi: 0.55
+Dimensi: 12, Akurasi: 0.57
+Dimensi: 11, Akurasi: 0.56
+Dimensi: 10, Akurasi: 0.56
+Dimensi: 9, Akurasi: 0.54
+Dimensi: 8, Akurasi: 0.58
+Dimensi: 7, Akurasi: 0.53
+Dimensi: 6, Akurasi: 0.57
+Dimensi: 5, Akurasi: 0.54
+Dimensi: 4, Akurasi: 0.53
+Dimensi: 3, Akurasi: 0.57
+Dimensi: 2, Akurasi: 0.56
+</pre></div>
+</div>
+</div>
+</div>
+<p>Link Deployment : <a class="reference external" href="https://huggingface.co/spaces/22-065/ppwtugas9">https://huggingface.co/spaces/22-065/ppwtugas9</a></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tugasdelapan.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
